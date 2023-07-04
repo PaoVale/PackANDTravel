@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+.picture {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+.picture img {
+   max-width: 100%;
+   max-height: 100%;
+}
+
+h2.Suggested {
+    text-align: center;
+    color: #fff;
+  }
+  
+div.suggeriti{
+	background-color: #26838b;
+	text-align: center;
+    padding: 5px;
+	
+}

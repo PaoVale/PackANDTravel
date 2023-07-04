@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+
+section.novita-section{
+	text-align:center;
+}
+
+.filter-bar {
+        float: left;
+        width: 200px;
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+
+    .filter-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .filter-list li {
+        margin-bottom: 5px;
+        text-align:left;
+    }
+    
+
+
+    .filter-list label {
+        display: block;
+    }
+
+    .filter-list input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    
+    .novita-section {
+        overflow: auto;
+    }
