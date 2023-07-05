@@ -19,7 +19,7 @@ import model.AccountUser;
 public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // TODO Auto-generated method stub
+   
     response.sendRedirect("Login.jsp");
   }
 
@@ -39,16 +39,10 @@ public class LoginServlet extends HttpServlet {
 		  request.getSession().setAttribute("auth", user);
 		  response.sendRedirect("Index.jsp");
 		 
-		/*response.sendRedirect("Index.jsp");*/
     }else {
     	response.sendRedirect("Login.jsp");
     	request.getSession().setAttribute("accessoNegato", true);
-		/*
-		 * CIO FUNZIONA CON JAVASCRIPT
-		 * String redirectURL = "Login.jsp";
-		 * response.getWriter().println("<script>window.location.href='" + redirectURL +
-		 * "';</script>");
-		 */
+		
   }
   }
   }

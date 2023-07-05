@@ -50,8 +50,6 @@
 
 				<button type="submit" onclick="errorLogin()">Accedi</button>
 			</form>
-			<!-- <p id="errorLogin"></p>
-			 <script type="text/javascript" src="scripts/ErrorLogin.js"></script> -->
 			<br> Non sei registrato? <a href="Registrati.jsp">Iscriviti!</a>
 		</section>
 	</main>
