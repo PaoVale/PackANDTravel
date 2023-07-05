@@ -50,3 +50,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
    background-color: #26838b;
 }
+
+#errorLogin{
+	color: red;
+}

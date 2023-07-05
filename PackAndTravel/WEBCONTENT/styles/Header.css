@@ -7,25 +7,30 @@ body {
    background-color: #26838b; /* Colore di sfondo */
    color: #fff; /* Colore del testo */
    text-align: center;
-   padding: 20px;
+   padding: 10px;
    column-count:2; /*serve per far stare due cose nella stessa riga (ad es. il logo e le icone del login,carrello,whishlist)*/
 }
 
 
 
 .logo img {
-   width: 400px; /* Dimensione del logo */
+   width: 500px; /* Dimensione del logo */
    margin-right: 0px;
    margin-left:500px
 }
+
+
+
 
 .icons {
    display: flex;
    justify-content: center;
    align-items: center;
    margin-bottom: 10px;
-   margin-left: 500px;
-   
+   margin-right: 10px;
+   margin-left: 400px;
+   width: 40%; /* Larghezza del div delle icone */
+  
 }
 
 
@@ -38,7 +43,10 @@ body {
 
 .icons a:hover {
   color: black; /* Imposta il colore delle icone quando sono attive */
+  
 }
+
+
 
 .search-bar {
    text-align: center;
@@ -62,3 +70,4 @@ body {
    text-decoration: none;
    margin-right: 20px;
 }
+

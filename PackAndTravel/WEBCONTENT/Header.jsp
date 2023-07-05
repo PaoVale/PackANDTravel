@@ -1,20 +1,46 @@
+<%@page import="model.*" %>
+<%@page import="control.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%
+	AccountUser auth = (AccountUser) request.getSession().getAttribute("auth") ;
+	if(auth!=null){
+		request.setAttribute("auth",auth);
+	}
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Pack &amp; Travel</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Aggiungi il link al CSS delle icone di Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="styles/Header.css" type="text/css">
+<script  src="scripts/ToooltipsIcone.js" type="text/javascript"></script>
 </head>
 <body>
 <header class="header">
    <div class="logo">
       <a href="Index.jsp"><img src="images/logo-removebg-preview.png" alt="Logo"> </a>
       <div class="icons">
-         <a href="Login.jsp"><i class="fas fa-user"></i></a> <!-- Icona per accedere/fare log in -->
+            <!-- TODO aggiungi tooltips alle icone -->     
+         <% if(auth != null){ %>
+         	<a href="#">I miei ordini</a>
+         <%} %>
+         
          <a href="#"><i class="fas fa-shopping-cart"></i></a> <!-- Icona per il carrello -->
-         <a href="Wishlist.jsp"><i class="fas fa-heart"></i></a> <!-- Icona per la wishlist -->
+        
+         <% 
+         	if(auth != null){ %>
+         	<a href="Wishlist.jsp" ><i class="fas fa-heart" ></i></a> 
+         	
+         	<a href="log-out"><i class="fas fa-sign-out-alt"></i></a> 
+         <%} else{%>
+         
+         	<a href="Login.jsp"><i class="fas fa-user"></i></a>
+         	
+         <%} %>
+         	
+         
+         
       </div>
    </div>
 </header>
