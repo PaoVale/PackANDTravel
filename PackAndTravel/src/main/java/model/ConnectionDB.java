@@ -37,7 +37,7 @@ public class ConnectionDB {
       
     } catch (SQLException e) {
  
-      e.printStackTrace();
+    	logger.log(Level.SEVERE, e.getMessage());
     }
 return conn;
   }

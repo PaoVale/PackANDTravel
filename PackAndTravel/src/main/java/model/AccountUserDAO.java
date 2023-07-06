@@ -3,6 +3,7 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.*;
 
 
@@ -20,10 +21,10 @@ public class AccountUserDAO {
     
   }
 
-  public AccountUser userLogin(String email, String password) {
+  public AccountUser userLogin(String email, String password) throws SQLException {
     ResultSet rs;
     String query;
-    PreparedStatement pst;
+    PreparedStatement pst=null;
     AccountUser accountuser= null;
     try {
       
@@ -45,8 +46,11 @@ public class AccountUserDAO {
       }
       
     }catch(Exception e) {
-      e.printStackTrace();
+    	logger.log(Level.SEVERE, e.getMessage());
       logger.log(Level.SEVERE , e.getMessage());
+    } finally {
+    	if(pst != null)
+    		pst.close();
     }
     return accountuser;
   
