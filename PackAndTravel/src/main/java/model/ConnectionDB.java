@@ -21,11 +21,11 @@ public class ConnectionDB {
 
       ds = (DataSource) envCtx.lookup("jdbc/packandtravel");
       conn = ds.getConnection();
-      System.out.print("nel Database\n");
+      System.err.print("nel Database\n");
 
     } catch (NamingException e) {
-      System.out.print("non nel Database");
-      System.out.println("Error:" + e.getMessage());
+      System.err.print("non nel Database");
+      System.err.println("Error:" + e.getMessage());
       
     } catch (SQLException e) {
  
