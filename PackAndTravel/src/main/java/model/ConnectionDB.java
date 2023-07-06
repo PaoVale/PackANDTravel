@@ -12,7 +12,7 @@ import java.util.logging.*;
 public class ConnectionDB {
   
 
-  private static DataSource ds;
+  
   static Connection conn = null;
   private static final Logger logger = Logger.getLogger(ConnectionDB.class.getName());
   
@@ -22,6 +22,7 @@ public class ConnectionDB {
 
   
   public static Connection getConnection()  {
+    DataSource ds;
     try {
       Context initCtx = new InitialContext();
       Context envCtx = (Context) initCtx.lookup("java:comp/env");

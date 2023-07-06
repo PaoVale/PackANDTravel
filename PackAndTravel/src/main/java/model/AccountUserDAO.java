@@ -10,9 +10,9 @@ import java.util.logging.*;
 
 public class AccountUserDAO {
   private Connection con;
-  private String query;
-  private PreparedStatement pst;
-  private ResultSet rs;
+  
+  
+  
   private static final Logger logger = Logger.getLogger(AccountUserDAO.class.getName());
   
   public AccountUserDAO(Connection con){
@@ -21,6 +21,9 @@ public class AccountUserDAO {
   }
 
   public AccountUser userLogin(String email, String password) {
+    ResultSet rs;
+    String query;
+    PreparedStatement pst;
     AccountUser accountuser= null;
     try {
       
