@@ -3,6 +3,7 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.*;
 
 
 
@@ -12,6 +13,7 @@ public class AccountUserDAO {
   private String query;
   private PreparedStatement pst;
   private ResultSet rs;
+  private static final Logger logger = Logger.getLogger(AccountUserDAO.class.getName());
   
   public AccountUserDAO(Connection con){
     this.con=con;
@@ -41,7 +43,7 @@ public class AccountUserDAO {
       
     }catch(Exception e) {
       e.printStackTrace();
-      System.out.print(e.getMessage());
+      logger.log(Level.SEVERE , e.getMessage());
     }
     return accountuser;
   
