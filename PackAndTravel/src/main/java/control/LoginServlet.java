@@ -3,6 +3,8 @@ package control;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,12 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import model.AccountUserDAO;
 import model.ConnectionDB;
 import model.AccountUser;
+import java.util.logging.*;
 
 /* Servlet implementation class LoginServlet*/
  
 @WebServlet("/user-login")
 public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+  private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+  
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
    
     response.sendRedirect("Login.jsp");
@@ -44,7 +49,10 @@ public class LoginServlet extends HttpServlet {
     	request.getSession().setAttribute("accessoNegato", true);
 		
   }
-  }
+  } catch (SQLException e) {
+	
+	  logger.log(Level.SEVERE, e.getMessage());
+}
   }
 
 }
