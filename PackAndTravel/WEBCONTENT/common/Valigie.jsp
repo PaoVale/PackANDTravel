@@ -3,9 +3,10 @@
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
-<title>Borsoni - Pack &amp; Travel</title>
+<title>Valigie - Pack &amp; Travel</title>
 
-<link rel="stylesheet" href="styles/Valigie_borsoni_zaini_accessori.css" type="text/css">
+<link rel="stylesheet" href="../styles/Valigie_borsoni_zaini_accessori.css" type="text/css">
+
 
 </head>
 <body>
@@ -14,8 +15,9 @@
 
 <main>
    <section class="novita-section">
-   <%@ include file="Filter.jsp" %>
-      <h2>Borsoni</h2>
+	<%@ include file="Filter.jsp" %>
+      
+      <h2>Valigie</h2>
       <!-- Inserisci qui il codice per visualizzare i prodotti di valigie dal database -->
    </section>
 </main>

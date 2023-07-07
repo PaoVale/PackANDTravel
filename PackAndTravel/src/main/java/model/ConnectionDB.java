@@ -1,45 +1,39 @@
 package model;
-import java.sql.Connection;
-import java.sql.SQLException;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
-import java.util.logging.*;
 
+@WebListener
+public class ConnectionDB implements ServletContextListener{
 
+	public void contextInitialized(ServletContextEvent event) {
 
-public class ConnectionDB {
-  
+		ServletContext context = event.getServletContext();
+		DataSource ds = null;
 
-  
-  static Connection conn = null;
-  private static final Logger logger = Logger.getLogger(ConnectionDB.class.getName());
-  
-  private ConnectionDB() {
-	    throw new IllegalStateException("Utility class");
-	  }
+		try {
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-  
-  public static Connection getConnection()  {
-    DataSource ds;
-    try {
-      Context initCtx = new InitialContext();
-      Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			ds = (DataSource) envCtx.lookup("jdbc/packandtravel");
+		} catch(NamingException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
 
-      ds = (DataSource) envCtx.lookup("jdbc/packandtravel");
-      conn = ds.getConnection();
-      logger.log(Level.INFO,"nel Database");
+		context.setAttribute("DataSource", ds);
+		System.out.println("Creating DataSource... " + ds.toString());
+	}
 
-    } catch (NamingException e) {
-      logger.log(Level.INFO,"non nel Database");
-      logger.log(Level.SEVERE, e.getMessage());
-      
-    } catch (SQLException e) {
- 
-    	logger.log(Level.SEVERE, e.getMessage());
-    }
-return conn;
-  }
-  
+	public void contextDestroyed(ServletContextEvent event) {
+		ServletContext context = event.getServletContext();
+
+		DataSource ds = (DataSource) context.getAttribute("DataSource");
+		System.out.println("DataSource deletion.... " + ds.toString());
+	}
 }

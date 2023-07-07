@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Registrazione - Pack &amp; Travel</title>
     <style>
-        <%@ include file="styles/Registrati.css" %> 
+        <%@ include file="../styles/Registrati.css" %> 
     </style>
 </head>
 <body>

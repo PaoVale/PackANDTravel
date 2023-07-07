@@ -13,13 +13,13 @@
 <meta charset="ISO-8859-1">
 <title>Pack &amp; Travel</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="styles/Header.css" type="text/css">
-<script  src="scripts/ToooltipsIcone.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../styles/Header.css" type="text/css">
+<script  src="/scripts/ToooltipsIcone.js" type="text/javascript"></script>
 </head>
 <body>
 <header class="header">
    <div class="logo">
-      <a href="Index.jsp"><img src="images/logo-removebg-preview.png" alt="Logo"> </a>
+      <a href="Index.jsp"><img src="../images/logo-removebg-preview.png" alt="Logo"> </a>
       <div class="icons">
             <!-- TODO aggiungi tooltips alle icone -->     
          <% if(auth != null){ %>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.sql.DataSource;
 
 import model.ConnectionDB;
 
@@ -50,6 +51,9 @@ public class AddImageServlet extends HttpServlet {
 		String uploadPath="C:/Users/La Pao/git/PackAndTravel/PackAndTravel/WEBCONTENT/images/"+imageFileName;
 		System.out.println("Upload path = "+uploadPath);
 		
+		
+		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
+		
 		try {
 		FileOutputStream fos= new FileOutputStream(uploadPath);
 		InputStream is=file.getInputStream();
@@ -63,7 +67,8 @@ public class AddImageServlet extends HttpServlet {
 		
 		Connection con=null;
 		try {
-			con=ConnectionDB.getConnection();
+			//con=ConnectionDB.getConnection();
+			con=ds.getConnection();
 			PreparedStatement pst=null;
 			String query="update prodotto set foto=? where codice=?";
 			pst=con.prepareStatement(query);
