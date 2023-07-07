@@ -81,7 +81,7 @@ public class AddImageServlet extends HttpServlet {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+		response.sendRedirect("AddImage.jsp");
 	}
 
 }
