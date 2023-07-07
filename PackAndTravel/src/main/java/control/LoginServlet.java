@@ -1,8 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -72,7 +70,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("isLogged", "false");
 			request.setAttribute("error", error);
 
-			System.out.println("password");
+			System.out.println("password inserita errata");
 
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/Login.jsp");
 			dispatcher.forward(request, response);
@@ -84,8 +82,11 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("isLogged", "true"); 
 		session.setAttribute("auth", user); //mi serve per recuperare le info dell'utente per account
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/Index.jsp");
-		dispatcher.forward(request, response);
+		
+		  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/Index.jsp");
+		  dispatcher.forward(request, response);
+		 
+		//response.sendRedirect("common/Index.jsp");
 
 
 	}
