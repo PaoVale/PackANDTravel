@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Display Image</title>
@@ -33,6 +33,7 @@
               <th>Image Id </th>
               <th>Image</th>
           </tr>
+          
          
          <%
              if(imgFileName!="" && imgId!="")
@@ -41,7 +42,7 @@
           
           <tr>
               <td><%=imgId %></td>
-              <td><img src="images/<%=imgFileName%>" style="width:300px;height:250px"></td>
+              <td><img src="images/<%=imgFileName%>" style="width:300px;height:250px" alt="immagine prodotto"></td>
           </tr>
         <%
              }
