@@ -13,13 +13,13 @@
 <meta charset="ISO-8859-1">
 <title>Pack &amp; Travel</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="../styles/Header.css" type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Header.css" type="text/css">
 <script  src="/scripts/ToooltipsIcone.js" type="text/javascript"></script>
 </head>
 <body>
 <header class="header">
    <div class="logo">
-      <a href="Index.jsp"><img src="../images/logo-removebg-preview.png" alt="Logo"> </a>
+      <a href="Index.jsp"><img src="<%=request.getContextPath() %>/images/logo-removebg-preview.png" alt="Logo"> </a>
       <div class="icons">
             <!-- TODO aggiungi tooltips alle icone -->     
          <% if(auth != null){ %>
@@ -30,12 +30,12 @@
         
          <% 
          	if(auth != null){ %>
-         	<a href="Wishlist.jsp" ><i class="fas fa-heart" ></i></a> 
+         	<a href="<%=request.getContextPath() %>/common/Wishlist.jsp" ><i class="fas fa-heart" ></i></a> 
          	
-         	<a href="log-out"><i class="fas fa-sign-out-alt"></i></a> 
+         	<a href="<%=request.getContextPath() %>/log-out"><i class="fas fa-sign-out-alt"></i></a> 
          <%} else{%>
          
-         	<a href="Login.jsp"><i class="fas fa-user"></i></a>
+         	<a href="<%=request.getContextPath() %>/Login.jsp"><i class="fas fa-user"></i></a>
          	
          <%} %>
          	
@@ -48,11 +48,11 @@
    <input type="text" placeholder="Cerca..."> <!-- Barra di ricerca -->
 </div>
 <nav class="navigation">
-   <a href="Novità.jsp">Novità</a>
-   <a href="Valigie.jsp">Valigie</a>
-   <a href="Zaini.jsp">Zaini</a>
-   <a href="Accessori.jsp">Accessori</a>
-   <a href="Borsoni.jsp">Borsoni</a>
+   <a href="<%=request.getContextPath() %>/common/Novità.jsp">Novità</a>
+   <a href="<%=request.getContextPath() %>/common/Valigie.jsp">Valigie</a>
+   <a href="<%=request.getContextPath() %>/common/Zaini.jsp">Zaini</a>
+   <a href="<%=request.getContextPath() %>/common/Accessori.jsp">Accessori</a>
+   <a href="<%=request.getContextPath() %>common/Borsoni.jsp">Borsoni</a>
 </nav>
 </body>
 </html>

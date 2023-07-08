@@ -5,7 +5,7 @@
 <meta charset="ISO-8859-1">
 <title>Wishlist - Pack &amp; Travel</title>
 
-<link rel="stylesheet" href="../styles/Novità.css" type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Novità.css" type="text/css">
 
 </head>
 <body>

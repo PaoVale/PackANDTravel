@@ -14,7 +14,7 @@
 <meta charset="ISO-8859-1">
 <title>Accesso - Pack &amp; Travel</title>
 <!-- <link rel="stylesheet" href="/common/styles/Login.css"> -->
-<link rel="stylesheet" href="../styles/Login.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Login.css">
 
 </head>
 <body>

@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Pack &amp; Travel</title>
 
-<link rel="stylesheet" href="../styles/Index.css" type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Index.css" >
 
 
 </head>
@@ -16,7 +16,7 @@
 <%@ include file="Header.jsp" %>
 
 <div class="picture">
-   <img src="../images/foto_HOME.jpg" alt="Homepage Image">
+   <img src="<%=request.getContextPath() %>/images/foto_HOME.jpg" alt="Homepage Image">
 </div>
 
 <section> 

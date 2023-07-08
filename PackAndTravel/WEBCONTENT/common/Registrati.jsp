@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrazione - Pack &amp; Travel</title>
-    <style>
-        <%@ include file="../styles/Registrati.css" %> 
-    </style>
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Registrati.css">
 </head>
 <body>
     <div class="container">

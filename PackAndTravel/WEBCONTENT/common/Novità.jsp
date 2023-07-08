@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Novità - Pack &amp; Travel</title>
 
-<link rel="stylesheet" href="../styles/Novità.css" type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Novità.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
 		integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"></script>
 

@@ -5,7 +5,7 @@
 <meta charset="ISO-8859-1">
 <title>Borsoni - Pack &amp; Travel</title>
 
-<link rel="stylesheet" href="../styles/Valigie_borsoni_zaini_accessori.css" type="text/css">
+<link rel="stylesheet" href=".<%=request.getContextPath() %>/styles/Valigie_borsoni_zaini_accessori.css" type="text/css">
 
 </head>
 <body>
