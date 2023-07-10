@@ -8,4 +8,6 @@ section.novita-section{
     
     .novita-section {
         overflow: auto;
+        margin-bottom:20px;
+        margin-left:20px;
     }

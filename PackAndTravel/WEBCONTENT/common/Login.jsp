@@ -1,6 +1,6 @@
 <%@page import="model.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" errorPage="errorPage.jsp"%>
 
 <%-- <%
 	AccountUser auth = (AccountUser) request.getSession().getAttribute("auth") ;
@@ -13,14 +13,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Accesso - Pack &amp; Travel</title>
-<!-- <link rel="stylesheet" href="/common/styles/Login.css"> -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Login.css">
 
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Login.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
 
+<section id="homeIcons">
+	<a href="<%=request.getContextPath() %>/common/Index.jsp"><i class="fa fa-home" ></i> </a>
+</section>
 
+	
 	<main>
+	
+	<% 
+    String error = (String)request.getAttribute("error");
+    if(error == null)
+      error="";
+  
+  %>
+  
+    <section class="loginSection">      
 		<section class="login-section">
 			<h2>Log in</h2>
 			<form method="post" action="/PackAndTravel/LoginServlet" id="formLogin">
@@ -33,24 +47,14 @@
 						id="password" name="password" required>
 				</div>
 				
-
+			<p  style="color:red "> <%=error %> </p>
 				
-				<%-- <%
-				Boolean accessoNegato = (Boolean) session.getAttribute("accessoNegato");
-				if (accessoNegato != null && accessoNegato) {
-				%>
-				 
-				<p id="errorLogin">Login errato, riprova.</p>
-				 <%
-				// Resetta l'attributo nella sessione
-				session.setAttribute("accessoNegato", false);
-				//session.removeAttribute("accessoNegato");
-				}
-				%> --%>
+				
 
 				<button type="submit" onclick="errorLogin()">Accedi</button>
 			</form>
 			<br> Non sei registrato? <a href="Registrati.jsp">Iscriviti!</a>
+		</section>
 		</section>
 	</main>
 

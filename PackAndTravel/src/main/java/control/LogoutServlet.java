@@ -3,6 +3,7 @@ package control;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/log-out")
+@WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,11 +23,15 @@ public class LogoutServlet extends HttpServlet {
 			if(request.getSession().getAttribute("auth") != null) {
 				request.getSession().removeAttribute("auth");
 				request.getSession().invalidate();
-				response.sendRedirect("Index.jsp");
+				RequestDispatcher dispatcher =
+			              getServletContext().getRequestDispatcher("/common/Index.jsp");
+	            dispatcher.forward(request, response);
 				
 				
 			}else {
-				response.sendRedirect("Index.jsp");
+				RequestDispatcher dispatcher =
+			              getServletContext().getRequestDispatcher("/common/Index.jsp");
+			    dispatcher.forward(request, response);
 				
 			}
 		}

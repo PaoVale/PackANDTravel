@@ -30,12 +30,12 @@
         
          <% 
          	if(auth != null){ %>
-         	<a href="<%=request.getContextPath() %>/common/Wishlist.jsp" ><i class="fas fa-heart" ></i></a> 
+         	<a href="<%=request.getContextPath()%>/common/Wishlist.jsp" ><i class="fas fa-heart" ></i></a> 
          	
-         	<a href="<%=request.getContextPath() %>/log-out"><i class="fas fa-sign-out-alt"></i></a> 
+         	<a href="/PackAndTravel/LogoutServlet"><i class="fas fa-sign-out-alt"></i></a> 
          <%} else{%>
          
-         	<a href="<%=request.getContextPath() %>/Login.jsp"><i class="fas fa-user"></i></a>
+         	<a href="<%=request.getContextPath()%>/common/Login.jsp"><i class="fas fa-user"></i></a>
          	
          <%} %>
          	

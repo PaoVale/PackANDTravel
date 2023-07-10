@@ -54,3 +54,13 @@ button[type="submit"]:hover {
 #errorLogin{
 	color: red;
 }
+
+section#homeIcons{
+	text-align:left;
+	margin-left:10px;
+	font-size:50px;
+}
+
+section#homeIcons i{
+	color:white;
+}

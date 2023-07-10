@@ -47,3 +47,13 @@ button {
 button:hover {
   background-color: #007580;
 }
+
+section#homeIcons{
+	text-align:left;
+	margin-left:10px;
+	font-size:50px;
+}
+
+section#homeIcons i{
+	color:white;
+}

@@ -61,4 +61,32 @@ public class AccountUserDAO {
 		return accountuser;
 
 	}
-}
+
+	public void doSave(AccountUser user) throws SQLException {
+		ResultSet rs;
+		String query;
+		PreparedStatement pst=null;
+		Connection con=null;
+		AccountUser accountuser= new AccountUser();
+		try {
+			con=ds.getConnection();
+			query="insert into accountuser(email,passw,nome,cognome,indirizzo,telefono) values(?,?,?,?,?,?)";
+			con.setAutoCommit(true);
+			pst = con.prepareStatement(query);
+			pst.setString(1, user.getEmail());
+			pst.setString(2, user.getPassword());
+			pst.setString(3, user.getName());
+			pst.setString(4, user.getSurname());
+			pst.setString(5, user.getAddress());
+			pst.setString(6,user.getNumber());
+			pst.executeUpdate();
+		}finally {
+			try {
+				if(pst != null)
+					pst.close();
+			}finally{
+				if(con != null)
+					con.close();
+			}
+	}
+}}

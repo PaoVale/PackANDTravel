@@ -1,6 +1,7 @@
 package model;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,4 +27,43 @@ public class HelperClass {
           logger.log(Level.WARNING, "Problema hash pswd!");
         }
         return sb.toString();
-    }}
+    }
+
+  public static String filter(String input) {
+	    
+	    StringBuilder filtered = new StringBuilder();
+	    HashMap<Character, String> characterMap = new HashMap<>();
+	    // qui andrebbero aggiunti anche le entry per 'ò', 'ì' ecc.
+	        characterMap.put('<', "&lt;");
+	        characterMap.put('>', "&gt;");
+	        characterMap.put('&', "&amp;");
+	        characterMap.put('"', "&quot;");
+	        characterMap.put('á', "&aacute");
+	        characterMap.put('é',"&eacute");
+
+	    char c;
+	    for(int i=0; i<input.length(); i++) {
+	      c = input.charAt(i);
+	        
+	      // Filtra il carattere desiderato
+	            String replacement = characterMap.get(c);
+	            if (replacement != null) {
+	                filtered.append(replacement);
+	            } else if(c == 'Ã'){ //questo perchè non riesco a riconoscere normalmente 'è' e 'à'
+	            i++;
+	            c = input.charAt(i);
+	            if(c=='¨') {
+	              filtered.append("&egrave");
+	            }else
+	              filtered.append("&agrave");
+	        }else{
+	          
+	                filtered.append(c);
+	            }
+	    } //fine for
+	    
+	    return filtered.toString();
+
+	  }
+
+}
