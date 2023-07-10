@@ -48,7 +48,6 @@
    <input type="text" placeholder="Cerca..."> <!-- Barra di ricerca -->
 </div>
 <nav class="navigation">
-   <a href="<%=request.getContextPath() %>/common/Novità.jsp">Novità</a>
    <a href="<%=request.getContextPath() %>/common/Valigie.jsp">Valigie</a>
    <a href="<%=request.getContextPath() %>/common/Zaini.jsp">Zaini</a>
    <a href="<%=request.getContextPath() %>/common/Accessori.jsp">Accessori</a>

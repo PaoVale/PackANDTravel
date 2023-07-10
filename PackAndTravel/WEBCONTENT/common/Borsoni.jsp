@@ -14,8 +14,9 @@
 
 <main>
    <section class="novita-section">
+   <h2>Borsoni</h2>
    <%@ include file="Filter.jsp" %>
-      <h2>Borsoni</h2>
+      
       <!-- Inserisci qui il codice per visualizzare i prodotti di valigie dal database -->
    </section>
 </main>
