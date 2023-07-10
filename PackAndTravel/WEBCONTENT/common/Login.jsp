@@ -53,7 +53,7 @@
 
 				<button type="submit" onclick="errorLogin()">Accedi</button>
 			</form>
-			<br> Non sei registrato? <a href="Registrati.jsp">Iscriviti!</a>
+			<br> Non sei registrato? <a href="<%=request.getContextPath() %>/common/Registrati.jsp">Iscriviti!</a>
 		</section>
 		</section>
 	</main>

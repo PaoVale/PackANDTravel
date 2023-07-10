@@ -45,7 +45,7 @@
             </div>
              <div class="form-group">
                 <label for="nome">*Nome:</label>
-                <input type="text" id="nome" name="nome" required><span id="errorName" onChange="return validateNome()"></span>
+                <input type="text" id="nome" name="nome" required onChange="return validateNome()"> <span id="errorName" ></span>
             </div>
              <div class="form-group">
                 <label for="cognome">*Cognome:</label>

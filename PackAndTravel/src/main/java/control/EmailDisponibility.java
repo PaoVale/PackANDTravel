@@ -41,13 +41,15 @@ public class EmailDisponibility extends HttpServlet {
       response.setContentType("text/xml");
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
+       
         
         if (email != null && !email.equals("")) {
-            user = dao.doRetrieveByKey(email);
-        }
+        	user = dao.doRetrieveByKey(email);
+        }     
+        
         String risultato = null;
-        if (user != null && !user.getEmail().trim().equals("")) {
-            risultato = "email già utilizzata";
+        if (user != null && user.getEmail()!=null) {
+            risultato = "email già registrata";
         } else {
             risultato = " ";
         }

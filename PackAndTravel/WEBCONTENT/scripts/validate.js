@@ -77,7 +77,7 @@ function pswMatching() {
   if (psw1 != psw2) {
     spanPswd.classList.add("error");
     spanPswd.innerHTML = mismatchPSWD;
-    spanPswd.style.color = "red";
+    spanPswd.style.color = "#c42b2d";
     return false;
   }
 
@@ -109,7 +109,7 @@ function validatePassword() {
 
   spanPswd.classList.add("error");
   spanPswd.innerHTML = pswdMessage;
-  spanPswd.style.color = "red";
+  spanPswd.style.color = "#c42b2d";
   return false; 
 
 }
