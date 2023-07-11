@@ -1,0 +1,57 @@
+@charset "ISO-8859-1";
+ body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      text-align:center;
+    }
+
+    .user-info {
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .user-info h2 {
+      margin-top: 0;
+    }
+
+    .user-info p {
+      margin-bottom: 10px;
+    }
+
+    .user-info strong {
+      font-weight: bold;
+    }
+
+    
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+
+    .input-container input[type="password"] {
+      margin-bottom: 5px;
+    }
+    
+    fieldset {
+    border: 1px solid #26838b; /* Imposta il bordo a 1 pixel di spessore e il colore del bordo a #26838b */
+    border-radius: 5px; /* Imposta un bordo arrotondato */
+  }
+
+form{
+	margin:20px;
+}
+
+
+div {
+    margin: 20px;
+}

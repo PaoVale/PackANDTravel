@@ -5,9 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-  href="<%=request.getContextPath()%>/style/Filtri.css">
-<script src="<%=request.getContextPath()%>/scripts/Filtri.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/styles/Filter.css">
+<script src="<%=request.getContextPath()%>/scripts/Filter.js"></script>
 </head>
 <body>
   <form>

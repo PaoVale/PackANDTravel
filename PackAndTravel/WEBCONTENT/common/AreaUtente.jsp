@@ -1,99 +1,76 @@
+<%@ page language="java" errorPage="errorPage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Area Personale</title>
- <style>
-    /* Stile CSS per la pagina */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<title>Area Personale</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/styles/AreaUtente.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath() %>/scripts/AreaUtente.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath() %>/scripts/validate.js"></script>
 
-    h1 {
-      margin-bottom: 20px;
-    }
 
-    .user-info {
-      background-color: #f5f5f5;
-      padding: 20px;
-      border-radius: 5px;
-      margin-bottom: 20px;
-    }
-
-    .user-info h2 {
-      margin-top: 0;
-    }
-
-    .user-info p {
-      margin-bottom: 10px;
-    }
-
-    .user-info strong {
-      font-weight: bold;
-    }
-
-    .btn-modify {
-      margin-right: 10px;
-    }
-
-    .input-container {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 10px;
-    }
-
-    .input-container input[type="password"] {
-      margin-bottom: 5px;
-    }
-  </style>
 </head>
 <body>
-  <h1>Il mio account</h1>
+	<%@ include file="Header.jsp"%>
+	<h1>Il mio account</h1>
+	<%String email= auth.getEmail(); 
+String nome=auth.getName();
+String cognome=auth.getSurname();
+String indirizzo=auth.getAddress();
+String cellulare=auth.getNumber();
+%>
+	<div class="user-info">
+		<h2>I miei dati</h2>
+		<p>
+			<strong>Email:</strong> <span id="email"><%= email %></span>
+		</p>
 
-  <div class="user-info">
-    <h2>I miei dati</h2>
-    <p><strong>Email:</strong> </p>
-    <p><strong>Nome:</strong> </p>
-    <p><strong>Cognome:</strong> </p>
-    <p><strong>Indirizzo:</strong> </p>
-    <p><strong>Cellulare:</strong> </p>
-    
-   <button class="btn-modify" onclick="openPasswordFields()">Modifica Password</button>
-    <div id="passwordFieldsContainer"></div>
-  <br> 
-    <button class="btn-modify" onclick="modifyAddress()">Modifica Indirizzo</button> <br> <br>
-    <button class="btn-modify" onclick="modifyPhoneNumber()">Modifica Cellulare</button>
-    </div>
-    <!-- Aggiungi altre informazioni dell'utente che desideri visualizzare -->
-  
-
-  <!-- Aggiungi altre sezioni o informazioni personali dell'utente a tuo piacimento -->
-<script>
-function openPasswordFields() {
-    var passwordFieldsContainer = document.getElementById("passwordFieldsContainer");
-
-    // Crea i campi di input per la nuova password e la conferma
-    var newPasswordInput = document.createElement("input");
-    newPasswordInput.type = "password";
-    newPasswordInput.placeholder = "Nuova password";
-    newPasswordInput.className = "input-container";
-
-    var confirmPasswordInput = document.createElement("input");
-    confirmPasswordInput.type = "password";
-    confirmPasswordInput.placeholder = "Conferma password";
-    confirmPasswordInput.className = "input-container";
-
-    // Aggiungi i campi di input al contenitore
-    passwordFieldsContainer.innerHTML = "";
-    passwordFieldsContainer.appendChild(newPasswordInput);
-    passwordFieldsContainer.appendChild(confirmPasswordInput);
-  }
-</script>
+		<p>
+			<strong>Nome:</strong> <span id="nome"><%= nome %></span>
+		</p>
+		<p>
+			<strong>Cognome:</strong> <span id="cognome"><%= cognome %></span>
+		</p>
+		<p>
+			<strong>Indirizzo:</strong> <span id="indirizzo"><%= indirizzo %></span>
+		</p>
+		<p>
+			<strong>Cellulare:</strong> <span id="cellulare"><%= cellulare %></span>
+		</p>
 
 
+
+
+	</div>
+	<form id="regForm" method="post" action="/PackAndTravel/ModificaDatiServlet" onsubmit="event.preventDefault();checkModifica(this)">
+		<fieldset>
+			<legend>Modifica Dati</legend>
+				<p>Modifica password:</p>
+                <input type="password" id="password" name="password" placeholder="Nuova password" onChange="return validatePassword()" onInput="return validatePassword()">
+                <br>
+                <span id="errorpswd"></span>
+     			<br><br>
+                <input type="password" id="ConfermaPassword" name="ConfermaPassword" placeholder="Conferma password" onChange="return pswMatching()" onInput="return pswMatching()">
+                <br>
+                <span id="matchError"></span>
+            
+				
+				
+				<p>Modifica indirizzo:</p>
+				<input type="text"> <br>
+				<p>Modifica cellulare:</p>
+				<input type="text" id="cellulare" name="cellulare" onInput="return validateCellulare()" onChange="return validateCellulare()"> 
+				<br>
+				<span id="errorCellulare"></span> <br> <br>
+
+				<button type="submit" >Modifica dati</button>
+		</fieldset>
+	</form>
 </body>
-
+<br>
+<%@ include file="Footer.jsp"%>
 
 </html>

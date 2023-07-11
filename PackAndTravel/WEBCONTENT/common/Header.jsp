@@ -24,6 +24,7 @@
             <!-- TODO aggiungi tooltips alle icone -->     
          <% if(auth != null){ %>
          	<a href="#">I miei ordini</a>
+         	<a href="<%=request.getContextPath()%>/common/AreaUtente.jsp"><i class="fas fa-user"></i></a>
          <%} %>
          
          <a href="#"><i class="fas fa-shopping-cart"></i></a> <!-- Icona per il carrello -->
@@ -44,9 +45,7 @@
       </div>
    </div>
 </header>
-<div class="search-bar">
-   <input type="text" placeholder="Cerca..."> <!-- Barra di ricerca -->
-</div>
+
 <nav class="navigation">
    <a href="<%=request.getContextPath() %>/common/Valigie.jsp">Valigie</a>
    <a href="<%=request.getContextPath() %>/common/Zaini.jsp">Zaini</a>

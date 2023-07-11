@@ -141,4 +141,16 @@ function checkSignup(obj) {
   if (check) obj.submit();
 }
 
+function checkModifica(obj){
+	let check=true;
+	let form = document.getElementById("regForm");
+	if ((form.password.value!=null || form.password.value!="")&& !pswMatching()) check = false;
+	if ((form.password.value!=null || form.password.value!="") && !validatePassword()) check = false;
+	if((form.callulare.value!=null || form.cellulare.value!="") && !validateCellulare()) check = false;
+	
+	
+	if (check) obj.submit();
+	
+}
+
 
