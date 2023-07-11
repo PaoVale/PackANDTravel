@@ -1,4 +1,4 @@
-<%@ page language="java" errorPage="errorPage.jsp" %>
+<%@ page language="java" errorPage="errorPage.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,28 +45,32 @@ String cellulare=auth.getNumber();
 
 
 	</div>
-	<form id="regForm" method="post" action="/PackAndTravel/ModificaDatiServlet" onsubmit="event.preventDefault();checkModifica(this)">
+	<form id="regForm" method="post"
+		action="/PackAndTravel/ModificaDatiServlet"
+		onsubmit="event.preventDefault();checkModifica(this)">
 		<fieldset>
 			<legend>Modifica Dati</legend>
-				<p>Modifica password:</p>
-                <input type="password" id="password" name="password" placeholder="Nuova password" onChange="return validatePassword()" onInput="return validatePassword()">
-                <br>
-                <span id="errorpswd"></span>
-     			<br><br>
-                <input type="password" id="ConfermaPassword" name="ConfermaPassword" placeholder="Conferma password" onChange="return pswMatching()" onInput="return pswMatching()">
-                <br>
-                <span id="matchError"></span>
-            
-				
-				
-				<p>Modifica indirizzo:</p>
-				<input type="text"> <br>
-				<p>Modifica cellulare:</p>
-				<input type="text" id="cellulare" name="cellulare" onInput="return validateCellulare()" onChange="return validateCellulare()"> 
-				<br>
-				<span id="errorCellulare"></span> <br> <br>
+			<p>Modifica password:</p>
+			<input type="password" id="password" name="password"
+				placeholder="Nuova password" onChange="return validatePassword()"
+				onInput="return validatePassword()"> <br> <span
+				id="errorpswd"></span> <br>
+			<br> <input type="password" id="ConfermaPassword"
+				name="ConfermaPassword" placeholder="Conferma password"
+				onChange="return pswMatching()" onInput="return pswMatching()">
+			<br> <span id="matchError"></span>
 
-				<button type="submit" >Modifica dati</button>
+
+
+			<p>Modifica indirizzo:</p>
+			<input type="text" id="indirizzo" name="indirizzo"> <br>
+			<p>Modifica cellulare:</p>
+			<input type="text" id="cellulare" name="cellulare"
+				onInput="return validateCellulare()"
+				onChange="return validateCellulare()"> <br> <span
+				id="errorCellulare"></span> <br> <br>
+
+			<button type="submit">Modifica dati</button>
 		</fieldset>
 	</form>
 </body>

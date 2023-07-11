@@ -16,7 +16,7 @@
 <%@ include file="Header.jsp" %>
 
 <div class="picture">
-   <img src="<%=request.getContextPath() %>/images/foto_HOME.jpg" alt="Homepage Image">
+   <img  src="<%=request.getContextPath() %>/images/foto_HOME.jpg" alt="Homepage Image">
 </div>
 
 <section> 

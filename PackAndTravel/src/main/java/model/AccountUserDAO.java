@@ -89,4 +89,76 @@ public class AccountUserDAO {
 					con.close();
 			}
 	}
-}}
+}
+	
+	public synchronized void doUpdatePassword(String email, String password) throws SQLException {
+		String query;
+		PreparedStatement pst=null;
+		Connection con=null;
+		try {
+			con=ds.getConnection();
+			query = "update accountuser set passw = ? where email = ? ";
+			pst = con.prepareStatement(query);
+			pst.setString(1, password);
+			pst.setString(2, email);
+			pst.executeUpdate();
+		}finally {
+			try {
+				if(pst != null)
+					pst.close();
+			}finally{
+				if(con != null)
+					con.close();
+			}
+	}
+	}
+
+	public synchronized void doUpdateAddress(String email, String indirizzo) throws SQLException {
+		String query;
+		PreparedStatement pst=null;
+		Connection con=null;
+		try {
+			con=ds.getConnection();
+			query = "update accountuser set indirizzo = ? where email = ? ";
+			pst = con.prepareStatement(query);
+			pst.setString(1, indirizzo);
+			pst.setString(2, email);
+			pst.executeUpdate();
+		}finally {
+			try {
+				if(pst != null)
+					pst.close();
+			}finally{
+				if(con != null)
+					con.close();
+			}
+	}
+	}
+	public synchronized void doUpdateNumber(String email, String cellulare) throws SQLException {
+		String query;
+		PreparedStatement pst=null;
+		Connection con=null;
+		try {
+			con=ds.getConnection();
+			query = "update accountuser set telefono = ? where email = ? ";
+			pst = con.prepareStatement(query);
+			pst.setString(1, cellulare);
+			pst.setString(2, email);
+			pst.executeUpdate();
+		}finally {
+			try {
+				if(pst != null)
+					pst.close();
+			}finally{
+				if(con != null)
+					con.close();
+			}
+	}
+	}
+
+
+
+
+
+
+}
