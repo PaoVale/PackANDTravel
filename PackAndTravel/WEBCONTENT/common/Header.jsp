@@ -19,10 +19,12 @@
 <body>
 <header class="header">
    <div class="logo">
-      <a href="Index.jsp"><img src="<%=request.getContextPath() %>/images/logo-removebg-preview.png" alt="Logo"> </a>
+   
+      <a href="<%=request.getContextPath() %>/common/Index.jsp"><img src="<%=request.getContextPath() %>/images/logo-removebg-preview.png" alt="Logo"> </a>
       <div class="icons">
             <!-- TODO aggiungi tooltips alle icone -->     
          <% if(auth != null){ %>
+         
          	<a href="#">I miei ordini</a>
          	<a href="<%=request.getContextPath()%>/common/AreaUtente.jsp"><i class="fas fa-user"></i></a>
          <%} %>
@@ -32,7 +34,9 @@
          <% 
          	if(auth != null){ %>
          	<a href="<%=request.getContextPath()%>/common/Wishlist.jsp" ><i class="fas fa-heart" ></i></a> 
-         	
+         	<% if(auth.isAdmin()){ %>
+         <a href="<%=request.getContextPath()%>/admin/ProductView.jsp"><i class="fas fa-cog"></i></a>
+         <%} %>
          	<a href="/PackAndTravel/LogoutServlet"><i class="fas fa-sign-out-alt"></i></a> 
          <%} else{%>
          

@@ -7,6 +7,7 @@ public class AccountUser {
   private String password;
   private String address;
   private String number;
+  boolean isAdmin;
   
   
   
@@ -22,6 +23,7 @@ public class AccountUser {
     this.password = password;
     this.address = address;
     this.number = number;
+    this.isAdmin = false;
   }
 
 
@@ -83,7 +85,16 @@ public class AccountUser {
   public void setNumber(String number) {
     this.number = number;
   }
-  
+
+
+  public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}  
+ 
   
   
 

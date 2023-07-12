@@ -83,7 +83,20 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("isLogged", "true"); 
 		session.setAttribute("auth", user); //mi serve per recuperare le info dell'utente per account
 		
-		  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/Index.jsp");
+		String admin;
+		if(user.isAdmin()) {
+			admin = "true";
+			System.out.println("Admin ha fatto l'accesso");
+		}
+		else
+			admin = "false";
+		
+			
+		
+		session.setAttribute("isAdmin", admin) ; 
+		
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/Index.jsp");
 		  dispatcher.forward(request, response);
 		 
 		//response.sendRedirect("common/Index.jsp");

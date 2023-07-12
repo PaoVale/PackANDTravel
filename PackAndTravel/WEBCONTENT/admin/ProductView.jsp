@@ -19,14 +19,6 @@
     Visualizza prodotti <span id="toggleButton1" class="cursor-pointer" onclick="toggleContent('toggleButton1', 'productTable')">+</span>
   </h2>
 	<table id="productTable" border="1" class="hidden">
-		 <colgroup>
-    <col>
-    <col>
-    <col>
-    <col>
-    <col>
-    <col style="width: 200px;"> <!-- Imposta la larghezza desiderata per la colonna della foto -->
-  </colgroup>
   <tr>
     <th>Codice <a href="product?sort=codice">Sort</a></th>
     <th>Nome <a href="product?sort=nome">Sort</a></th>
@@ -36,6 +28,7 @@
     <th>Foto</th>
     <!-- <th>Action</th> -->
   </tr>
+  
   
 		<!-- Contenuto della tabella -->
 	

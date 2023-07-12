@@ -41,6 +41,7 @@ public class AccountUserDAO {
 				accountuser.setSurname(rs.getString("cognome"));
 				accountuser.setAddress(rs.getString("indirizzo"));
 				accountuser.setNumber(rs.getString("telefono"));
+				accountuser.setAdmin(rs.getBoolean("admin"));
 
 			}
 
