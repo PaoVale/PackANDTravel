@@ -1,6 +1,6 @@
 <%@ page language="java" errorPage="errorPage.jsp"%>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <title>Area Personale</title>
