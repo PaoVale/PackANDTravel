@@ -1,73 +1,67 @@
 body {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
-   background-color: #26838b; /* Colore di sfondo */
-   color: #fff; /* Colore del testo */
-   text-align: center;
-   padding: 10px;
-   column-count:2; /*serve per far stare due cose nella stessa riga (ad es. il logo e le icone del login,carrello,whishlist)*/
+  background-color: #26838b; /* Colore di sfondo */
+  color: #fff; /* Colore del testo */
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
+.logo {
+  flex-grow: 1;
+  text-align: center;
+}
 
 .logo img {
-   width: 500px; /* Dimensione del logo */
-   margin-right: 0px;
-   margin-left:500px
+  width: 500px; /* Dimensione del logo */
+  max-width: 100%;
 }
-
-
-
 
 .icons {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-bottom: 10px;
-   margin-right: 10px;
-   margin-left: 400px;
-   width: 40%; /* Larghezza del div delle icone */
-  
+  display: flex;
+  align-items: center;
 }
 
-
 .icons a {
-   color: #fff; /* Colore delle icone */
-   font-size: 20px;
-   margin-right: 10px;
-   text-decoration: none;
+  color: #fff; /* Colore delle icone */
+  font-size: 20px;
+  margin-left: 10px;
+  text-decoration: none;
 }
 
 .icons a:hover {
   color: black; /* Imposta il colore delle icone quando sono attive */
-  
 }
 
-
+.icons {
+  justify-content: flex-end; /* Posiziona le icone all'estrema destra */
+}
 
 .search-bar {
-   text-align: center;
-   padding: 20px;
-   background-color: #f9f9f9; /* Colore di sfondo della barra di ricerca */
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9; /* Colore di sfondo della barra di ricerca */
 }
 
 .search-bar input[type="text"] {
-   width: 200px; /* Dimensione della barra di ricerca */
-   padding: 5px;
+  width: 200px; /* Dimensione della barra di ricerca */
+  padding: 5px;
 }
 
 .navigation {
-   background-color: #349AA3; /* Colore di sfondo della navigazione */
-   text-align: center;
-   padding: 20px;
+  background-color: #349AA3; /* Colore di sfondo della navigazione */
+  text-align: center;
+  padding: 20px;
 }
 
 .navigation a {
-   color: #fff; /* Colore dei link di navigazione */
-   text-decoration: none;
-   margin-right: 20px;
+  color: #fff; /* Colore dei link di navigazione */
+  text-decoration: none;
+  margin-right: 20px;
 }
-

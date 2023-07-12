@@ -9,7 +9,7 @@
 <body>
 <h1>Add Image</h1>
 <form action="AddImageServlet" method="post" enctype="multipart/form-data">
-	SElect Image:
+	Select Image:
 	<input type="file" name="image">
 	select codice:
 	<input type="number" name="codice">
