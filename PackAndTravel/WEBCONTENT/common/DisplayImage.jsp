@@ -11,7 +11,7 @@
 
 <div align="center">
 
-<form action="DisplayServlet" method="post">
+<form action="/PackAndTravel/DisplayServlet" method="post">
    Enter Image Id :
    <input type="number" name="imageId">
    <input type="submit" value="Display Image">
