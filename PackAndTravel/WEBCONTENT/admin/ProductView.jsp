@@ -55,7 +55,8 @@ if(prodotti==null){
 			<td><%=prodotto.getDescrizione()%></td>
 			<td> <%=prodotto.getCategoria_nome() %></td>
 			<td><%=prodotto.getPrezzo() %></td>
-			<td><%=prodotto.getFoto() %></td>
+			<%-- <td><%=prodotto.getFoto() %></td> --%>
+			<td><img src="images/<%=prodotto.getFoto()%>" style="width:100px;height:auto" alt="immagine prodotto"></td>
 		</tr>
 	<%
 				}
