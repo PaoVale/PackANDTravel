@@ -7,8 +7,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/styles/AreaUtente.css">
 <script type="text/javascript"
-	src="<%=request.getContextPath() %>/scripts/AreaUtente.js"></script>
-<script type="text/javascript"
 	src="<%=request.getContextPath() %>/scripts/validate.js"></script>
 
 

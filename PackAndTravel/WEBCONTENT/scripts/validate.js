@@ -154,3 +154,27 @@ function checkModifica(obj){
 }
 
 
+function checkModificaProdotto(form) {
+  // Ottenere i valori dei campi del modulo
+  
+  var nome = form.nome.value;
+  var descrizione = form.descrizione.value;
+  var categoria = form.categoria.value;
+  var prezzo = form.prezzo.value;
+  var immagine = form.immagine.value;
+
+  // Verificare se tutti i campi sono vuoti
+  if (
+    
+    nome === "" &&
+    descrizione === "" &&
+    categoria === "" &&
+    prezzo === "" &&
+    immagine === ""
+  ) {
+    return false; // Impedire l'invio del modulo
+  }
+
+  // Se la validazione è passata, consentire l'invio del modulo
+  return true;
+}
