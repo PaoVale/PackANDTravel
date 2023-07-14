@@ -116,7 +116,7 @@ if(prodotti==null){
 		<input type="radio" id="accessorio" name="categoria" value="accessorio"> 
 		<label for="accessorio">Accessorio</label> <br> <br> 
 		<label for="prezzo">Modifica prezzo:</label> <br> 
-		<input name="prezzo" type="number" min="0"> <br> <br> 
+		<input name="prezzo" type="number" step="0.01" min="0"> <br> <br> 
 		<label for="immagine">Modifica immagine:</label> <br>  
 		<input type="file" name="immagine"> <br> <br> 
 		<input type="submit" value="Modifica"> 
