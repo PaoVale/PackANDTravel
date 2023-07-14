@@ -126,5 +126,60 @@ return generatedId;
 
 		  }
 	  
+	  public synchronized void doUpdate(String nomeColonna, String contenutoColonna,int codice) throws SQLException {
+			Connection con = null;
+			PreparedStatement pst = null;
+
+			String query = "update prodotto set "+ nomeColonna +" = ? where codice=? ";
+			try {
+				con = ds.getConnection();
+
+				pst = con.prepareStatement(query);
+				pst.setString(1,contenutoColonna);
+				pst.setInt(2, codice);
+				pst.executeUpdate();
+
+				
+			} finally {
+				try {
+					if(pst != null)
+						pst.close();
+				}finally{
+					if(con != null)
+						con.close();
+				}
+		}
+
+		  }
+
+	public synchronized void doUpdatePrezzo(Double prezzo, int codice) throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement pst = null;
+
+		String query = "update prodotto set prezzo = ? where codice=? ";
+		try {
+			con = ds.getConnection();
+
+			pst = con.prepareStatement(query);
+			pst.setDouble(1,prezzo);
+			pst.setInt(2, codice);
+			pst.executeUpdate();
+
+			
+		} finally {
+			try {
+				if(pst != null)
+					pst.close();
+			}finally{
+				if(con != null)
+					con.close();
+			}
+	}
+
+		
+	}
+	  
+	  
 	  
 }
