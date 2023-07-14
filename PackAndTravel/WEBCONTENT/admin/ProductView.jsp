@@ -55,8 +55,7 @@ if(prodotti==null){
 			<td><%=prodotto.getDescrizione()%></td>
 			<td> <%=prodotto.getCategoria_nome() %></td>
 			<td><%=prodotto.getPrezzo() %></td>
-			<%-- <td><%=prodotto.getFoto() %></td> --%>
-			<td><img src="images/<%=prodotto.getFoto()%>" style="width:100px;height:auto" alt="immagine prodotto"></td>
+			<td><img class="img" src="./getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></td> 
 		</tr>
 	<%
 				}
@@ -70,7 +69,7 @@ if(prodotti==null){
 		%>
 	</table>
 	<h2>Inserisci nuovo prodotto <span id="toggleButton2" class="cursor-pointer" onclick="toggleContent('toggleButton2', 'insertForm')">+</span></h2>
-  <form id="insertForm" action="product" method="post" class="hidden">
+  	<form id="insertForm" action="/PackAndTravel/AddProdottoServlet" method="post" class="hidden" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="insert"> 
 		<label for="nome">Nome:</label> <br> 
 		<input name="nome" type="text" maxlength="50" required><br> <br> 
@@ -85,7 +84,7 @@ if(prodotti==null){
 		<input type="radio" id="accessorio" name="categoria" value="accessorio"> 
 		<label for="accessorio">Accessorio</label><br> <br> 
 		<label for="prezzo">Prezzo:</label> <br> 
-		<input name="prezzo" type="number" min="0" required> <br> <br> 
+		<input name="prezzo" type="number" step="0.01" min="0" required><br> <br> 
 		<label for="immagine">Immagine:</label> <br> 
 		<input type="file" name="immagine"> <br> <br> 
 		<input type="submit" value="Aggiungi"> 
@@ -93,7 +92,7 @@ if(prodotti==null){
 	</form>
 
 	<h2>Elimina un prodotto <span id="toggleButton3" class="cursor-pointer" onclick="toggleContent('toggleButton3', 'deleteForm')">+</span></h2>
-  <form id="deleteForm" method="post" class="hidden">
+  <form id="deleteForm" action="/PackAndTravel/DeleteProdottoServlet" method="post" class="hidden">
 		<p>Inserisci codice:</p>
 		<input name="codiceEliminazione" type="number" min="0" required><br>
 		<br> <input type="submit" value="Elimina">

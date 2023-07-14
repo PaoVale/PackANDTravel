@@ -7,7 +7,8 @@ public class Prodotto {
 	private double prezzo;
 	private String nome;
 	private String categoria_nome;
-	private String foto;
+	//private String foto;
+	
 	
 	
 	
@@ -22,7 +23,7 @@ public class Prodotto {
 		this.prezzo = prezzo;
 		this.nome = nome;
 		this.categoria_nome = categoria_nome;
-		this.foto = foto;
+		//this.foto = foto;
 	}
 
 	public String getDescrizione() {
@@ -57,14 +58,7 @@ public class Prodotto {
 		this.categoria_nome = categoria_nome;
 	}
 
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
+	
 	public int getCodice() {
 		return codice;
 	}
