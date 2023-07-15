@@ -51,7 +51,7 @@ public class VisualizzaProdottiServlet extends HttpServlet {
 		dispatcher.forward(request, response); 
 		break;
 		case 2:
-			dispatcher = this.getServletContext().getRequestDispatcher("/common/Valigie.jsp");
+			dispatcher = this.getServletContext().getRequestDispatcher("/common/Catalogo.jsp");
 			dispatcher.forward(request, response);
 			break;
 		}
