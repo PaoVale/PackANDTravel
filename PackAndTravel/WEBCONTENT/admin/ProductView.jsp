@@ -3,11 +3,15 @@
 <%@ page import="java.util.*" %>
 
 <%
+request.setAttribute("categoria", null);
+int id = 1;
+request.setAttribute("id", id);
 Collection<?> prodotti = (Collection<?>) request.getAttribute("prodotti");
-if(prodotti==null){
-	response.sendRedirect("/PackAndTravel/VisualizzaProdottiServlet");
-	return; 
-	}
+if (prodotti == null){
+	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/VisualizzaProdottiServlet");
+	dispatcher.forward(request, response);	
+	return;
+}
 
 %>
 
@@ -59,7 +63,7 @@ if(prodotti==null){
 			<td><%=prodotto.getDescrizione()%></td>
 			<td> <%=prodotto.getCategoria_nome() %></td>
 			<td><%=prodotto.getPrezzo() %></td>
-			<td><img class="img" src="./getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></td> 
+			<td><img class="img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></td> 
 		</tr>
 	<%
 				}

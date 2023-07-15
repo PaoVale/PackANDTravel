@@ -24,15 +24,14 @@ public class ProdottoDAO {
 	    this.ds=ds;
 	  }
 	
-	  public synchronized Collection<Prodotto> doRetriveAll(String order) throws SQLException {
+	  public synchronized Collection<Prodotto> doRetriveAll(String categoria) throws SQLException {
 		  Connection con=null;
 		  PreparedStatement pst=null;
 		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
-		  String query = "select * from prodotto";
 		  
-		  if(order!=null && !order.equals("")) {
-			  query += "ORDER BY "+order;
-		  }
+		  String query = "select * from prodotto";
+		  if(categoria != null)
+			  query += " where categoria_nome =\""+categoria+"\"";	
 		  
 		  try {
 			  con = ds.getConnection();
