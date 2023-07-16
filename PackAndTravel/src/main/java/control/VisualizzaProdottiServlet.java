@@ -34,15 +34,27 @@ public class VisualizzaProdottiServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ProdottoDAO prodotto = new ProdottoDAO(ds);
+		String categoria= (String) request.getAttribute("categoria");
 		try {
-			request.setAttribute("prodotti", prodotto.doRetriveAll(null));
+			request.setAttribute("prodotti", prodotto.doRetriveAll(categoria));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/ProductView.jsp");
+		int idRequest = (int) request.getAttribute("id");
+		RequestDispatcher dispatcher;
+		switch(idRequest) {
+		case 1: 
+		dispatcher = getServletContext().getRequestDispatcher("/admin/ProductView.jsp");
 		dispatcher.forward(request, response); 
+		break;
+		case 2:
+			dispatcher = this.getServletContext().getRequestDispatcher("/common/Catalogo.jsp");
+			dispatcher.forward(request, response);
+			break;
+		}
 		
 		
 	}

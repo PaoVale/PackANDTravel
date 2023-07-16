@@ -3,7 +3,21 @@
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
-<title>Valigie - Pack &amp; Travel</title>
+
+<%String categoria = request.getParameter("categoria");
+request.setAttribute("categoria", categoria); 
+String titolo;
+if(categoria.equals("zaino"))
+	titolo="Zaini";
+else if(categoria.equals("valigia"))
+	titolo="Valigie";
+else if(categoria.equals("borsone"))
+	titolo = "Borsoni";
+else
+	titolo = "Accessori";
+
+%>
+<title><%=titolo %>- Pack &amp; Travel</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Valigie_borsoni_zaini_accessori.css" type="text/css">
 <link rel="stylesheet"
@@ -17,8 +31,7 @@
 <%@ include file="Header.jsp" %>
 
 <%
-String categoria = "valigia";
-request.setAttribute("categoria", categoria);	
+	
 int id = 2;
 request.setAttribute("id", id);
 	Collection<?> prodotti = (Collection<?>) request.getAttribute("prodotti");
@@ -31,10 +44,10 @@ request.setAttribute("id", id);
 	}	
 	
 	%>
-
+	
 <main>
    <section class="novita-section">
-   <h2>Valigie</h2>
+   <h2 ><%=titolo %></h2>
 	<%-- <%@ include file="Filter.jsp" %> --%>
       
       
@@ -74,3 +87,6 @@ request.setAttribute("id", id);
 
 </body>
 </html>
+
+
+

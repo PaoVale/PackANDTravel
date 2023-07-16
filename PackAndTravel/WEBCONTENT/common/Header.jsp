@@ -51,10 +51,10 @@
 </header>
 
 <nav class="navigation">
-   <a href="<%=request.getContextPath() %>/common/Valigie.jsp">Valigie</a>
-   <a href="<%=request.getContextPath() %>/common/Zaini.jsp">Zaini</a>
-   <a href="<%=request.getContextPath() %>/common/Accessori.jsp">Accessori</a>
-   <a href="<%=request.getContextPath() %>/common/Borsoni.jsp">Borsoni</a>
+   <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=valigia">Valigie</a>
+   <a href="<%=request.getContextPath() %>//common/Catalogo.jsp?categoria=zaino">Zaini</a>
+   <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=accessorio">Accessori</a>
+   <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=borsone">Borsoni</a>
 </nav>
 </body>
 </html>

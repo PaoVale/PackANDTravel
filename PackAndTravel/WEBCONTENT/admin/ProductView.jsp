@@ -3,11 +3,15 @@
 <%@ page import="java.util.*" %>
 
 <%
+request.setAttribute("categoria", null);
+int id = 1;
+request.setAttribute("id", id);
 Collection<?> prodotti = (Collection<?>) request.getAttribute("prodotti");
-if(prodotti==null){
-	response.sendRedirect("/PackAndTravel/VisualizzaProdottiServlet");
-	return; 
-	}
+if (prodotti == null){
+	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/VisualizzaProdottiServlet");
+	dispatcher.forward(request, response);	
+	return;
+}
 
 %>
 
@@ -20,6 +24,10 @@ if(prodotti==null){
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/styles/ProductView.css">
 <script src="<%=request.getContextPath()%>/scripts/ProductView.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath() %>/scripts/validate.js"></script>
+
+
 </head>
 <body>
 <body>
@@ -55,7 +63,7 @@ if(prodotti==null){
 			<td><%=prodotto.getDescrizione()%></td>
 			<td> <%=prodotto.getCategoria_nome() %></td>
 			<td><%=prodotto.getPrezzo() %></td>
-			<td><img class="img" src="./getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></td> 
+			<td><img class="img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></td> 
 		</tr>
 	<%
 				}
@@ -99,7 +107,7 @@ if(prodotti==null){
 	</form>
 
 	<h2>Modifica un prodotto <span id="toggleButton4" class="cursor-pointer" onclick="toggleContent('toggleButton4', 'editForm')">+</span></h2>
-  <form action="/PackAndTravel/ModificaProdottoServlet" id="editForm" method="post" class="hidden">
+  <form action="/PackAndTravel/ModificaProdottoServlet" id="editForm" method="post" class="hidden" enctype="multipart/form-data" onsubmit="return checkModificaProdotto(this)">
 		<label for="codice">Inserisci codice:</label> 
 		<input name="codiceModifica" type="number" min="0" required><br> <br> 
 		<label for="nome">Modifica nome:</label> <br> 
@@ -116,7 +124,7 @@ if(prodotti==null){
 		<input type="radio" id="accessorio" name="categoria" value="accessorio"> 
 		<label for="accessorio">Accessorio</label> <br> <br> 
 		<label for="prezzo">Modifica prezzo:</label> <br> 
-		<input name="prezzo" type="number" min="0"> <br> <br> 
+		<input name="prezzo" type="number" step="0.01" min="0"> <br> <br> 
 		<label for="immagine">Modifica immagine:</label> <br>  
 		<input type="file" name="immagine"> <br> <br> 
 		<input type="submit" value="Modifica"> 
