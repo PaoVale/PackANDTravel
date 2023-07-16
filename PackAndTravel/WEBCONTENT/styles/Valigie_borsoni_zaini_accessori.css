@@ -19,9 +19,29 @@ section.novita-section{
 	
 }
 
-.nome{
-	
-margin-top: 10px;
-margin-bottom: 5px;	
+.card-body {
+  text-align: center;
 }
 
+.card-img-top {
+  height: 300px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.nome {
+  margin-bottom: 0px;
+  margin-top:-10px;
+ font-weight: bold;
+    font-size: 18px;
+    font-family: none;
+    color: black;
+}
+.prezzo{
+	font-size: larger;
+    font-weight: 500;
+}
+
+.btn-info {
+  margin-top: 0px; /* Puoi regolare il valore del margine come preferisci */
+}

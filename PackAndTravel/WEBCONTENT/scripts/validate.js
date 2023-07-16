@@ -178,3 +178,6 @@ function checkModificaProdotto(form) {
   // Se la validazione è passata, consentire l'invio del modulo
   return true;
 }
+
+
+
