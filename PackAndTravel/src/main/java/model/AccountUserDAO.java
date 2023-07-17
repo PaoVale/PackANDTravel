@@ -64,11 +64,10 @@ public class AccountUserDAO {
 	}
 
 	public void doSave(AccountUser user) throws SQLException {
-		//ResultSet rs;
+		
 		String query;
 		PreparedStatement pst=null;
 		Connection con=null;
-		//AccountUser accountuser= new AccountUser();
 		try {
 			con=ds.getConnection();
 			query="insert into accountuser(email,passw,nome,cognome,indirizzo,telefono) values(?,?,?,?,?,?)";

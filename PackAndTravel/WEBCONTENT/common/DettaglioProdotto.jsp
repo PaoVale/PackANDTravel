@@ -5,7 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pack&amp;Travel</title>
-<link href="DettaglioProdotto.css" rel="stylesheet" >
+
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/DettaglioProdotto.css" type="text/css">
+
 </head>
 <body>
 	<%@ include file="Header.jsp" %>

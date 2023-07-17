@@ -26,6 +26,7 @@ body {
 .icons {
   display: flex;
   align-items: center;
+  justify-content: flex-end; /* Posiziona le icone all'estrema destra */
 }
 
 .icons a {
@@ -37,10 +38,6 @@ body {
 
 .icons a:hover {
   color: black; /* Imposta il colore delle icone quando sono attive */
-}
-
-.icons {
-  justify-content: flex-end; /* Posiziona le icone all'estrema destra */
 }
 
 .search-bar {

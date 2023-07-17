@@ -45,7 +45,6 @@ public class ProdottoDAO {
 				  prodotto.setPrezzo(rs.getDouble("prezzo"));
 				  prodotto.setNome(rs.getString("nome"));
 				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
-				 // prodotto.setFoto(rs.getString("foto"));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {
