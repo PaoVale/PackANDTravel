@@ -14,9 +14,13 @@
 <body>
 
 <%@ include file="Header.jsp" %>
-
 <div class="picture">
-   <img  src="<%=request.getContextPath() %>/images/foto_HOME.jpg" alt="Homepage Image">
+  <div class="image-wrapper">
+    <img src="<%=request.getContextPath() %>/images/foto_HOME.jpg" alt="Homepage Image">
+    <div class="overlay">
+      <span>Pack Smarter,<br>Travel Better</span>
+    </div>
+  </div>
 </div>
 
 <section> 

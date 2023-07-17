@@ -1,13 +1,5 @@
 @charset "ISO-8859-1";
 
-.picture {
-   display: block;
-   justify-content: center;
-   align-items: center;
-   margin-bottom:-4px;
-   
-}
-
 .picture img {
    width: 100%;
    height: auto;
@@ -16,11 +8,52 @@
 h2.Suggested {
     text-align: center;
     color: #fff;
-  }
+}
   
-div.suggeriti{
-	background-color: #26838b;
-	text-align: center;
+div.suggeriti {
+    background-color: #26838b;
+    text-align: center;
     padding: 5px;
-	
+}
+
+.picture {
+    position: relative;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -4px;
+    overflow: hidden;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 240px;
+    width: 600px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 55px;
+    left: 100px; /* Aumenta il valore per spostare il testo più a destra */
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+    padding-left: 50px;
+}
+
+.overlay span {
+    display: block;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
