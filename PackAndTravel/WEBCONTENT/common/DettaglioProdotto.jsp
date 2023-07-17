@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pack&amp;Travel</title>
+<link href="DettaglioProdotto.css" rel="stylesheet" >
 </head>
 <body>
 	<%@ include file="Header.jsp" %>
