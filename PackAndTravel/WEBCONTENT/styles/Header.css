@@ -49,10 +49,7 @@ body {
   background-color: #f9f9f9; /* Colore di sfondo della barra di ricerca */
 }
 
-.search-bar input[type="text"] {
-  width: 200px; /* Dimensione della barra di ricerca */
-  padding: 5px;
-}
+
 
 .navigation {
   background-color: #349AA3; /* Colore di sfondo della navigazione */

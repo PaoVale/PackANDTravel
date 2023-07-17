@@ -4,7 +4,12 @@ section.novita-section{
 	text-align:center;
 }
 
+h2#titolo {
+    
+    text-align: center;
+    font-family: inherit;
 
+}
     
     .novita-section {
         overflow: auto;

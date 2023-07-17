@@ -19,14 +19,12 @@ else
 %>
 <title><%=titolo %>- Pack &amp; Travel</title>
 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Valigie_borsoni_zaini_accessori.css" type="text/css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-	
-	
-	
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/catalogo.css" type="text/css">
+
 </head>
 <body>
 
@@ -49,7 +47,7 @@ request.setAttribute("id", id);
 	
 <main>
    <section class="novita-section">
-   <h2 ><%=titolo %></h2>
+   <h2 id="titolo"><%=titolo %></h2>
 	<%-- <%@ include file="Filter.jsp" %> --%>
       
       
@@ -65,8 +63,8 @@ request.setAttribute("id", id);
         <div class="card mb-4 box-shadow">
           <div class="card-body d-flex flex-column align-items-center">
             <%-- <p class="card-text nome"><%=prodotto.getNome()%></p> --%>
-            <a href="#" class="card-text nome"><%=prodotto.getNome()%></a>
-            <img class="card-img-top img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto">
+            <a href="DettaglioProdotto.jsp" class="card-text nome"><%=prodotto.getNome()%>
+            <img class="card-img-top img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></a>
             <div class="d-flex justify-content-center flex-column ">
  				 <p class="text-center prezzo"><%=prodotto.getPrezzo()%>&euro;</p>
  				 <a href="#" class="btn btn-info btn-block">Aggiungi al carrello</a>
