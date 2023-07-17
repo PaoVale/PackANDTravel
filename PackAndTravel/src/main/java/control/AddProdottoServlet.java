@@ -37,8 +37,6 @@ public class AddProdottoServlet extends HttpServlet {
 		String categoria = request.getParameter("categoria");
 		Double prezzo = Double.parseDouble(request.getParameter("prezzo"));
 		
-		//String foto = request.getParameter("foto");
-		
 		prodotto.setNome(nome);
 		prodotto.setDescrizione(descrizione);
 		prodotto.setCategoria_nome(categoria);
