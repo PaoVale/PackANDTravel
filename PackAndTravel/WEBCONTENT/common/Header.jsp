@@ -14,7 +14,7 @@
 <title>Pack &amp; Travel</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Header.css" type="text/css">
-<script  src="/scripts/ToooltipsIcone.js" type="text/javascript"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/scripts/Header.js"></script>
 </head>
 <body>
 <header class="header">
@@ -26,21 +26,26 @@
          <% if(auth != null){ %>
          
          	<a href="#">I miei ordini</a>
-         	<a href="<%=request.getContextPath()%>/common/AreaUtente.jsp"><i class="fas fa-user"></i></a>
+         	<a href="<%=request.getContextPath()%>/common/AreaUtente.jsp" title="I miei dati"><i class="fas fa-user"></i></a>
          <%} %>
          
-         <a href="#"><i class="fas fa-shopping-cart"></i></a> <!-- Icona per il carrello -->
+         <a href="#"><i class="fas fa-shopping-cart" title="Carrello"></i></a> <!-- Icona per il carrello -->
         
          <% 
          	if(auth != null){ %>
-         	<a href="<%=request.getContextPath()%>/common/Wishlist.jsp" ><i class="fas fa-heart" ></i></a> 
+         	<a href="<%=request.getContextPath()%>/common/Wishlist.jsp" title="Wishlist" ><i class="fas fa-heart" ></i></a> 
          	<% if(auth.isAdmin()){ %>
-         <a href="<%=request.getContextPath()%>/admin/ProductView.jsp"><i class="fas fa-cog"></i></a>
+         <a href="#" onclick="toggleDropdown()" title="Area riservata"><i class="fas fa-cog"></i></a>
+         <div id="dropdownMenu" class="dropdown-content">
+           <a href="<%=request.getContextPath()%>/admin/ProductView.jsp">Gestione Prodotti</a>
+           <a href="#">Gestione Ordini</a>
+         </div>
+         
          <%} %>
-         	<a href="/PackAndTravel/LogoutServlet"><i class="fas fa-sign-out-alt"></i></a> 
+         	<a href="/PackAndTravel/LogoutServlet" title="Logout"><i class="fas fa-sign-out-alt"></i></a> 
          <%} else{%>
          
-         	<a href="<%=request.getContextPath()%>/common/Login.jsp"><i class="fas fa-user"></i></a>
+         	<a href="<%=request.getContextPath()%>/common/Login.jsp" title="Login"><i class="fas fa-user"></i></a>
          	
          <%} %>
          	
@@ -56,5 +61,6 @@
    <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=accessorio">Accessori</a>
    <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=borsone">Borsoni</a>
 </nav>
+
 </body>
 </html>
