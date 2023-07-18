@@ -29,7 +29,7 @@
          	<a href="<%=request.getContextPath()%>/common/AreaUtente.jsp" title="I miei dati"><i class="fas fa-user"></i></a>
          <%} %>
          
-         <a href="#"><i class="fas fa-shopping-cart" title="Carrello"></i></a> <!-- Icona per il carrello -->
+         <a href="<%=request.getContextPath()%>/common/Carrello.jsp"><i class="fas fa-shopping-cart" title="Carrello"></i></a> <!-- Icona per il carrello -->
         
          <% 
          	if(auth != null){ %>

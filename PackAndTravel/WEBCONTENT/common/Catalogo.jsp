@@ -25,6 +25,7 @@ else
 	crossorigin="anonymous">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/catalogo.css" type="text/css">
 
+
 </head>
 <body>
 
@@ -67,7 +68,9 @@ request.setAttribute("id", id);
             <img class="card-img-top img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></a>
             <div class="d-flex justify-content-center flex-column ">
  				 <p class="text-center prezzo"><%=prodotto.getPrezzo()%>&euro;</p>
- 				 <a href="#" class="btn btn-info btn-block">Aggiungi al carrello</a>
+ 				<a href="#" class="btn btn-info btn-block aggiungiAlCarrello" data-id="<%=prodotto.getCodice()%>">Aggiungi al carrello</a>
+
+
 			</div>
           </div>
         </div>
@@ -81,6 +84,12 @@ request.setAttribute("id", id);
 </main>
 
 <%@ include file="/common/Footer.jsp" %>
+
+
+
+
+
+<script type="text/javascript" src="<%=request.getContextPath() %>/scripts/Catalogo.js"></script>
 
 </body>
 </html>
