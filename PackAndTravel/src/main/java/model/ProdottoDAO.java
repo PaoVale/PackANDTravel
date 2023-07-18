@@ -178,7 +178,7 @@ return generatedId;
 		
 	}
 	
-	public synchronized Collection<Prodotto> SelectProdotto(String categoria) throws SQLException {
+	public synchronized Collection<Prodotto> SelectProdotto(int codice) throws SQLException {
 		  Connection con=null;
 		  PreparedStatement pst=null;
 		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
@@ -188,6 +188,7 @@ return generatedId;
 		  try {
 			  con = ds.getConnection();
 			  pst=con.prepareStatement(query);
+			  pst.setInt(1, codice);
 			  ResultSet rs=pst.executeQuery();
 			  
 			  

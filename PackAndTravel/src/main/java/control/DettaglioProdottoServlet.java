@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +17,7 @@ import model.ProdottoDAO;
 /**
  * Servlet implementation class VisualizzaProdottiServlet
  */
-@WebServlet("/VisualizzaProdottiServlet")
+@WebServlet("/DettaglioProdottoServlet")
 public class DettaglioProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +33,7 @@ public class DettaglioProdottoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ProdottoDAO prodotto = new ProdottoDAO(ds);
-		String codice= (String) request.getAttribute("codice");
+		int codice=  (int) request.getAttribute("codice");
 		try {
 			request.setAttribute("prodotti", prodotto.SelectProdotto(codice));
 		} catch (SQLException e) {
