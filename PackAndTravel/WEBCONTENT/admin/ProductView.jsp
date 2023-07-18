@@ -48,9 +48,6 @@ if (prodotti == null){
     <th>Foto</th>
     
   </tr>
-  
-	
-
 	<%
 			if (prodotti != null && prodotti.size() != 0) {
 				Iterator<?> it = prodotti.iterator();

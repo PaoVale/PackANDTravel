@@ -13,3 +13,24 @@
   padding-bottom: 20px;
 }
 
+a#icon{
+	color: #fff; /* Colore delle icone */
+  font-size: 30px;
+  margin-left: 10px;
+  text-decoration: none;
+  
+}
+
+a#icon:hover{
+	color: red;
+
+}
+
+.button_style{
+	background-color:#349AA3;
+	color:white;	
+	border-radius: 24px;
+	padding: 15px;
+	
+}
+
