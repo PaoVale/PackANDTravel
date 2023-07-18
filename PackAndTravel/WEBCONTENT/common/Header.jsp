@@ -38,7 +38,7 @@
          <a href="#" onclick="toggleDropdown()" title="Area riservata"><i class="fas fa-cog"></i></a>
          <div id="dropdownMenu" class="dropdown-content">
            <a href="<%=request.getContextPath()%>/admin/ProductView.jsp">Gestione Prodotti</a>
-           <a href="#">Gestione Ordini</a>
+           <a href="<%=request.getContextPath()%>/admin/GestioneOrdini.jsp">Gestione Ordini</a>
          </div>
          
          <%} %>
