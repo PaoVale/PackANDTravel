@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.checkout-button {
+    display: block;
+    width: 150px;
+    margin: 1rem auto;
+    background-color: #349AA3;
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.checkout-button:hover {
+   background-color: teal;
+}
+#titolo{
+	text-align:center;
+	
+}
+
+main {
+    margin: 20px; /* Aggiungiamo uno spazio di 20px dai bordi della pagina */
+}
