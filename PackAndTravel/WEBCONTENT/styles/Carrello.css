@@ -15,7 +15,8 @@ table {
 th, td {
     border: 1px solid #ddd;
     padding: 0.5rem;
-}
+    text-align: center;
+  }
 
 thead {
     background-color: #f2f2f2;
@@ -48,3 +49,17 @@ tfoot td {
 main {
     margin: 20px; /* Aggiungiamo uno spazio di 20px dai bordi della pagina */
 }
+
+
+
+.img-prodotto {
+  width: 180px; /* Imposta la larghezza massima dell'immagine al 100% del contenitore */
+  height: auto; /* Lascia che l'altezza sia ridimensionata proporzionalmente */
+}
+
+td:first-child {
+    max-width: 100px; /* Imposta la larghezza massima desiderata */
+    white-space: nowrap; /* Impedisce il wrapping del testo */
+    overflow: hidden; /* Nasconde il testo oltre la larghezza massima */
+    text-overflow: ellipsis; /* Mostra "..." se il testo è troncato */
+  }
