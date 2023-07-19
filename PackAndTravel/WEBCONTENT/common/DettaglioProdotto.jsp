@@ -11,25 +11,16 @@
 </head>
 <body>
 	<%@ include file="Header.jsp" %>
-	
-<%
 
-Collection<?> prodotti = (Collection<?>) request.getAttribute("prodotti");
-if (prodotti == null){
-	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/VisualizzaProdottiServlet");
-	dispatcher.forward(request, response);	
-	return;
-}
-%>
-	
-	<div class="container">
 	<%
-			if (prodotti != null && prodotti.size() != 0) {
-				Iterator<?> it = prodotti.iterator();
-				while (it.hasNext()) {
-					Prodotto prodotto = (Prodotto) it.next();
-					//System.out.println(prodotto.getNome());
-		%>
+	Prodotto prodotto = new Prodotto();
+	prodotto = (Prodotto) request.getAttribute("prodotto");
+	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/DettaglioProdottoServlet");
+	dispatcher.forward(request, response);
+	%>
+
+	<div class="container">
+	
   <div class="left-div">
     <img src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto" width=500px height=auto>
   </div>
@@ -42,7 +33,7 @@ if (prodotti == null){
     <p><%=prodotto.getDescrizione()%></p>
     <h2><%=prodotto.getPrezzo()%></h2>
     <a id="icon" ><i class="fas fa-heart" ></i></a>
-    <%}} %>
+    
     <br><br>
     <button class="button_style"> Aggiungi al carrello </button>
   </div>
