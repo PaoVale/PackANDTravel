@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"  errorPage="errorPage.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +8,30 @@
     <title>Carrello</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/styles/Carrello.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <%@ include file="Header.jsp"%>
+    
+ 
+ <% 
+	
+	Cart carrello = (Cart) session.getAttribute("carrello");
+	String error = (String)request.getAttribute("error");
+	if(error == null)
+		error = "";
+	if(carrello == null){
+		System.out.println("Carrello è null,prima");
+		response.sendRedirect("/PackAndTravel/CarrelloServlet?redirect=carrello");
+		System.out.println("Carrello è null,dopo");
+		return;
+	}
+	
+	String QtaError = (String) request.getAttribute("QtaError");
+	if(QtaError == null)
+		QtaError = "";
+	
+	%> 
     
         <h1 id="titolo">Il tuo Carrello</h1>
     
@@ -20,25 +41,48 @@
             <thead>
                 <tr>
                     <th>Prodotto</th>
+                    <th>Categoria</th>
                     <th>Prezzo</th>
                     <th>Quantit&agrave;</th>
                     <th>Totale</th>
+                    <th>Elimina</th> 
                 </tr>
             </thead>
             <tbody>
-                <!-- Qui andranno i prodotti aggiunti al carrello come righe della tabella -->
-                <!-- Esempio di riga -->
-                <!-- <tr>
-                    <td>Nome prodotto</td>
-                    <td>Prezzo prodotto</td>
-                    <td>Quantità prodotto</td>
-                    <td>Totale riga</td>
-                </tr> -->
+            <% for(CartItem pb : carrello.getProducts()) { %>
+            <tr>
+           
+            <td> 
+           
+             <div class="img-prodotto-container">
+             
+             <p><%=pb.getProdotto().getNome() %></p>
+            <img src="<%=request.getContextPath()%>/getPicture?codice=<%=pb.getProdotto().getCodice()%>" alt="immagine prodotto" class="img-prodotto">
+            </div>
+            </td>
+			
+            <td><%=pb.getProdotto().getCategoria_nome() %></td>
+            <td><%=pb.getProdotto().getPrezzo()%> &euro;</td>
+            <td><%=pb.getQuantita() %></td>
+            <td><%=pb.getProdotto().getPrezzo() * pb.getQuantita()%>&euro;</td>
+            <td>
+            
+    <a href="/PackAndTravel/CarrelloServlet?action=delete&idProdotto=<%=pb.getProdotto().getCodice()%>&redirect=carrello">
+        <i class="fas fa-trash-alt trash-icon"></i>
+    </a>
+</td>
+
+            
+            </tr>
+               
+               
+               <%} %>
+
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Totale</td>
-                    <td id="cart-total"></td>
+                    <td colspan="4">Totale </td>
+                    <td id="cart-total"><%=carrello.getTotale()%>&euro;</td>
                 </tr>
             </tfoot>
         </table>

@@ -27,8 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     };
 
-    // Prepara i dati da inviare alla servlet (ad esempio, l'ID del prodotto)
-    var dati = "idProdotto=" + encodeURIComponent(prodottoId);
+    // Prepara i dati da inviare alla servlet (ad esempio, l'ID del prodotto e l'action "add")
+   var dati = "idProdotto=" + encodeURIComponent(prodottoId);
+dati += "&action=add"; // Aggiungi il parametro "action" con valore "add"
+
 
     // Invia la richiesta POST alla servlet
     xhr.open("POST", "/PackAndTravel/CarrelloServlet", true); // Sostituisci "NomeServlet" con il nome effettivo della tua servlet

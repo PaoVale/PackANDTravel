@@ -177,7 +177,43 @@ return generatedId;
 
 		
 	}
-	
+
+	public Prodotto doRetrieveByKey(int codice) throws SQLException{
+		  Connection con=null;
+		  PreparedStatement pst=null;
+		  Prodotto prodotto= new Prodotto();
+		  
+		  String query = "select * from prodotto where codice = ?";
+		  
+		  
+		  try {
+			  con = ds.getConnection();
+			  pst=con.prepareStatement(query);
+			  pst.setInt(1, codice);
+			  ResultSet rs=pst.executeQuery();
+			  
+			  while(rs.next()) {
+				  prodotto.setCodice(rs.getInt("codice"));
+				  prodotto.setDescrizione(rs.getString("descrizione"));
+				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setNome(rs.getString("nome"));
+				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  //foto
+			  }
+		  }finally {
+				try {
+					if(pst != null)
+						pst.close();
+				}finally{
+					if(con != null)
+						con.close();
+				}
+		}
+		  
+		  return prodotto;
+	  
+	}
+	  
 	public synchronized Collection<Prodotto> SelectProdotto(int codice) throws SQLException {
 		  Connection con=null;
 		  PreparedStatement pst=null;
@@ -214,5 +250,7 @@ return generatedId;
 	  }
 	  
 	  
+	  
+
 	  
 }
