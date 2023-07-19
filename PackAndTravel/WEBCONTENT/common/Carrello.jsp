@@ -9,6 +9,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/styles/Carrello.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script type="text/javascript" src="<%=request.getContextPath() %>/scripts/Carrello.js"></script>
 </head>
 <body>
     <%@ include file="Header.jsp"%>
@@ -63,8 +64,16 @@
 			
             <td><%=pb.getProdotto().getCategoria_nome() %></td>
             <td><%=pb.getProdotto().getPrezzo()%> &euro;</td>
-            <td><%=pb.getQuantita() %></td>
-            <td><%=pb.getProdotto().getPrezzo() * pb.getQuantita()%>&euro;</td>
+         
+   			<td> <div class="quantity-container">
+        <button class="decrease-quantity">-</button>
+        <span class="quantity-value"><%=pb.getQuantita() %></span>
+        <button class="increase-quantity" data-id="<%=pb.getProdotto().getCodice()%>" >+</button>
+    </div></td>
+<td>
+    <span id="total<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo() * pb.getQuantita()%></span> &euro;
+</td>
+
             <td>
             
     <a href="/PackAndTravel/CarrelloServlet?action=delete&idProdotto=<%=pb.getProdotto().getCodice()%>&redirect=carrello">
