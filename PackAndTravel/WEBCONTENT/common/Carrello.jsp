@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"  errorPage="errorPage.jsp"%>
+    <%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,16 +63,18 @@
             </div>
             </td>
 			
-            <td><%=pb.getProdotto().getCategoria_nome() %></td>
-            <td><%=pb.getProdotto().getPrezzo()%> &euro;</td>
+            <td ><%=pb.getProdotto().getCategoria_nome() %></td>
+
+            <td id="prezzoProdotto<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo()%> &euro;</td> 
          
    			<td> <div class="quantity-container">
-        <button class="decrease-quantity">-</button>
+        <button class="decrease-quantity" data-id="<%=pb.getProdotto().getCodice()%>">-</button>
         <span class="quantity-value"><%=pb.getQuantita() %></span>
-        <button class="increase-quantity" data-id="<%=pb.getProdotto().getCodice()%>" >+</button>
+        <button class="increase-quantity" data-id="<%=pb.getProdotto().getCodice()%>"  >+</button>
+        <%-- onclick="document.getElementById('total'+<%=pb.getProdotto().getCodice()%>).innerHTML= <%=pb.getProdotto().getPrezzo() * pb.getQuantita()%>" --%>
     </div></td>
 <td>
-    <span id="total<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo() * pb.getQuantita()%></span> &euro;
+    <span id="total<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo()*pb.getQuantita()%></span> &euro;
 </td>
 
             <td>
