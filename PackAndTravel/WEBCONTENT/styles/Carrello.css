@@ -63,3 +63,7 @@ td:first-child {
     overflow: hidden; /* Nasconde il testo oltre la larghezza massima */
     text-overflow: ellipsis; /* Mostra "..." se il testo è troncato */
   }
+  
+i.fas.fa-trash-alt.trash-icon {
+    color: black;
+}

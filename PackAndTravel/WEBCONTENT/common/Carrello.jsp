@@ -8,6 +8,7 @@
     <title>Carrello</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/styles/Carrello.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <%@ include file="Header.jsp"%>
@@ -20,7 +21,9 @@
 	if(error == null)
 		error = "";
 	if(carrello == null){
+		System.out.println("Carrello è null,prima");
 		response.sendRedirect("/PackAndTravel/CarrelloServlet?redirect=carrello");
+		System.out.println("Carrello è null,dopo");
 		return;
 	}
 	
@@ -42,6 +45,7 @@
                     <th>Prezzo</th>
                     <th>Quantit&agrave;</th>
                     <th>Totale</th>
+                    <th>Elimina</th> 
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +55,7 @@
             <td> 
            
              <div class="img-prodotto-container">
+             
              <p><%=pb.getProdotto().getNome() %></p>
             <img src="<%=request.getContextPath()%>/getPicture?codice=<%=pb.getProdotto().getCodice()%>" alt="immagine prodotto" class="img-prodotto">
             </div>
@@ -60,6 +65,13 @@
             <td><%=pb.getProdotto().getPrezzo()%> &euro;</td>
             <td><%=pb.getQuantita() %></td>
             <td><%=pb.getProdotto().getPrezzo() * pb.getQuantita()%>&euro;</td>
+            <td>
+            
+    <a href="/PackAndTravel/CarrelloServlet?action=delete&idProdotto=<%=pb.getProdotto().getCodice()%>&redirect=carrello">
+        <i class="fas fa-trash-alt trash-icon"></i>
+    </a>
+</td>
+
             
             </tr>
                
@@ -69,8 +81,8 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Totale</td>
-                    <td id="cart-total"></td>
+                    <td colspan="4">Totale </td>
+                    <td id="cart-total"><%=carrello.getTotale()%>&euro;</td>
                 </tr>
             </tfoot>
         </table>

@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
    var dati = "idProdotto=" + encodeURIComponent(prodottoId);
 dati += "&action=add"; // Aggiungi il parametro "action" con valore "add"
 
+
     // Invia la richiesta POST alla servlet
     xhr.open("POST", "/PackAndTravel/CarrelloServlet", true); // Sostituisci "NomeServlet" con il nome effettivo della tua servlet
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

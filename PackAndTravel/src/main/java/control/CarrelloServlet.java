@@ -28,14 +28,16 @@ public class CarrelloServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+	
+	  protected void doGet(HttpServletRequest request, HttpServletResponse
+	  response) throws ServletException, IOException {
+	  
+	  doPost(request, response); }
+	 
 
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			System.out.println("Sono nella servlet carrello");
-			System.out.println("Ho aggiunto il prodotto "+request.getParameter("idProdotto"));
+			
 		Cart carrello = (Cart) request.getSession().getAttribute(CARRELLO);
 		if (carrello == null) {
 			carrello = new Cart();
@@ -45,17 +47,12 @@ public class CarrelloServlet extends HttpServlet {
 		
 		String action = request.getParameter("action");
 		String codeStr = request.getParameter("idProdotto");
-		String redirect = request.getParameter("redirect"); 
-		System.out.println("Redirect"+redirect);
-		System.out.println("Action"+action);
-		System.out.println("id: "+codeStr);
-		
+		String redirect = request.getParameter("redirect"); 		
 		
 
 		if (action != null && codeStr != null) {
 			int code = Integer.parseInt(codeStr);
-			
-			
+						
 			DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 			ProdottoDAO prodottoDao=new ProdottoDAO(ds);
 			
@@ -63,7 +60,6 @@ public class CarrelloServlet extends HttpServlet {
 			case "add": {
 				try {
 					carrello.addProduct(prodottoDao.doRetrieveByKey(code));
-					System.out.println("Sto facendo add");
 				} catch (SQLException e) {
 					//logger.log(Level.WARNING, "Problema accesso DB!");
 				}
@@ -72,8 +68,9 @@ public class CarrelloServlet extends HttpServlet {
 			case "delete": {
 				try {
 					carrello.deleteProduct(prodottoDao.doRetrieveByKey(code));
-				} catch (SQLException e) {
+				} catch (Exception e) {
 					//logger.log(Level.WARNING, "Problema accesso DB!");
+					e.printStackTrace();
 				}
 				break;
 			}
@@ -84,13 +81,13 @@ public class CarrelloServlet extends HttpServlet {
 		RequestDispatcher dispatcher;
 
 		if (redirect != null && redirect.equals("catalogo")) {
-			dispatcher = this.getServletContext().getRequestDispatcher("/common/Catalogo.jsp");
-			dispatcher.forward(request, response);
+			dispatcher = this.getServletContext().getRequestDispatcher("/common/Index.jsp");
+			  dispatcher.forward(request, response);
 			return;
 		}
 		if (redirect != null && redirect.equals(CARRELLO)) {
-			dispatcher = this.getServletContext().getRequestDispatcher("/common/Index.jsp");
-			dispatcher.forward(request, response);
+			dispatcher = this.getServletContext().getRequestDispatcher("/common/Carrello.jsp");
+			  dispatcher.forward(request, response);
 		}
 
 
