@@ -98,7 +98,7 @@
             </tfoot>
         </table>
 
-        <a href="checkout.html" class="checkout-button">Procedi al Checkout</a>
+        <a href="<%=request.getContextPath()%>/common/Checkout.jsp" class="checkout-button">Procedi al Checkout</a>
     </main>
 </body>
 <%@ include file="Footer.jsp"%>

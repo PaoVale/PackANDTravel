@@ -45,11 +45,12 @@
     <a id="icon" ><i class="fas fa-heart" ></i></a>
     
     <br><br>
-    <button class="button_style"> Aggiungi al carrello </button>
+    <button class="button_style aggiungiAlCarrello" data-id="<%=prodotto.getCodice()%>"> Aggiungi al carrello </button>
   </div>
   
 </div>
 
 	<%@ include file="Footer.jsp" %>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/scripts/Catalogo.js"></script>
 </body>
 </html>
