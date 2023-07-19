@@ -64,7 +64,7 @@ request.setAttribute("id", id);
         <div class="card mb-4 box-shadow">
           <div class="card-body d-flex flex-column align-items-center">
             <%-- <p class="card-text nome"><%=prodotto.getNome()%></p> --%>
-            <a href="DettaglioProdotto.jsp" class="card-text nome"><%=prodotto.getNome()%>
+            <a href="<%=request.getContextPath()%>/common/DettaglioProdotto.jsp?code=<%=prodotto.getCodice()%>" class="card-text nome"><%=prodotto.getNome()%>
             <img class="card-img-top img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></a>
             <div class="d-flex justify-content-center flex-column ">
  				 <p class="text-center prezzo"><%=prodotto.getPrezzo()%>&euro;</p>

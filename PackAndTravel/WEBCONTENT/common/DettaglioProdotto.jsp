@@ -12,17 +12,27 @@
 <body>
 	<%@ include file="Header.jsp" %>
 
-	<%
-	Prodotto prodotto = new Prodotto();
-	prodotto = (Prodotto) request.getAttribute("prodotto");
-	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/DettaglioProdottoServlet");
-	dispatcher.forward(request, response);
-	%>
 
+<%
+	
+	
+	Prodotto prodotto = (Prodotto) request.getAttribute("prodotto");
+	
+	int code = Integer.parseInt(request.getParameter("code"));
+	request.setAttribute("code", code);
+	
+	
+	if (prodotto == null) {
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/DettaglioProdottoServlet");
+		dispatcher.forward(request, response);
+		return;
+	}
+	
+	%>
 	<div class="container">
 	
   <div class="left-div">
-    <img src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto" width=500px height=auto>
+    <img src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice() %>" alt="immagine prodotto" width=500px height=auto>
   </div>
   <div class="right-div">
   

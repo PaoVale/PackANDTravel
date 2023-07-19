@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,23 +32,30 @@ public class DettaglioProdottoServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		doPost(request, response);
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ProdottoDAO prodotto = new ProdottoDAO(ds);
-		int codice=  (int) request.getAttribute("codice");
+		String codice=request.getParameter("code");
+		int code = Integer.parseInt(codice);
+		
+		
 		try {
-			request.setAttribute("prodotto", prodotto.doRetrieveByKey(codice));
+			request.setAttribute("prodotto", prodotto.doRetrieveByKey(code));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			
 			e.printStackTrace();
 		}
 		
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
+		RequestDispatcher dispatcher;
+		dispatcher = this.getServletContext().getRequestDispatcher("/common/DettaglioProdotto.jsp");
+		  dispatcher.forward(request, response);
 	}
 
 }
