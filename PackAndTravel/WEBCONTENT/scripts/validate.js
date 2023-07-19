@@ -8,12 +8,18 @@ const emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const pswdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[0-9a-zA-Z!@#$%^&*()]{8,}$/;
 const celPattern = /^\d{10}$/;
 
+const cardNumberPattern = /^\d{4}-\d{4}-\d{4}-\d{4}$/; //pattern semplicificato (non è così in realtà)
+const cvvPattern = /^\d{3}$/;
+
 const nameErrorMessage = "Un nome valido deve contenere solo lettere";
 const lastnameErrorMessage = "Un cognome valido deve contenere solo lettere";
 const emailErrorMessage = "Una email valida deve essere nella forma username@domain.ext";
 const mismatchPSWD = "Password e conferma password non corrispondono";
-const pswdMessage = "La password deve avere almeno 8 caratteri, almeno una lettera minuscola, una maiuscola, un numero e un carattere speciale"
+const pswdMessage = "La password deve avere almeno 8 caratteri, almeno una lettera minuscola, una maiuscola, un numero e un carattere speciale";
 const celMessage="Numero di telefono non valido";
+
+const cardErrorMessage = "Numero di carta non valido!";
+const cardCvvMessage = "Il cvv non &egrave; corretto"
 
 function validateFormElem(formElem, pattern, span, message) {
   if (formElem.value.match(pattern)) {
@@ -179,5 +185,48 @@ function checkModificaProdotto(form) {
   return true;
 }
 
+function validateNumCarta() {
 
+	let form = document.getElementById("checkoutForm");
 
+	let span = document.getElementById("cardNumberError");
+
+	let cardNumber = form.cardNumber.value;
+
+	if (cardNumber.match(cardNumberPattern)) {
+
+		span.classList.remove("error");
+		span.style.color = "black";
+		span.innerHTML = "";
+		return true;
+	}
+
+	else {
+		span.classList.add("error");
+		span.innerHTML = cardErrorMessage;
+		span.style.color = "red";
+		return false;
+	}
+}
+function validateCVV() {
+
+	let form = document.getElementById("checkoutForm");
+
+	let span = document.getElementById("CVVError");
+
+	let cvv = form.cvv.value;
+
+	if (cvv.match(cvvPattern)) {
+		span.classList.remove("error");
+		span.style.color = "black";
+		span.innerHTML = "";
+		return true;
+	}
+	else {
+		span.classList.add("error");
+		span.innerHTML = cardCvvMessage;
+		span.style.color = "red";
+		return false;
+	}
+
+}

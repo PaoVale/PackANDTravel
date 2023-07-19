@@ -3,9 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="<%=request.getContextPath()%>/scripts/validate.js"></script>
     <meta charset="UTF-8">
     
     <title>Checkout</title>
+    
     <style>
         /* Stile generale */
         body {
@@ -78,60 +80,69 @@
             background-color: #555;
         }
     </style>
+ 
+    
 </head>
 <body>
    <%@ include file="Header.jsp" %>
+   	<%String email= auth.getEmail(); 
+String nome=auth.getName();
+String cognome=auth.getSurname();
+String indirizzo=auth.getAddress();
+String cellulare=auth.getNumber();
+%>
         <h1>Checkout</h1>
     
     <div class="container">
     <div class="user-info">
 		<h2>Informazioni di spedizione</h2>
 		<p>
-			<strong>Email:</strong> <span id="email"></span>
+			<strong>Email:</strong> <span id="email"><%= email %></span>
 		</p>
 
 		<p>
-			<strong>Nome:</strong> <span id="nome"></span>
+			<strong>Nome:</strong> <span id="nome"><%= nome %></span>
 		</p>
 		<p>
-			<strong>Cognome:</strong> <span id="cognome"></span>
+			<strong>Cognome:</strong> <span id="cognome"><%= cognome %></span>
 		</p>
 		<p>
-			<strong>Indirizzo:</strong> <span id="indirizzo"></span>
+			<strong>Indirizzo:</strong> <span id="indirizzo"><%= indirizzo %></span>
 		</p>
 		<p>
-			<strong>Cellulare:</strong> <span id="cellulare"></span>
+			<strong>Cellulare:</strong> <span id="cellulare"><%= cellulare %></span>
 		</p>
-
-
-
 
 	</div>
-        <form>
+       <!-- onsubmit="event.preventDefault();checkCheckout(this)" --> 
+       <form action="#" method="post" id="checkoutForm" >
             <h3>Procedi al pagamento</h3><br>
         <div>
-        <label for="cardNumber">Numero di carta:</label>
-        <input class="inputField" type="text" id="cardNumber" name="cardNumber" required onChange="return validateNumCarta()"> <span id="cardNumberError"></span><br>
-		</div><br>
-	<div>
-        <label for="expirationDate">Data di scadenza:</label>
-        <input class="js-iframe-input date-field input-field" id="encryptedExpiryDate" type="tel" placeholder="MM/YY"   maxlength="5" >
-        <!-- <input class="inputField" type="month" id="expirationDate" name="expirationDate" required onChange="return validateScadenzaCarta()"> <span id="expiryError"></span><br> -->
-	</div><br>
-	<div>
-        <label for="cvv">CVV:</label>
-        <input class="inputField" type="text" id="cvv" name="cvv" required onChange="return validateCVV()"> <span id="CVVError"></span>
-	</div><br>
-	<div>
-        <input type="submit" class="btn btn-primary"value="Conferma Ordine">
+         <label for="cardNumber">Numero di carta:</label>
+         <input class="inputField" type="text" id="cardNumber" name="cardNumber" required onChange="return validateNumCarta()"  onInput="return validateNumCarta()"> <span id="cardNumberError" ></span>
+		</div>
+		<br>
+		<div>
+         <label for="expirationDate">Data di scadenza:</label>
+         <input class="js-iframe-input date-field input-field" id="encryptedExpiryDate" type="tel" placeholder="MM/YY"   maxlength="5" >
         </div><br>
-        </form>
+		<div>
+         <label for="cvv">CVV:</label>
+         <input class="inputField" type="text" id="cvv" name="cvv" required onChange="return validateCVV()" onInput="return validateCVV()"> <span id="CVVError"></span>
+		</div>
+		<br>
+		<div>
+         <input type="submit" class="btn btn-primary"value="Conferma Ordine">
+        </div>
+        <br>
+       </form>
         <div class="order-details">
             <h2>Dettagli dell'ordine</h2>
-            <!-- Inserisci qui i dettagli dell'ordine, come elenco di prodotti, importo totale, etc. -->
         </div>
+        
         <button class="checkout-button">Procedi al pagamento</button>
     </div>
+    
     <%@ include file="/common/Footer.jsp" %>
     <script>
 document.getElementById('encryptedExpiryDate').addEventListener('input', function (e) {
@@ -141,6 +152,10 @@ document.getElementById('encryptedExpiryDate').addEventListener('input', functio
   }
 });
 </script>
+
+
+
+
 </body>
 </html>
 
