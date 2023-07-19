@@ -35,7 +35,7 @@ public class DettaglioProdottoServlet extends HttpServlet {
 		ProdottoDAO prodotto = new ProdottoDAO(ds);
 		int codice=  (int) request.getAttribute("codice");
 		try {
-			request.setAttribute("prodotti", prodotto.SelectProdotto(codice));
+			request.setAttribute("prodotto", prodotto.doRetrieveByKey(codice));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			
