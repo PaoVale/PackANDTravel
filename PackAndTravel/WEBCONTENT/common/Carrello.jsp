@@ -68,10 +68,9 @@
             <td id="prezzoProdotto<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo()%> &euro;</td> 
          
    			<td> <div class="quantity-container">
-        <button class="decrease-quantity" data-id="<%=pb.getProdotto().getCodice()%>">-</button>
-        <span class="quantity-value"><%=pb.getQuantita() %></span>
+        <button class="decrease-quantity" data-id="<%=pb.getProdotto().getCodice()%>" disabled>-</button>
+        <span class="quantity-value" ><%=pb.getQuantita() %></span>
         <button class="increase-quantity" data-id="<%=pb.getProdotto().getCodice()%>"  >+</button>
-        <%-- onclick="document.getElementById('total'+<%=pb.getProdotto().getCodice()%>).innerHTML= <%=pb.getProdotto().getPrezzo() * pb.getQuantita()%>" --%>
     </div></td>
 <td>
     <span id="total<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo()*pb.getQuantita()%></span> &euro;
@@ -94,7 +93,7 @@
             <tfoot>
                 <tr>
                     <td colspan="4">Totale </td>
-                    <td id="cart-total"><%=carrello.getTotale()%>&euro;</td>
+                    <td id="cart-total" data-id="<%=carrello.getTotale()%>"><%=carrello.getTotale()%> &euro;</td>
                 </tr>
             </tfoot>
         </table>

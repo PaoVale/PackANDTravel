@@ -14,13 +14,26 @@ function decreaseQuantity(elementId) {
     }
 }
 document.addEventListener("DOMContentLoaded", function() {
+	
   // Codice JavaScript per gestire il clic sul pulsante "Aggiungi al carrello"
   function aggiungiAlCarrello(event) {
-	 
-    var pulsante = event.target; // Ottieni il pulsante cliccato
-   var quantityElement = pulsante.parentNode.querySelector(".quantity-value");
-    quantita = parseInt(quantityElement.innerText); // Aggiorna il valore della variabile 'quantita'
+	 var cartTotalElement = document.getElementById("cart-total");
 
+// Ottieni il valore di data-id dall'attributo dell'elemento
+var dataIdValue = cartTotalElement.getAttribute("data-id");
+
+// Converti il valore in un numero (se necessario)
+var dataIdNumber = parseFloat(dataIdValue);
+
+// Usa la variabile dataIdNumber come necessario nei tuoi script
+console.log("Il valore di data-id è:", dataIdNumber);
+   var pulsante = event.target; // Ottieni il pulsante cliccato
+   var quantityElement = pulsante.parentNode.querySelector(".quantity-value");
+   quantita = parseInt(quantityElement.innerText); // Aggiorna il valore della variabile 'quantita'
+var elements = document.getElementsByClassName("decrease-quantity");
+for (var i = 0; i < elements.length; i++) {
+  elements[i].disabled = false;
+}
     // Ottieni l'ID del prodotto dal pulsante (attributo data-id)
     var prodottoId = pulsante.dataset.id;
 
@@ -34,7 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
         if (xhr.status === 200) {
           // La servlet ha risposto con successo
    		  prezzo = parseFloat(document.getElementById('prezzoProdotto'+prodottoId).innerHTML);
-          document.getElementById('total'+prodottoId).innerHTML= (prezzo*quantita).toFixed(2); 
+          document.getElementById('total'+prodottoId).innerHTML= (prezzo*quantita).toFixed(2);
+          
+          prezzoAggiornato =dataIdNumber+prezzo;
+          console.log("Il valore aggiornato è:", prezzoAggiornato);
+          document.getElementById('cart-total').innerHTML=((prezzoAggiornato).toFixed(2)+' &euro;'); 
+          cartTotalElement.setAttribute("data-id",prezzoAggiornato); 
+          
           console.log("Prodotto aggiunto al carrello con successo.");
         } else {
           // La servlet ha risposto con un errore
@@ -58,10 +77,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Codice JavaScript per gestire il clic sul pulsante "Elimina dal carrello"
   function DecrementaDalCarrello(event) {
-    var pulsante = event.target; // Ottieni il pulsante cliccato
-var quantityElement = pulsante.parentNode.querySelector(".quantity-value");
-    quantita = parseInt(quantityElement.innerText); // Aggiorna il valore della variabile 'quantita'   
+	  
+	  	 var cartTotalElement = document.getElementById("cart-total");
 
+// Ottieni il valore di data-id dall'attributo dell'elemento
+var dataIdValue = cartTotalElement.getAttribute("data-id");
+
+// Converti il valore in un numero (se necessario)
+var dataIdNumber = parseFloat(dataIdValue);
+
+// Usa la variabile dataIdNumber come necessario nei tuoi script
+console.log("Il valore di data-id è:", dataIdNumber);
+    var pulsante = event.target; // Ottieni il pulsante cliccato
+    var quantityElement = pulsante.parentNode.querySelector(".quantity-value");
+    quantita = parseInt(quantityElement.innerText); // Aggiorna il valore della variabile 'quantita'   
+	if(quantita >1){
+		pulsante.disabled = false;
+	}
+	else{
+		pulsante.disabled = true;
+	}
     // Ottieni l'ID del prodotto dal pulsante (attributo data-id)
     var prodottoId = pulsante.dataset.id;
 
@@ -76,6 +111,11 @@ var quantityElement = pulsante.parentNode.querySelector(".quantity-value");
           // La servlet ha risposto con successo
           prezzo = parseFloat(document.getElementById('prezzoProdotto'+prodottoId).innerHTML);
           document.getElementById('total'+prodottoId).innerHTML= (prezzo*quantita).toFixed(2); 
+          
+          prezzoAggiornato =dataIdNumber-prezzo;
+          console.log("Il valore aggiornato è:", prezzoAggiornato);
+          document.getElementById('cart-total').innerHTML=((prezzoAggiornato).toFixed(2)+' &euro;'); 
+          cartTotalElement.setAttribute("data-id",prezzoAggiornato); 
           console.log("Prodotto decrementato dal carrello con successo.");
         } else {
           // La servlet ha risposto con un errore
