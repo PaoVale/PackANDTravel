@@ -84,7 +84,7 @@ if (prodotti == null){
           </div>
         </div>
       </div>
-      <%} }%>
+      <%}  }%>
     </div>
   </div>
 </div>
