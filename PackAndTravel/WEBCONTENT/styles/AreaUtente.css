@@ -16,6 +16,7 @@
       padding: 20px;
       border-radius: 5px;
       margin-bottom: 20px;
+      margin: 20px;
     }
 
     .user-info h2 {
@@ -52,6 +53,4 @@ form{
 }
 
 
-div {
-    margin: 20px;
-}
+
