@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 //import java.util.logging.Logger;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.sql.DataSource;
 
@@ -39,7 +41,9 @@ public class OrdineDAO {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		
+		LocalDateTime localDateTime = LocalDateTime.now();
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String dataFormattata = localDateTime.format(dateFormatter);
 
 		String insertSQL = "INSERT INTO " + OrdineDAO.TABLE_NAME
 				+ " (account_email, prezzo_tot) VALUES ( ?,  ?)";
@@ -50,7 +54,6 @@ public class OrdineDAO {
 			preparedStatement = connection.prepareStatement(insertSQL);
 			
 			preparedStatement.setString(1, ordine.getEmail());
-			//preparedStatement.setDate(2, new java.sql.Date(ordine.getDataOrdine().getTime()));
 			preparedStatement.setDouble(2, ordine.getPrezzo());
 			
 			preparedStatement.executeUpdate();

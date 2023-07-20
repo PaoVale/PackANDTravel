@@ -73,7 +73,7 @@ public class CheckOutServlet extends HttpServlet {
 		try {
 			
 			ordine.setEmail(user.getEmail());
-			//ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis() ));
+			
 			ordine.setPrezzo(totaleString);
 			ordinedao.doSave(ordine);
 		} catch (SQLException e1) {
