@@ -99,7 +99,7 @@
         </table>
 
         <a href="<%=request.getContextPath()%>/common/Checkout.jsp" class="checkout-button">Procedi al Checkout</a>
-        <span id="Checkout"></span>
+        <p id="error" > <%=error%></p>
     </main>
 </body>
 <%@ include file="Footer.jsp"%>

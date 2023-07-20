@@ -67,3 +67,8 @@ td:first-child {
 i.fas.fa-trash-alt.trash-icon {
     color: black;
 }
+
+p#error{
+	color:red;
+	text-align:center;
+}
