@@ -55,3 +55,25 @@ form{
 div {
     margin: 20px;
 }
+
+#i_miei_ordini{
+	text-align: center;
+	
+}
+
+/* Aggiungi stile al link "I miei ordini" */
+#i_miei_ordini a {
+  color: #26838b;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #26838b;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+  
+}
+
+#i_miei_ordini a:hover {
+  background-color: #26838b;
+  color: #fff;
+}
+
