@@ -68,7 +68,7 @@
             <td id="prezzoProdotto<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo()%> &euro;</td> 
          
    			<td> <div class="quantity-container">
-        <button class="decrease-quantity" data-id="<%=pb.getProdotto().getCodice()%>" disabled>-</button>
+        <button class="decrease-quantity" data-id="<%=pb.getProdotto().getCodice()%>" >-</button>
         <span class="quantity-value" ><%=pb.getQuantita() %></span>
         <button class="increase-quantity" data-id="<%=pb.getProdotto().getCodice()%>"  >+</button>
     </div></td>

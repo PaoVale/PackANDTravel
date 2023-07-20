@@ -108,7 +108,9 @@ request.setAttribute("id", id);
             <img class="card-img-top img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></a>
             <div class="d-flex justify-content-center flex-column ">
  				 <p class="text-center prezzo"><%=prodotto.getPrezzo()%>&euro;</p>
- 				<a href="#" class="btn btn-info btn-block aggiungiAlCarrello" data-id="<%=prodotto.getCodice()%>">Aggiungi al carrello</a>
+ 				<!-- Trasforma il link in un bottone utilizzando un button tag -->
+<button type="button" class="btn btn-info btn-block aggiungiAlCarrello" data-id="<%=prodotto.getCodice()%>">Aggiungi al carrello</button>
+
 
 
 			</div>

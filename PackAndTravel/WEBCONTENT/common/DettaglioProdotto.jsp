@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="model.Prodotto, model.ProdottoDAO, java.util.*"%>
+    pageEncoding="ISO-8859-1" import="model.Prodotto, model.ProdottoDAO, java.util.*, model.*"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -40,7 +40,7 @@
   
   	<h5><%=prodotto.getCodice()%></h5>
     <h2><%=prodotto.getNome()%></h2>
-    <p><%=prodotto.getDescrizione()%></p>
+    <p><%=HelperClass.filter(prodotto.getDescrizione())%></p>
     <h2><%=prodotto.getPrezzo()%></h2>
     <a id="icon" ><i class="fas fa-heart" ></i></a>
     
