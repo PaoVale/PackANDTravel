@@ -97,10 +97,10 @@
                 </tr>
             </tfoot>
         </table>
-
         
+		<%  session.setAttribute("totale",carrello.getTotale());	%>
         <a href="<%=request.getContextPath()%>/common/Checkout.jsp" class="checkout-button">Procedi al Checkout</a>
-        <span id="Checkout"></span>
+        <p id="error" > <%=error%></p>
     </main>
 </body>
 <%@ include file="Footer.jsp"%>

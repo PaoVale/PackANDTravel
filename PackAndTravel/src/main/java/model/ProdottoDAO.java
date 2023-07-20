@@ -215,41 +215,6 @@ return generatedId;
 	  
 	}
 	  
-	public synchronized Collection<Prodotto> SelectProdotto(int codice) throws SQLException {
-		  Connection con=null;
-		  PreparedStatement pst=null;
-		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
-		  
-		  String query = "select * from prodotto where codice=?";
-		  
-		  try {
-			  con = ds.getConnection();
-			  pst=con.prepareStatement(query);
-			  pst.setInt(1, codice);
-			  ResultSet rs=pst.executeQuery();
-			  
-			  
-				  Prodotto prodotto=new Prodotto();
-				  prodotto.setCodice(rs.getInt("codice"));
-				  prodotto.setDescrizione(rs.getString("descrizione"));
-				  prodotto.setPrezzo(rs.getDouble("prezzo"));
-				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
-				  prodotti.add(prodotto);
-			  
-		  }finally {
-				try {
-					if(pst != null)
-						pst.close();
-				}finally{
-					if(con != null)
-						con.close();
-				}
-		}
-		  
-		  return prodotti;
-	  }
-
 	public synchronized Collection<Prodotto>  doRetrieveByOrdine(String categoria, String orderValue) throws SQLException {
 		 Connection con=null;
 		  PreparedStatement pst=null;
@@ -369,6 +334,7 @@ return generatedId;
 		  
 		  return prodotti;
 	  }
+
 	  
 	  
 

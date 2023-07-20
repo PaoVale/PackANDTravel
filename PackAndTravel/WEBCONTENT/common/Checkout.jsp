@@ -15,7 +15,7 @@
 	AccountUser user = (AccountUser)session.getAttribute("auth");
 	if(user != null){
 
-
+	
 %>
 
 <body>
@@ -50,7 +50,7 @@ String cellulare=auth.getNumber();
 
 	</div>
       <div class="form">
-       <form action="#" method="post" id="checkoutForm" onsubmit="event.preventDefault();checkCheckout(this)" >
+       <form action="/PackAndTravel/CheckoutServlet" method="post" id="checkoutForm" onsubmit="event.preventDefault();checkCheckout(this)" >
             <h3>Procedi al pagamento</h3><br>
         <div>
          <label for="cardNumber">Numero di carta:</label>
