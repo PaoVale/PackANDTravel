@@ -1,3 +1,13 @@
+
+function openSidebar() {
+    document.getElementById("mySidebar").style.width = "250px";
+}
+
+function closeSidebar() {
+    document.getElementById("mySidebar").style.width = "0";
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
   // Codice JavaScript per gestire il clic sul pulsante "Aggiungi al carrello"
   function aggiungiAlCarrello(event) {
