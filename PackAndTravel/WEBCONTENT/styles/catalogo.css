@@ -50,3 +50,8 @@ h2#titolo {
 .btn-info {
   margin-top: 0px; /* Puoi regolare il valore del margine come preferisci */
 }
+
+p#errore{
+	color:red;
+	text-align:center;
+}
