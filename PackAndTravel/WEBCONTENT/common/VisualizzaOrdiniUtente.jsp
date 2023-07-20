@@ -1,33 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
+    pageEncoding="ISO-8859-1" 
     import = "model.OrdineBean, java.util.*"
-    errorPage="errorPage.jsp"
+    
 %>
 
 <!DOCTYPE html>
 <html lang=it>
 <head>
-<meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Visualizza Ordini Utente</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/styles/VisualizzaOrdiniUtente.css">
+
 </head>
 
-<jsp:include page="Header.jsp"/>
+<%@ include file="Header.jsp" %>
 
 	<%
 	    
-    	List<OrdineBean> ordini = (List<OrdineBean>)request.getAttribute("listOrdini");
-					
-		if(ordini == null){
-			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/VisualizzaOrdiniUtente");
-			dispatcher.forward(request, response);	
-			return;
-		}
+	
+	Collection<?> ordini = (Collection<?>) request.getAttribute("ordini");
+	if (ordini == null){
+	  RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/VisualizzaOrdiniServlet");
+	  dispatcher.forward(request, response);  
+	  return;
+	}
       	
 	%>
 
@@ -36,7 +34,7 @@
 
 	<section class="visualizzaOrdiniUser">
 
-	<h2>Cronologia ordini</h2>
+	<h2>I tuoi ordini</h2>
 				
 		<table class="table table-sm table-dark table-hover table-bordered">
 			<caption> </caption>  
@@ -49,21 +47,25 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%for(OrdineBean ordine : ordini){%>
+			<%if (ordini != null && ordini.size() != 0) {
+		        Iterator<?> it = ordini.iterator();
+		        while (it.hasNext()) {
+		          OrdineBean ordine = (OrdineBean) it.next();%>
 				<tr>
 					<th scope="row"><%=ordine.getCodice()%></th>
 					<td><%=ordine.getDataOrdine()%></td>
-					<td><%=ordine.getPrezzo() %>
-                	<td><a href="<%=request.getContextPath()%>/common/DettaglioOrdine.jsp?code=<%=ordine.getCodice()%>">Visualizza dettagli </a>
+					<td><%=ordine.getPrezzo() %></td>
+                	<td>
+                		<a href="<%=request.getContextPath()%>/common/DettaglioOrdine.jsp?code=<%=ordine.getCodice()%>">Visualizza dettagli </a>
   					</td> 
 				</tr>
-			<%} %>
+			<%} }%>
 			</tbody>
 		</table>
 	
 	 </section>
 		
-		<jsp:include page="Footer.jsp"/>
+		<%@ include file="Footer.jsp" %>
 
 </body>
 </html>

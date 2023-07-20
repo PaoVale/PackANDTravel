@@ -1,0 +1,61 @@
+@charset "ISO-8859-1";
+
+/* VisualizzaOrdiniUtente.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+section.visualizzaOrdiniUser {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 0;
+  color: #26838b;
+}
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table.table th,
+table.table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+table.table thead {
+  background-color: #26838b;
+  color: #fff;
+}
+
+table.table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+table.table caption {
+  caption-side: top;
+  font-weight: bold;
+  color: #26838b;
+  margin-bottom: 10px;
+}
+
+/* Aggiungi stile ai link */
+a {
+  color: #26838b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

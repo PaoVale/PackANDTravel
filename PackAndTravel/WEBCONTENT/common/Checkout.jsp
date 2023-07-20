@@ -67,7 +67,7 @@ String cellulare=auth.getNumber();
 		</div>
 		<br>
 		<div>
-         <input type="submit"  class="checkout-button" value="Conferma ordine">
+        </a> <input type="submit"  class="checkout-button" value="Conferma ordine">
         </div>
         <br>
        </form>

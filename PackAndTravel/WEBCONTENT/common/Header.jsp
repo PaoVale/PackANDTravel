@@ -25,7 +25,7 @@
             <!-- TODO aggiungi tooltips alle icone -->     
          <% if(auth != null){ %>
          
-         	<a href="#">I miei ordini</a>
+         	<a href="<%=request.getContextPath()%>/common/VisualizzaOrdiniUtente.jsp">I miei ordini</a>
          	<a href="<%=request.getContextPath()%>/common/AreaUtente.jsp" title="I miei dati"><i class="fas fa-user"></i></a>
          <%} %>
          
