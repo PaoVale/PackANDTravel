@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 public class ProdottoDAO {
 	
 	private DataSource ds=null;
+	
 	  
 	  //private static final Logger logger = Logger.getLogger(ProdottoDAO.class.getName());
 
@@ -214,7 +215,126 @@ return generatedId;
 	  
 	}
 	  
-	
+	public synchronized Collection<Prodotto>  doRetrieveByOrdine(String categoria, String orderValue) throws SQLException {
+		 Connection con=null;
+		  PreparedStatement pst=null;
+		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+		  String query = "SELECT * FROM prodotto where categoria_nome =\"" + categoria+ "\"" + "ORDER BY prezzo";
+		  if(orderValue.equals("decrescente"))
+		  query += " DESC";
+		  else if(orderValue.equals("crescente"))
+		  query += " ASC";
+		  System.out.println(query);		
+		  
+		  try {
+			  con = ds.getConnection();
+			  pst=con.prepareStatement(query);
+			  ResultSet rs=pst.executeQuery();
+			  
+			  while(rs.next()) {
+				  Prodotto prodotto=new Prodotto();
+				  prodotto.setCodice(rs.getInt("codice"));
+				  prodotto.setDescrizione(rs.getString("descrizione"));
+				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setNome(rs.getString("nome"));
+				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotti.add(prodotto);
+			  }
+		  }finally {
+				try {
+					if(pst != null)
+						pst.close();
+				}finally{
+					if(con != null)
+						con.close();
+				}
+		}
+		  
+		  return prodotti;
+	  }
+	  
+	public synchronized Collection<Prodotto> doRetrieveByPrezzo(String categoria, int prezzoMin, int prezzoMax) throws SQLException {
+		 Connection con=null;
+		  PreparedStatement pst=null;
+		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+		  String query;
+		  
+		  if(prezzoMax != 0)
+		  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " AND prezzo <="+ prezzoMax+ " and categoria_nome= \""+categoria+"\"";
+		  else	
+			  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " and categoria_nome= \""+categoria+"\"";
+		  try {
+			  con = ds.getConnection();
+			  pst=con.prepareStatement(query);
+			  ResultSet rs=pst.executeQuery();
+			  
+			  while(rs.next()) {
+				  Prodotto prodotto=new Prodotto();
+				  prodotto.setCodice(rs.getInt("codice"));
+				  prodotto.setDescrizione(rs.getString("descrizione"));
+				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setNome(rs.getString("nome"));
+				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotti.add(prodotto);
+			  }
+		  }finally {
+				try {
+					if(pst != null)
+						pst.close();
+				}finally{
+					if(con != null)
+						con.close();
+				}
+		}
+		  
+		  return prodotti;
+	  }
+	  
+	public synchronized Collection<Prodotto> doRetrieveByPrezzoAndOrdine(String categoria, int prezzoMin, int prezzoMax, String orderValue) throws SQLException {
+		 Connection con=null;
+		  PreparedStatement pst=null;
+		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+		  String query=null;
+		  
+		  if(prezzoMax != 0) {
+			  if(orderValue.equals("decrescente"))
+				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " AND prezzo <="+ prezzoMax+ " and categoria_nome= \""+categoria+"\" order by prezzo desc";
+			  else if(orderValue.equals("crescente"))
+				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " AND prezzo <="+ prezzoMax+ " and categoria_nome= \""+categoria+"\" order by prezzo asc";
+		  }
+		  else if(prezzoMax==0) {
+			  if(orderValue.equals("decrescente"))
+				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " and categoria_nome= \""+categoria+"\" order by prezzo desc";
+			  else if(orderValue.equals("crescente"))
+				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+" and categoria_nome= \""+categoria+"\" order by prezzo asc";
+		  }
+		  try {
+			  con = ds.getConnection();
+			  pst=con.prepareStatement(query);
+			  ResultSet rs=pst.executeQuery();
+			  
+			  while(rs.next()) {
+				  Prodotto prodotto=new Prodotto();
+				  prodotto.setCodice(rs.getInt("codice"));
+				  prodotto.setDescrizione(rs.getString("descrizione"));
+				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setNome(rs.getString("nome"));
+				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotti.add(prodotto);
+			  }
+		  }finally {
+				try {
+					if(pst != null)
+						pst.close();
+				}finally{
+					if(con != null)
+						con.close();
+				}
+		}
+		  
+		  return prodotti;
+	  }
+
 	  
 	  
 

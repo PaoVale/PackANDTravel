@@ -17,8 +17,8 @@ else if(categoria.equals("borsone"))
 	titolo = "Borsoni";
 else
 	titolo = "Accessori";
-
 %>
+
 <title><%=titolo %>- Pack &amp; Travel</title>
 
 <link rel="stylesheet"
@@ -27,12 +27,50 @@ else
 	crossorigin="anonymous">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/catalogo.css" type="text/css">
 
-
 </head>
+
 <body>
 
 <%@ include file="Header.jsp" %>
 
+
+<div class="sidebar" id="mySidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    
+    <form action="/PackAndTravel/FilterCatalogServlet?categoria=<%=categoria %>" method="post">
+    <div class="container">
+      <div class="filter">
+        <label for="price">Prezzo:</label> <span class="filter-expand" data-filter-id="priceOptions"></span>
+        <div id="priceOptions" class="filter-options">
+          <input type="radio" id="price-0-50" name="price" value="0-50">
+          <label for="price-0-50">0-50&euro;</label><br> 
+          <input type="radio" id="price-50-100" name="price" value="50-100">
+          <label for="price-50-100">50-100&euro;</label><br> 
+          <input type="radio" id="price-100-plus" name="price" value="100-plus">
+          <label for="price-100-plus">100&euro;+</label><br>
+        </div>
+      </div>
+
+
+      <div class="filter">
+        <label for="order">Ordina per:</label> <span class="filter-expand" data-filter-id="orderOptions"></span>
+        <div id="orderOptions" class="filter-options">
+          <input type="radio" id="order-crescente" name="ordina-per" value="crescente"> 
+          <label for="ordina-per">Prezzo crescente</label><br> 
+          <input type="radio" id="order-decrescente" name="ordina-per" value="decrescente"> 
+          <label for="ordina-per">Prezzo decrescente</label><br>
+        </div>
+      </div>
+      <button type="submit" class="btn-cerca">Cerca</button>
+
+    </div>
+
+  </form>
+</div>
+
+<div id="main">
+    <button class="openbtn" onclick="openSidebar()">&#9776; Filtra</button>
+</div>
 <%
 	
 int id = 2;
@@ -51,7 +89,7 @@ request.setAttribute("id", id);
 <main>
    <section class="novita-section">
    <h2 id="titolo"><%=titolo %></h2>
-	<%-- <%@ include file="Filter.jsp" %> --%>
+	
       
       
     <div class="album py-5">
@@ -87,12 +125,7 @@ request.setAttribute("id", id);
 
 <%@ include file="/common/Footer.jsp" %>
 
-
-
-
-
 <script type="text/javascript" src="<%=request.getContextPath() %>/scripts/Catalogo.js"></script>
-
 </body>
 </html>
 
