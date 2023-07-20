@@ -13,9 +13,10 @@ h2.Suggested {
 }
   
 div.suggeriti {
-    background-color: #26838b;
+    padding: 15px;
+    background-color: #349AA3;
     text-align: center;
-    padding: 5px;
+   
 }
 
 .picture {

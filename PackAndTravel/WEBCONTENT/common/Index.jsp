@@ -52,7 +52,7 @@ if (prodotti == null){
 
 <section> 
 <div class="suggeriti"> 
-   <h2 class="Suggested">Suggested</h2>
+   <h2 class="Suggested">Suggested for you...</h2>
 </div>
 </section>
 <br>
