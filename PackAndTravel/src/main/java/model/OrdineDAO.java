@@ -42,7 +42,7 @@ public class OrdineDAO {
 		
 
 		String insertSQL = "INSERT INTO " + OrdineDAO.TABLE_NAME
-				+ " (account_email, data_effettuazione,prezzo_tot) VALUES ( ?, ?, ?)";
+				+ " (account_email, prezzo_tot) VALUES ( ?,  ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -50,8 +50,8 @@ public class OrdineDAO {
 			preparedStatement = connection.prepareStatement(insertSQL);
 			
 			preparedStatement.setString(1, ordine.getEmail());
-			preparedStatement.setDate(2, new java.sql.Date(ordine.getDataOrdine().getTime()));
-			preparedStatement.setDouble(3, ordine.getPrezzo());
+			//preparedStatement.setDate(2, new java.sql.Date(ordine.getDataOrdine().getTime()));
+			preparedStatement.setDouble(2, ordine.getPrezzo());
 			
 			preparedStatement.executeUpdate();
 			
