@@ -22,9 +22,7 @@ import model.ProdottoDAO;
 public class VisualizzaProdottiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public VisualizzaProdottiServlet() {
         super();
         
