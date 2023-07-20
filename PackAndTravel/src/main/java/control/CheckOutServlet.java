@@ -98,7 +98,7 @@ public class CheckOutServlet extends HttpServlet {
 		
 		request.getSession().setAttribute("carrello", null);
 		
-		request.getRequestDispatcher("common/Index.jsp").forward(request, response);
+		request.getRequestDispatcher("common/VisualizzaOrdiniUtente.jsp").forward(request, response);
 		
 	}
 	}

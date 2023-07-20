@@ -41,9 +41,7 @@ public class OrdineDAO {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		LocalDateTime localDateTime = LocalDateTime.now();
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		String dataFormattata = localDateTime.format(dateFormatter);
+		
 
 		String insertSQL = "INSERT INTO " + OrdineDAO.TABLE_NAME
 				+ " (account_email, prezzo_tot) VALUES ( ?,  ?)";
@@ -70,110 +68,60 @@ public class OrdineDAO {
 	}
 
 
-	
-	public synchronized OrdineBean doRetrieveByKey(int numeroOrd) throws SQLException{ //trova un ordine
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		OrdineBean bean = new OrdineBean();
-		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE codice = ?";
-		try {
-			connection = ds.getConnection();	
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, numeroOrd);
-			ResultSet rs = preparedStatement.executeQuery();
-			
-			while (rs.next()) {
-				bean.setCodice(rs.getInt(NUM_ORDINE));
-				bean.setEmail(rs.getString(EMAIL));
-				bean.setDataOrdine(rs.getDate(DATA));
-				bean.setPrezzo(rs.getDouble(PREZZO));
-			}
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+
+
+	public synchronized Collection<OrdineBean> doRetrieveByEmail(String email) throws SQLException{
+		Connection con=null;
+		  PreparedStatement pst=null;
+		  Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
+		  String query= "SELECT * FROM ORDINE WHERE account_email=? ORDER BY data_effettuazione DESC" ;
+		  try {
+			  con=ds.getConnection();
+			  pst=con.prepareStatement(query);
+			  pst.setString(1,email);
+			  ResultSet rs=pst.executeQuery();
+			  while(rs.next()) {
+				  OrdineBean ordine=new OrdineBean();
+				  ordine.setCodice(rs.getInt("codice"));
+				  ordine.setDataOrdine(rs.getDate("data_effettuazione"));
+				  ordine.setEmail(rs.getString("account_email"));
+				  ordine.setPrezzo(rs.getDouble("prezzo_tot"));
+				  ordini.add(ordine);
+			  }
+		  }finally {
+				try {
+					if(pst != null)
+						pst.close();
+				}finally{
+					if(con != null)
+						con.close();
+				}
 		}
-		return bean;
-	}
-
-	
-	public synchronized Collection<OrdineBean> doRetrieveAll(String order) throws SQLException { //trova tutti gli ordini
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<OrdineBean> ordini = new LinkedList<>();
-
-		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " ORDER BY ?";
-
-		
-
-		try {
-			connection = ds.getConnection();
-			connection.setAutoCommit(true);
-			preparedStatement = connection.prepareStatement(selectSQL);
-			if (order != null && !order.equals("")) {
-				preparedStatement.setString(1, order);
-			}
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				OrdineBean bean = new OrdineBean();
-				bean.setCodice(rs.getInt(NUM_ORDINE));
-				bean.setEmail(rs.getString(EMAIL));
-				bean.setDataOrdine(rs.getDate(DATA));
-				
-				
-				ordini.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return ordini;
+		  
+		  return ordini;
+		  
 	}
 	
-	
-	public synchronized Collection<OrdineBean> doRetrieveByEmail(String email, String order) throws SQLException { //trova tutti gli ordini di un determinato cliente
+	public synchronized void doSaveOrdineContieneProdotto(OrdineBean ordine,Prodotto prodotto) throws SQLException { //salva un ordine
+
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
-		Collection<OrdineBean> ordini = new LinkedList<>();
-
-		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE email=? ORDER BY ?";
-
 		
+
+		String insertSQL = "INSERT INTO articolo (ordine_codice, codice_prodotto,nome,quantità,prezzo) VALUES ( ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(true);
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, email);
-			if (order != null && !order.equals("")) {
-				preparedStatement.setString(2, order);
-			}
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setInt(1, ordine.getCodice());
+			preparedStatement.setInt(2, prodotto.getCodice());
+			preparedStatement.setString(3, prodotto.getNome());
+			//preparedStatement.setInt(4,ordine.quantità())
+			preparedStatement.setDouble(5, prodotto.getPrezzo());
 			
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				OrdineBean bean = new OrdineBean();
-				bean.setCodice(rs.getInt(NUM_ORDINE));
-				bean.setEmail(rs.getString(EMAIL));
-				bean.setDataOrdine(rs.getDate(DATA));
-				
-				ordini.add(bean);
-			}
-
+			preparedStatement.executeUpdate();
+			
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -183,122 +131,11 @@ public class OrdineDAO {
 					connection.close();
 			}
 		}
-		return ordini;
 	}
+
+
 	
 	
-	public synchronized int doRetrieveMaxNumOrdine() throws SQLException{ //trova il numero ordine da utulizzare
-		
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		
-		String selectSQL = "SELECT MAX(numero_ord) AS MAX FROM " + OrdineDAO.TABLE_NAME;
-		
-		int max = 0 ;
-		
-		try {
-			connection = ds.getConnection();	
-			preparedStatement = connection.prepareStatement(selectSQL);
-			ResultSet rs = preparedStatement.executeQuery();
-			
-			
-			while (rs.next()) {
-				max = rs.getInt("MAX");
-			}
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return max;
-	}
-	
-	public synchronized Collection<OrdineBean> doRetrieveByUserData(String email, Date startDate, Date endDate) throws SQLException { //trova tutti gli ordini di un determinato cliente
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<OrdineBean> ordini = new LinkedList<>();
-
-		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE email=? "
-				+ " AND data BETWEEN ? AND ?";
-
-		
-		try {
-			connection = ds.getConnection();
-			connection.setAutoCommit(true);
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, email);
-			preparedStatement.setDate(2, startDate);
-			preparedStatement.setDate(3, endDate);
-
-			
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				OrdineBean bean = new OrdineBean();
-				bean.setCodice(rs.getInt(NUM_ORDINE));
-				bean.setEmail(rs.getString(EMAIL));
-				bean.setDataOrdine(rs.getDate(DATA));
-				
-				ordini.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return ordini;
-	}
-	
-	public synchronized Collection<OrdineBean> doRetrieveByData(Date startDate, Date endDate) throws SQLException { //trova tutti gli ordini di un determinato cliente
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<OrdineBean> ordini = new LinkedList<>();
-
-		String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE "
-				+ "data BETWEEN ? AND ?";
-
-		
-		try {
-			connection = ds.getConnection();
-			connection.setAutoCommit(true);
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setDate(1, startDate);
-			preparedStatement.setDate(2, endDate);
-
-			
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				OrdineBean bean = new OrdineBean();
-				bean.setCodice(rs.getInt(NUM_ORDINE));
-				bean.setEmail(rs.getString(EMAIL));
-				bean.setDataOrdine(rs.getDate(DATA));
-				
-				ordini.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return ordini;
-	}
 	
 	
 	

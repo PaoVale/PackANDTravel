@@ -71,6 +71,9 @@ String cellulare=auth.getNumber();
 			<button type="submit">Modifica dati</button>
 		</fieldset>
 	</form>
+	<div id="i_miei_ordini">
+		<a href="<%=request.getContextPath()%>/common/VisualizzaOrdiniUtente.jsp">I miei ordini</a>
+	</div>
 </body>
 <br>
 <%@ include file="Footer.jsp"%>
