@@ -4,85 +4,20 @@
 <html lang="en">
 <head>
 <script src="<%=request.getContextPath()%>/scripts/validate.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Checkout.css" type="text/css">
     <meta charset="UTF-8">
     
     <title>Checkout</title>
-    
-    <style>
-        /* Stile generale */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        /* Header */
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        /* Contenitore principale */
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            border-radius: 4px;
-        }
-        /* Form */
-        form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        label {
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        /* Dettagli dell'ordine */
-        .order-details {
-            margin-top: 1rem;
-            border-top: 1px solid #ccc;
-            padding-top: 1rem;
-        }
-        .order-details h2 {
-            margin-top: 0;
-        }
-        /* Pulsante di checkout */
-        .checkout-button {
-            margin-top: 1rem;
-            display: block;
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .checkout-button:hover {
-            background-color: #555;
-        }
-    </style>
- 
-    
+        
 </head>
+<%
+
+	AccountUser user = (AccountUser)session.getAttribute("auth");
+	if(user != null){
+
+
+%>
+
 <body>
    <%@ include file="Header.jsp" %>
    	<%String email= auth.getEmail(); 
@@ -91,7 +26,7 @@ String cognome=auth.getSurname();
 String indirizzo=auth.getAddress();
 String cellulare=auth.getNumber();
 %>
-        <h1>Checkout</h1>
+        <h1 id="titolo">Checkout</h1>
     
     <div class="container">
     <div class="user-info">
@@ -114,8 +49,8 @@ String cellulare=auth.getNumber();
 		</p>
 
 	</div>
-       <!-- onsubmit="event.preventDefault();checkCheckout(this)" --> 
-       <form action="#" method="post" id="checkoutForm" >
+      <div class="form">
+       <form action="#" method="post" id="checkoutForm" onsubmit="event.preventDefault();checkCheckout(this)" >
             <h3>Procedi al pagamento</h3><br>
         <div>
          <label for="cardNumber">Numero di carta:</label>
@@ -124,7 +59,7 @@ String cellulare=auth.getNumber();
 		<br>
 		<div>
          <label for="expirationDate">Data di scadenza:</label>
-         <input class="js-iframe-input date-field input-field" id="encryptedExpiryDate" type="tel" placeholder="MM/YY"   maxlength="5" >
+         <input class="js-iframe-input date-field input-field" id="expirationDate" name="expirationDate" type="tel" placeholder="MM/YY"   maxlength="5" onChange="return validateScadenzaCarta()" onInput="return validateScadenzaCarta()" > <span id="expiryError"></span>
         </div><br>
 		<div>
          <label for="cvv">CVV:</label>
@@ -132,26 +67,21 @@ String cellulare=auth.getNumber();
 		</div>
 		<br>
 		<div>
-         <input type="submit" class="btn btn-primary"value="Conferma Ordine">
+         <input type="submit"  class="checkout-button" value="Conferma ordine">
         </div>
         <br>
        </form>
-        <div class="order-details">
-            <h2>Dettagli dell'ordine</h2>
-        </div>
-        
-        <button class="checkout-button">Procedi al pagamento</button>
+       </div>
+        <%}else{ 
+			String path = request.getContextPath();
+			response.sendRedirect(path + "/common/Login.jsp");
+				return ;
+		}
+			%>
     </div>
     
     <%@ include file="/common/Footer.jsp" %>
-    <script>
-document.getElementById('encryptedExpiryDate').addEventListener('input', function (e) {
-  var input = e.target.value;
-  if (input.length === 2 && !input.includes('/')) {
-    e.target.value = input + '/';
-  }
-});
-</script>
+
 
 
 

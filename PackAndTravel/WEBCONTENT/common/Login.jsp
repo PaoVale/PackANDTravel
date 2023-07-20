@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
 <section id="homeIcons">
 	<a href="<%=request.getContextPath() %>/common/Index.jsp"><i class="fa fa-home" ></i> </a>
 </section>

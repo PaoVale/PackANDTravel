@@ -8,8 +8,9 @@ const emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const pswdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()])[0-9a-zA-Z!@#$%^&*()]{8,}$/;
 const celPattern = /^\d{10}$/;
 
-const cardNumberPattern = /^\d{4}-\d{4}-\d{4}-\d{4}$/; //pattern semplicificato (non è così in realtà)
+const cardNumberPattern = /^\d{16}$/; //pattern semplicificato (non è così in realtà)
 const cvvPattern = /^\d{3}$/;
+const dataRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
 
 const nameErrorMessage = "Un nome valido deve contenere solo lettere";
 const lastnameErrorMessage = "Un cognome valido deve contenere solo lettere";
@@ -20,6 +21,7 @@ const celMessage="Numero di telefono non valido";
 
 const cardErrorMessage = "Numero di carta non valido!";
 const cardCvvMessage = "Il cvv non &egrave; corretto"
+const expiryError = "Data scadenza non valida";
 
 function validateFormElem(formElem, pattern, span, message) {
   if (formElem.value.match(pattern)) {
@@ -230,3 +232,65 @@ function validateCVV() {
 	}
 
 }
+
+function validateScadenzaCarta() {
+
+	let form = document.getElementById("checkoutForm");
+
+	let span = document.getElementById("expiryError");
+
+	let data = form.expirationDate.value;
+
+	const oggi = new Date(); // Data corrente
+	  // Controlla se il formato della data è corretto
+    if (!data.match(dataRegex)) {
+		span.style.color = "red";
+      span.innerHTML = expiryError;
+      return false;
+    }
+
+    // Estrai il mese e l'anno dalla stringa
+    const [month, year] = data.split("/").map(item => parseInt(item, 10));
+
+    // Ottieni l'anno corrente a due cifre
+    const currentYear = oggi.getFullYear() % 100;
+
+    // Controlla se la data è già passata
+    if (year < currentYear || (year === currentYear && month < oggi.getMonth() + 1)) {
+      span.classList.add("error");
+		span.innerHTML = expiryError;
+		span.style.color = "red";
+		return false;
+
+    }
+
+    // Se la data è valida, resetta il messaggio di errore e ritorna true
+    else{
+   	span.classList.remove("error");
+		span.style.color = "black";
+		span.innerHTML = "";
+		return true;
+    }
+  
+}
+
+function checkCheckout(obj) {
+	let check = true;
+	if (!validateNumCarta()) check = false;
+	if (!validateScadenzaCarta()) check = false;
+	if (!validateCVV()) check = false;
+
+	if (check) obj.submit();
+}
+
+//validazione formato data
+ document.addEventListener('DOMContentLoaded', function () {
+      // Aggiungi l'evento 'input' all'elemento di input
+      document.getElementById('expirationDate').addEventListener('input', function (e) {
+        var input = e.target.value;
+        if (input.length === 2 && !input.includes('/')) {
+          e.target.value = input + '/';
+        }
+      });
+    });
+
