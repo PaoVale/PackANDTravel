@@ -1,7 +1,9 @@
 package model;
 
 import java.nio.charset.StandardCharsets;
+
 import java.util.HashMap;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,8 +40,8 @@ public class HelperClass {
 	        characterMap.put('>', "&gt;");
 	        characterMap.put('&', "&amp;");
 	        characterMap.put('"', "&quot;");
-	        characterMap.put('á', "&aacute");
-	        characterMap.put('é',"&eacute");
+	        characterMap.put('á', "&aacute;");
+	        characterMap.put('é',"&eacute;");
 
 	    char c;
 	    for(int i=0; i<input.length(); i++) {
@@ -65,5 +67,22 @@ public class HelperClass {
 	    return filtered.toString();
 
 	  }
+  public static List<Prodotto> estraiElementiCasuali(List<Prodotto> lista, int n) {
+      List<Prodotto> risultato = new ArrayList<>();
+      Random rand = new Random();
+
+      // Se la lista non contiene abbastanza elementi, imposta n uguale alla dimensione della lista
+      if (n > lista.size()) {
+          n = lista.size();
+      }
+
+      for (int i = 0; i < n; i++) {
+          int index = rand.nextInt(lista.size());
+          risultato.add(lista.get(index));
+          lista.remove(index);
+      }
+
+      return risultato;
+  }
 
 }
