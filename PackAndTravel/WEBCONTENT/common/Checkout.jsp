@@ -15,7 +15,7 @@
 	AccountUser user = (AccountUser)session.getAttribute("auth");
 	if(user != null){
 
-
+	
 %>
 
 <body>

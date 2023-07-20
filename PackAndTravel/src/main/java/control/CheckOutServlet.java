@@ -37,11 +37,14 @@ public class CheckOutServlet extends HttpServlet {
 	}
 
 	
+	/**
+	 *
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Cart carrello = (Cart) request.getSession().getAttribute("carrello");
 		AccountUser user = (AccountUser) request.getSession().getAttribute("auth"); // recupero info utente per salvare l'ordine
-
+		
 		if (carrello == null || user == null) {
 			request.getRequestDispatcher("common/Login.jsp").forward(request, response);
 			return;
@@ -64,15 +67,14 @@ public class CheckOutServlet extends HttpServlet {
 
 		OrdineDAO ordinedao = new OrdineDAO(ds);
 		OrdineBean ordine = new OrdineBean();
+		Double totaleString =  (Double) request.getSession().getAttribute("totale");
 		
-		int numeroOrd = 0;
-
-		
+		 
 		try {
 			
 			ordine.setEmail(user.getEmail());
 			ordine.setDataOrdine(new java.sql.Date(System.currentTimeMillis()));
-			ordine.setPrezzo(0);
+			ordine.setPrezzo(totaleString);
 			ordinedao.doSave(ordine);
 		} catch (SQLException e1) {
 			//logger.log(Level.WARNING, LOG_MSG);
