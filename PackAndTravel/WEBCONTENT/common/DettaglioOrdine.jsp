@@ -20,7 +20,7 @@
 				<tr>
 					<th scope="col">Prodotto</th>
 					<th scope="col">Prezzo</th>
-					<th scope="col">Quatità</th>
+					<th scope="col">Quantità</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,7 +29,7 @@
 		        while (it.hasNext()) {
 		          Prodotto prdottto = (Prodotto) it.next();%> --%>
 				<tr >
-					<td><%-- <%=prodotto.getNome() %>  --%><br><img alt="Imagine prodotto" src=""></th>
+					<td><%-- <%=prodotto.getNome() %>  --%></th>
 					<td><%-- <%=prodotto.getDataOrdine()%> --%></td>
 					<td><%-- <%=prodotto.getPrezzo() %> --%></td>
                 	

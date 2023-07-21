@@ -55,8 +55,8 @@ form{
 
 
 #i_miei_ordini{
-	text-align: center;
-	
+	text-align: left;
+	margin-left:20px;
 }
 
 /* Aggiungi stile al link "I miei ordini" */
@@ -67,7 +67,7 @@ form{
   border: 1px solid #26838b;
   border-radius: 5px;
   transition: background-color 0.3s ease-in-out;
-  
+  font-size: x-large;
 }
 
 #i_miei_ordini a:hover {

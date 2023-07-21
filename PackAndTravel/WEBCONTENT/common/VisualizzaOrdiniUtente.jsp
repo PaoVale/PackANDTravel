@@ -42,7 +42,7 @@
 				<tr>
 					<th scope="col">Codice ordine</th>
 					<th scope="col">Data ordine</th>
-					<th scope="col">Prezzo</th>
+					<th scope="col">Totale</th>
 					<th scope="col">Dettagli</th>
 				</tr>
 			</thead>
@@ -54,7 +54,7 @@
 				<tr>
 					<th scope="row"><%=ordine.getCodice()%></th>
 					<td><%=ordine.getDataOrdine()%></td>
-					<td><%=ordine.getPrezzo() %></td>
+					<td><%=ordine.getPrezzo()%> &euro;</td>
                 	<td>
                 		<a href="<%=request.getContextPath()%>/common/DettaglioOrdine.jsp?code=<%=ordine.getCodice()%>">Visualizza dettagli </a>
   					</td> 
