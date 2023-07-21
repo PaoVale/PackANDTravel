@@ -41,6 +41,9 @@ public class VisualizzaOrdiniServlet extends HttpServlet {
 		System.out.println("Sono nella servlet visualizza ordini");
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		OrdineDAO oDAO = new OrdineDAO(ds);
+		
+		
+		
 		//Logger logger = Logger.getAnonymousLogger();
 		AccountUser auth=(AccountUser) request.getSession().getAttribute("auth");
 		String email=auth.getEmail();
