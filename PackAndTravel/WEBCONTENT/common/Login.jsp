@@ -2,16 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" errorPage="errorPage.jsp"%>
 
-<%-- <%
-	AccountUser auth = (AccountUser) request.getSession().getAttribute("auth") ;
-	if(auth!=null){
-		request.setAttribute("auth",auth);
-	}
-%> --%>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accesso - Pack &amp; Travel</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/styles/Login.css">
