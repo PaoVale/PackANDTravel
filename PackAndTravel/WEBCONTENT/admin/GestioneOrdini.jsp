@@ -68,7 +68,7 @@
   <%for(OrdineBean ordine: ordini){ %>
   <tr>
 	
-      <td> <%=ordine.getCodice()%></td>
+      <td><a href="/PackAndTravel/SetCodiceServlet?code=<%=ordine.getCodice()%>"><%=ordine.getCodice()%> </a></td>
       <td><%=ordine.getDataOrdine()%></td>
       <td><%=ordine.getPrezzo()%></td>
       <td> <%=ordine.getEmail() %></td>
