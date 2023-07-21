@@ -6,8 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 //import java.util.logging.Logger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,7 +31,7 @@ public class OrdineDAO {
 	
 	//stringhe costanti per evitare duplicazioni
 	private static final String NUM_ORDINE = "codice";
-	private static final String EMAIL = "accout_email";
+	private static final String EMAIL = "account_email";
 	private static final String DATA = "data_effettuazione";
 	private static final String PREZZO = "prezzo";
 	
@@ -45,7 +47,7 @@ public class OrdineDAO {
 		
 		int generatedId= 0;
 		String insertSQL = "INSERT INTO " + OrdineDAO.TABLE_NAME
-				+ " (account_email, prezzo_tot) VALUES ( ?,  ?)";
+				+ " (account_email, prezzo_tot,data_effettuazione) VALUES ( ?,  ?,?)";
 
 		try {
 			connection = ds.getConnection();
@@ -54,7 +56,7 @@ public class OrdineDAO {
 			
 			preparedStatement.setString(1, ordine.getEmail());
 			preparedStatement.setDouble(2, ordine.getPrezzo());
-			
+			preparedStatement.setDate(3, new java.sql.Date(ordine.getDataOrdine().getTime()));
 			int rowsAffected= preparedStatement.executeUpdate();
 			if (rowsAffected > 0) {
 		          ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
@@ -141,6 +143,96 @@ public class OrdineDAO {
 			}
 		}
 	}
+
+
+
+
+	public synchronized Collection<OrdineBean> doRetrieveByData(Date startDate, Date endDate) throws SQLException { //trova tutti gli ordini di un determinato cliente
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+
+	    Collection<OrdineBean> ordini = new LinkedList<>();
+
+	    String selectSQL = CONST_SELECT + OrdineDAO.TABLE_NAME + " WHERE "
+	        + "data_effettuazione BETWEEN ? AND ?";
+
+	    
+	    try {
+	      connection = ds.getConnection();
+	      connection.setAutoCommit(true);
+	      preparedStatement = connection.prepareStatement(selectSQL);
+	      preparedStatement.setDate(1, startDate);
+	      preparedStatement.setDate(2, endDate);
+
+	      
+	      ResultSet rs = preparedStatement.executeQuery();
+
+	      while (rs.next()) {
+	        OrdineBean bean = new OrdineBean();
+	        bean.setCodice(rs.getInt("codice"));
+	        bean.setEmail(rs.getString("account_email"));
+	        bean.setDataOrdine(rs.getDate("data_effettuazione"));
+	        bean.setPrezzo(rs.getDouble("prezzo_tot"));
+	        ordini.add(bean);
+	      }
+
+	    } finally {
+	      try {
+	        if (preparedStatement != null)
+	          preparedStatement.close();
+	      } finally {
+	        if (connection != null)
+	          connection.close();
+	      }
+	    }
+	    return ordini;
+	  }
+
+
+
+
+	public synchronized Collection<OrdineBean> doRetrieveByUserData(String email, Date startDate, Date endDate) throws SQLException { //trova tutti gli ordini di un determinato cliente
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+
+	    Collection<OrdineBean> ordini = new LinkedList<>();
+
+	    String selectSQL = "SELECT * FROM ordine WHERE account_email=? AND data_effettuazione BETWEEN ? AND ?";
+	    //String selectSQL="SELECT * FROM ordine WHERE account_email=? AND data_effettuazione >= ? AND data_effettuazione <= ?";
+	    
+	    try {
+	      connection = ds.getConnection();
+	      
+	      preparedStatement = connection.prepareStatement(selectSQL);
+			
+			  preparedStatement.setString(1, email);
+			  preparedStatement.setDate(2,startDate); 
+			  preparedStatement.setDate(3, endDate);
+			 
+	      
+	      ResultSet rs = preparedStatement.executeQuery();
+
+	      while (rs.next()) {
+	        OrdineBean bean = new OrdineBean();
+	        bean.setCodice(rs.getInt("codice"));
+	        bean.setEmail(rs.getString("account_email"));
+	        bean.setDataOrdine(rs.getDate("data_effettuazione"));
+	        bean.setPrezzo(rs.getDouble("prezzo_tot"));
+	        
+	        ordini.add(bean);
+	      }
+
+	    } finally {
+	      try {
+	        if (preparedStatement != null)
+	          preparedStatement.close();
+	      } finally {
+	        if (connection != null)
+	          connection.close();
+	      }
+	    }
+	    return ordini;
+	  }
 
 
 	

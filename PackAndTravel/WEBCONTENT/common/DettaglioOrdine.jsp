@@ -9,6 +9,7 @@
 
 </head>
 <body>
+   <%@ include file="Header.jsp" %>
 <%
 	
 	String codice = (String)session.getAttribute("codice");
@@ -53,6 +54,6 @@
 		</table>
 	
 	 </section>	
-
+   <%@ include file="Footer.jsp" %>s
 </body>
 </html>

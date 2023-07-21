@@ -1,54 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.*, model.*" %>
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Gestioni ordini</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/styles/ProductView.css">
+  href="<%=request.getContextPath()%>/styles/ProductView.css">
 <script src="<%=request.getContextPath()%>/scripts/ProductView.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath() %>/scripts/validate.js"></script>
+  src="<%=request.getContextPath() %>/scripts/validate.js"></script>
 </head>
 <body>
+
+<%
+	//Collection<?> listaUtenti = (Collection<?>) request.getAttribute("listaUtenti");
+	List<AccountUser> listaUtenti = (List<AccountUser>) request.getAttribute("listaUtenti");
+	if(listaUtenti==null){
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/GetUsersListServlet");
+	    dispatcher.forward(request, response);
+	}
+%>
 
 <%@ include file="../common/Header.jsp" %>
 
 <div id= "container">
-	 <h2>
-    Visualizza ordini <span id="toggleButton1" class="cursor-pointer" onclick="toggleContent('toggleButton1', 'productTable')">+</span>
+   <h2>
+    Visualizza ordini
   </h2>
-	<table id="productTable" border="1" class="hidden" > 
-	
-  <tr>
-    <th>Codice </th>
-    <th>Data_spedizione  </th>
-    <th>Data_effettuazione</th>
-    <th>Prezzo_totale </th>
-    <th>Acoount</th>
+  
+  <form action="/PackAndTravel/VisualizzaOrdiniAdmin" method="post" >
+  		<label for="startDate">Data di inizio:</label> <br>
+        <input class="inputField" type="date" id="startDate" name="startDate"><br>
+		<br>
+        <label for="endDate">Data di fine:</label> <br>
+        <input class="inputField" type="date" id="endDate" name="endDate"><br>
+        <br>
+        <label for="username">Email utente: </label> 
+        <select class="inputField" id="utente" name="utente" required>
+        	<option value="all">Tutti gli utenti</option>
+        	<%if (listaUtenti != null) {
+        		for(AccountUser user: listaUtenti) {%>
+        		<option value="<%=user.getEmail()%>"><%=user.getEmail()%></option>
+        	<%}} %>
+        </select>
+        <br><br>
+        <input type="submit" class="btn btn-primary" value="Cerca">
+  </form>
+  <br>
+  
+  <%
     
+      List<OrdineBean> ordini = (List<OrdineBean>)request.getAttribute("listOrdine");
+    
+      if(ordini != null){
+  %>
+  
+  <table id="productTable" border="1" > 
+  
+  <tr>
+    <th>Codice</th>
+    <th>Data effettuazione</th>
+    <th>Prezzo totale </th>
+    <th>Account</th>
+        
   </tr>
+  <%for(OrdineBean ordine: ordini){ %>
+  <tr>
 	
-	<tr>
-			<%-- <td><%=prodotto.getCodice()%></td>
-			<td><%=prodotto.getNome()%></td>
-			<td><%=prodotto.getDescrizione()%></td>
-			<td> <%=prodotto.getCategoria_nome() %></td>
-			<td><%=prodotto.getPrezzo() %></td>
-			<td><img class="img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></td> 
-		 --%>
-		</tr>
-	
-		<tr>
-			<td colspan="6">No order available</td>
-		</tr>
-		
-	</table>
-	</div>
-	
-	
-
+      <td> <%=ordine.getCodice()%></td>
+      <td><%=ordine.getDataOrdine()%></td>
+      <td><%=ordine.getPrezzo()%></td>
+      <td> <%=ordine.getEmail() %></td>
+     
+    </tr>
+   <%}}else{ %>
+    <tr>
+      <td colspan="6">No order available</td>
+    </tr>
+    
+  
+  
+  <%} %>
+  </table>
+</div>
 <%@ include file="../common/Footer.jsp" %>
 
 </body>

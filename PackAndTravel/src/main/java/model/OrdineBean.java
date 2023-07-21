@@ -17,6 +17,7 @@ public class OrdineBean implements Serializable{
 		email = "";
 		codice = 0;
 		prezzo = 0;
+		
 	}
 
 
