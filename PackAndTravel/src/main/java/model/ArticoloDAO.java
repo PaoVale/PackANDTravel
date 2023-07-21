@@ -2,8 +2,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import javax.sql.DataSource;
 
@@ -48,4 +51,41 @@ public class ArticoloDAO {
 	
 	    }
 	
+	
+	public synchronized Collection<Articolo> doRetriveAllByKey(int codice) throws SQLException {
+	      Connection con=null;
+	      PreparedStatement pst=null;
+	      Collection<Articolo> articoli = new LinkedList<Articolo>();
+	      
+	      String query = "select * from articolo where ordine_codice=?";
+	     	      
+	      try {
+	        con = ds.getConnection();
+	        pst=con.prepareStatement(query);
+	        pst.setInt(1, codice);
+	        ResultSet rs=pst.executeQuery();
+	        
+	        while(rs.next()) {
+	          Articolo articolo=new Articolo();
+	          articolo.setCodice(rs.getInt("codice"));
+	          articolo.setNome(rs.getString("nome"));
+	          articolo.setQuantità(rs.getInt("quantità"));
+	          articolo.setPrezzo(rs.getDouble("prezzo"));
+	          articolo.setOrdine_codice(rs.getInt("ordine_codice"));
+	          articolo.setProdotto_codice(rs.getInt("prodotto_codice"));
+	          articoli.add(articolo);
+	          
+	        }
+	      }finally {
+	        try {
+	          if(pst != null)
+	            pst.close();
+	        }finally{
+	          if(con != null)
+	            con.close();
+	        }
+	    }
+	      
+	      return articoli;
+	    }
 }

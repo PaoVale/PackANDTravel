@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.*, model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,21 @@
 
 </head>
 <body>
-
+<%
+	
+	String codice = (String)session.getAttribute("codice");
+	System.out.println("il codice in dettaglioordine.jsp: "+codice);
+	Collection<?> articoli = (Collection<?>) request.getAttribute("articoli");
+	
+	
+	
+	if (articoli == null) {
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/DettaglioOrdineServlet");
+		dispatcher.forward(request, response);
+		return;
+	}
+	
+	%>
 <section class="visualizzaOrdiniUser">
 
 	<h2>Il tuo ordine</h2>
@@ -24,17 +38,17 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%-- <%if (prodotti != null && prodotti.size() != 0) {
-		        Iterator<?> it = prodotti.iterator();
+			<%if (articoli != null && articoli.size() != 0) {
+		        Iterator<?> it = articoli.iterator();
 		        while (it.hasNext()) {
-		          Prodotto prdottto = (Prodotto) it.next();%> --%>
+		          Articolo articolo = (Articolo) it.next();%>
 				<tr >
-					<td><%-- <%=prodotto.getNome() %>  --%></th>
-					<td><%-- <%=prodotto.getDataOrdine()%> --%></td>
-					<td><%-- <%=prodotto.getPrezzo() %> --%></td>
-                	
+					<td><%=articolo.getNome() %> </td>
+					
+					<td><%=articolo.getPrezzo() %></td>
+                	<td><%=articolo.getQuantità() %></td>
 				</tr>
-			<%-- <%} }%> --%>
+			<%} }%>
 			</tbody>
 		</table>
 	

@@ -56,7 +56,7 @@
 					<td><%=ordine.getDataOrdine()%></td>
 					<td><%=ordine.getPrezzo()%> &euro;</td>
                 	<td>
-                		<a href="<%=request.getContextPath()%>/common/DettaglioOrdine.jsp?code=<%=ordine.getCodice()%>">Visualizza dettagli </a>
+                		<a href="/PackAndTravel/SetCodiceServlet?code=<%=ordine.getCodice()%>">Visualizza dettagli </a>
   					</td> 
 				</tr>
 			<%} }%>
