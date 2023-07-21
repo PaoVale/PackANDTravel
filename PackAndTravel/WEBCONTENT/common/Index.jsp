@@ -56,7 +56,7 @@ if (prodotti == null){
 </div>
 </section>
 <br>
-<!-- Inserisci qui il codice per visualizzare i prodotti dal database -->
+
     
     <div class="album py-5">
   <div class="container">
@@ -84,7 +84,7 @@ if (prodotti == null){
           </div>
         </div>
       </div>
-      <%} }%>
+      <%}  }%>
     </div>
   </div>
 </div>
