@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 //import java.util.logging.Logger;
@@ -37,26 +38,33 @@ public class OrdineDAO {
 	
 	
 	
-	public synchronized void doSave(OrdineBean ordine) throws SQLException { //salva un ordine
+	public synchronized int doSave(OrdineBean ordine) throws SQLException { //salva un ordine
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-
+		int generatedId= 0;
 		String insertSQL = "INSERT INTO " + OrdineDAO.TABLE_NAME
 				+ " (account_email, prezzo_tot) VALUES ( ?,  ?)";
 
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(true);
-			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
 			
 			preparedStatement.setString(1, ordine.getEmail());
 			preparedStatement.setDouble(2, ordine.getPrezzo());
 			
-			preparedStatement.executeUpdate();
-			
-		} finally {
+			int rowsAffected= preparedStatement.executeUpdate();
+			if (rowsAffected > 0) {
+		          ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+		          if (generatedKeys.next()) {
+		              generatedId = generatedKeys.getInt(1);
+		              // Utilizza l'ID generato come desideri
+		              System.out.println("ID generato: " + generatedId);
+		          }
+		          
+		}} finally {
 			try {
 				if (preparedStatement != null)
 					preparedStatement.close();
@@ -65,6 +73,7 @@ public class OrdineDAO {
 					connection.close();
 			}
 		}
+		return generatedId;
 	}
 
 

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import model.AccountUser;
+import model.Articolo;
+import model.ArticoloDAO;
 import model.Cart;
 import model.CartItem;
 import model.OrdineBean;
@@ -41,7 +43,7 @@ public class CheckOutServlet extends HttpServlet {
 	 *
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int codiceGenerato=0;
 		Cart carrello = (Cart) request.getSession().getAttribute("carrello");
 		AccountUser user = (AccountUser) request.getSession().getAttribute("auth"); // recupero info utente per salvare l'ordine
 		
@@ -68,17 +70,35 @@ public class CheckOutServlet extends HttpServlet {
 		OrdineDAO ordinedao = new OrdineDAO(ds);
 		OrdineBean ordine = new OrdineBean();
 		Double totaleString =  (Double) request.getSession().getAttribute("totale");
+		ArticoloDAO articolodao = new ArticoloDAO(ds);
 		
-		 
 		try {
 			
 			ordine.setEmail(user.getEmail());
 			
 			ordine.setPrezzo(totaleString);
-			ordinedao.doSave(ordine);
+			codiceGenerato=ordinedao.doSave(ordine);
+			
+			System.out.println(codiceGenerato);
 		} catch (SQLException e1) {
 			//logger.log(Level.WARNING, LOG_MSG);
 		}
+		
+		try {
+			for(CartItem item : elementi) {
+				Articolo articolo = new Articolo();
+				articolo.setNome(item.getProdotto().getNome());
+				articolo.setQuantità(item.getQuantita());
+				articolo.setPrezzo(item.getProdotto().getPrezzo());
+				articolo.setOrdine_codice(codiceGenerato);
+				articolo.setProdotto_codice(item.getProdotto().getCodice());
+				articolodao.doSave(articolo);
+			}
+		}catch (SQLException e1) {
+				//logger.log(Level.WARNING, LOG_MSG);
+				e1.printStackTrace();
+			}
+		
 
 		/*
 		 * DettaglioOrdineDAO dettaglioOrdineDAO = new DettaglioOrdineDAO();

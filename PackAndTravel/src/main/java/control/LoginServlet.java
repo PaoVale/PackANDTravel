@@ -51,11 +51,12 @@ public class LoginServlet extends HttpServlet {
 			logger.log(Level.WARNING, "Problema Parse/Sql!");
 		}
 
-
-
+		if(user.getEmail()==null) {
+			System.out.println("email è null"+ user.getEmail());
+		}
 		//controllo tra password inserita nel form e quella nel db
 		boolean controlloPasswd=false;
-		if(user!=null && user.getEmail().equals(email) ) {
+		if(user.getEmail()!=null && user.getEmail().equals(email) ) {
 			String passToCompare=user.getPassword();
 			String passwdInserita=HelperClass.toHash(password);
 			
