@@ -23,9 +23,9 @@
 	if(error == null)
 		error = "";
 	if(carrello == null){
-		System.out.println("Carrello è null,prima");
+		System.out.println("Carrello ï¿½ null,prima");
 		response.sendRedirect("/PackAndTravel/CarrelloServlet?redirect=carrello");
-		System.out.println("Carrello è null,dopo");
+		System.out.println("Carrello ï¿½ null,dopo");
 		return;
 	}
 	

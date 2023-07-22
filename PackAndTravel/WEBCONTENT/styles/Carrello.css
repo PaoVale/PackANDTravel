@@ -58,7 +58,7 @@ main {
 }
 
 td:first-child {
-    max-width: 100px; /* Imposta la larghezza massima desiderata */
+    
     white-space: nowrap; /* Impedisce il wrapping del testo */
     overflow: hidden; /* Nasconde il testo oltre la larghezza massima */
     text-overflow: ellipsis; /* Mostra "..." se il testo è troncato */
@@ -71,4 +71,60 @@ i.fas.fa-trash-alt.trash-icon {
 p#error{
 	color:red;
 	text-align:center;
+}
+
+/* Stile per schermi con larghezza massima di 767px */
+@media (max-width: 767px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  thead {
+    display:none;
+  }
+
+  tfoot td {
+    font-weight: bold;
+  }
+
+
+  /* Mostra i dati della tabella come righe affiancate */
+  tr {
+    display: block;
+    border: 1px solid #ddd;
+    margin-bottom: 0.625rem; /* Spaziatura tra le righe */
+  }
+
+  /* Assicurati che le celle mantengano il loro spazio */
+  td {
+    display: block;
+    text-align: center; 
+  }
+
+  /* Nascondi le intestazioni delle colonne per mantenere il layout pulito */
+  th {
+    display: none;
+  }
+
+  /* Aggiungi un'etichetta per identificare i dati nelle colonne */
+  td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  
+  td:first-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
 }
