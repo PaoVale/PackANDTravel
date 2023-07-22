@@ -123,3 +123,16 @@ p#error{
   background-color: darkcyan;
 
 }
+
+@media (max-width: 767px) {
+	#main{
+	padding:0px;
+	}
+.pt-5, .py-5 {
+    padding-top: 1rem!important;
+}
+.pb-5, .py-5 {
+    padding-bottom: 0rem !important; 
+}
+
+}

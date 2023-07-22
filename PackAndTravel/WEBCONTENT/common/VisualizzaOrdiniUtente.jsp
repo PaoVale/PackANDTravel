@@ -15,7 +15,7 @@
 
 </head>
 
-<%@ include file="Header.jsp" %>
+
 
 	<%
 	    
@@ -31,7 +31,8 @@
 
 
 <body>
-
+<%@ include file="Header.jsp" %>
+	
 	<section class="visualizzaOrdiniUser">
 
 	<h2>I tuoi ordini</h2>

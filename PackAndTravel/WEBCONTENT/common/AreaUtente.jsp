@@ -53,8 +53,9 @@ String cellulare=auth.getNumber();
 			<input type="password" id="password" name="password"
 				placeholder="Nuova password" onChange="return validatePassword()"
 				onInput="return validatePassword()"> <br> <span
-				id="errorpswd"></span> <br>
-			<br> <input type="password" id="ConfermaPassword"
+				id="errorpswd"></span> 
+				<p>Conferma password:</p>
+			 <input type="password" id="ConfermaPassword"
 				name="ConfermaPassword" placeholder="Conferma password"
 				onChange="return pswMatching()" onInput="return pswMatching()">
 			<br> <span id="matchError"></span>

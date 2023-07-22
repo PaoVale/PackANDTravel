@@ -30,7 +30,7 @@ a:active {
 }
 
 table {
-	width: 600px;
+	width: 100%;
 }
 
 
@@ -85,4 +85,20 @@ textarea {
 	width:100px;height:auto;
 }
 
+@media (min-width: 357px) and (max-width: 767px) {
+  #container {
+    width: 100%; /* Il div occuperà l'intera larghezza dello schermo */
+    max-width: 600px; /* Limita la larghezza massima del div a 600px */
+    padding: 10px; /* Riduci il padding per adattarsi a schermi più piccoli */
+  }
+
+  table {
+    font-size: 0.8em; /* Riduci la dimensione del testo nella tabella per adattarsi a schermi più piccoli */
+  }
+
+  th, td {
+    padding: 3px; /* Riduci il padding delle celle per adattarsi a schermi più piccoli */
+  }
+}
+	
 
