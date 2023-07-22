@@ -5,7 +5,7 @@ import="model.Prodotto, model.ProdottoDAO, java.util.*" pageEncoding="ISO-8859-1
 <html lang="it">
 <head>
 <meta charset="ISO-8859-1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%String categoria = request.getParameter("categoria");
 request.setAttribute("categoria", categoria); 
 String titolo;

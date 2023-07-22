@@ -3,6 +3,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazione - Pack &amp; Travel</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/Registrati.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">

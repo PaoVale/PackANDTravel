@@ -40,7 +40,7 @@ div.suggeriti {
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     font-size: 55px;
-    left: 100px; /* Aumenta il valore per spostare il testo più a destra */
+    left: 100px; /* Aumenta il valore per spostare il testo piï¿½ a destra */
     opacity: 0;
     animation: fadeIn 3s ease forwards;
     padding-left: 50px;
@@ -59,4 +59,45 @@ div.suggeriti {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+@media (max-width: 767px) {
+  h2.Suggested {
+    font-size: 16px;
+    margin-top : 7px;
+}
+
+div.suggeriti {
+    padding: 2px;
+}
+	.overlay {
+    /* Posizione bloccata */
+    position: absolute;
+    width: 50%; /* Occupa tutta la larghezza disponibile */
+    left: 0; /* Allineamento a sinistra */
+    bottom: 0; /* Allineamento in basso */
+    text-align: left; /* Centra il testo */
+    padding: 20px; /* Riduce il padding */
+    font-size: 20px; /* Riduce la dimensione del testo */
+    margin-bottom: 30px;
+    margin-left: 20px;
+  }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1278px) {
+  .overlay {
+    /* Posizione bloccata */
+    position: absolute;
+    width: 50%; /* Occupa tutta la larghezza disponibile */
+    left: 0; /* Allineamento a sinistra */
+    bottom: 0; /* Allineamento in basso */
+    text-align: left; /* Centra il testo */
+    padding: 20px; /* Riduce il padding */
+    font-size: 30px; /* Riduce la dimensione del testo */
+    margin-bottom: 30px;
+    margin-left: 20px;
+  }
 }
