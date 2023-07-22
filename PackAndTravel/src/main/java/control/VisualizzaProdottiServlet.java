@@ -3,6 +3,8 @@ package control;
 import java.io.IOException;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,7 +23,8 @@ import model.ProdottoDAO;
 @WebServlet("/VisualizzaProdottiServlet")
 public class VisualizzaProdottiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+
     
     public VisualizzaProdottiServlet() {
         super();
@@ -37,9 +40,9 @@ public class VisualizzaProdottiServlet extends HttpServlet {
 		try {
 			request.setAttribute("prodotti", prodotto.doRetriveAll(categoria));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			logger.log(Level.WARNING, "Problema attributo/query");
 			
-			e.printStackTrace();
+			
 		}
 		
 		int idRequest = (int) request.getAttribute("id");

@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +23,8 @@ import model.HelperClass;
 @WebServlet("/ModificaDatiServlet")
 public class ModificaDatiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+
        
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,8 +53,7 @@ public class ModificaDatiServlet extends HttpServlet {
 		 try {
 			user.doUpdatePassword(email,passwordNuova);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema Sql!");
 		}
 	 	   }
 		  
@@ -73,8 +76,7 @@ public class ModificaDatiServlet extends HttpServlet {
 			  try {
 				user.doUpdateNumber(email, cellulare);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema Sql!");
 			}
 			  auth.setNumber(cellulare);
 		  }

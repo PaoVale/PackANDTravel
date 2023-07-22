@@ -95,20 +95,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Seleziona tutti gli elementi con la classe "increase-quantity" e aggiungi un gestore di eventi a ciascuno
   let pulsantiIncrease = document.getElementsByClassName("increase-quantity");
-  for (let i = 0; i < pulsantiIncrease.length; i++) {
-    pulsantiIncrease[i].addEventListener("click", function(event) {
-      let quantityElement = event.target.parentNode.querySelector(".quantity-value");
-      let currentQuantity = parseInt(quantityElement.innerText);
-      quantityElement.innerText = currentQuantity + 1;
+ for (const pulsante of pulsantiIncrease) {
+  pulsante.addEventListener("click", function(event) {
+    let quantityElement = event.target.parentNode.querySelector(".quantity-value");
+    let currentQuantity = parseInt(quantityElement.innerText);
+    quantityElement.innerText = currentQuantity + 1;
 
-      aggiungiAlCarrello(event); // Chiamata alla funzione per aggiungere al carrello
-    });
-  }
+    aggiungiAlCarrello(event); // Chiamata alla funzione per aggiungere al carrello
+  });
+}
+
 
   // Seleziona tutti gli elementi con la classe "decrease-quantity" e aggiungi un gestore di eventi a ciascuno
  let pulsantiDecrease = document.getElementsByClassName("decrease-quantity");
-for (let i = 0; i < pulsantiDecrease.length; i++) {
-  pulsantiDecrease[i].addEventListener("click", function(event) {
+for (const pulsanteDecrease of pulsantiDecrease) {
+  pulsanteDecrease.addEventListener("click", function(event) {
     let quantityElement = event.target.parentNode.querySelector(".quantity-value");
     let currentQuantity = parseInt(quantityElement.innerText);
 
@@ -121,4 +122,5 @@ for (let i = 0; i < pulsantiDecrease.length; i++) {
     }
   });
 }
+
 });

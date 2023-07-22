@@ -49,8 +49,10 @@ dati += "&action=add"; // Aggiungi il parametro "action" con valore "add"
   }
 
   // Seleziona tutti gli elementi con la classe "aggiungiAlCarrello" e aggiungi un gestore di eventi a ciascuno
-  let pulsantiAggiungi = document.getElementsByClassName("aggiungiAlCarrello");
-  for (let i = 0; i < pulsantiAggiungi.length; i++) {
-    pulsantiAggiungi[i].addEventListener("click", aggiungiAlCarrello);
+let pulsantiAggiungi = [...document.getElementsByClassName("aggiungiAlCarrello")];
+
+  // Utilizza un ciclo for...of per aggiungere il gestore di eventi a ciascun pulsante
+  for (const pulsante of pulsantiAggiungi) {
+    pulsante.addEventListener("click", aggiungiAlCarrello);
   }
 });

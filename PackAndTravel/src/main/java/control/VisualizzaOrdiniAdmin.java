@@ -1,14 +1,12 @@
 package control;
 
 import java.io.IOException;
-import java.lang.System.Logger.Level;
+
+
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
-
-import javax.servlet.GenericServlet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,11 +48,8 @@ public class VisualizzaOrdiniAdmin extends HttpServlet {
 	    
 	    if (startD != null && !startD.equals("")) {
 	      startDate = java.sql.Date.valueOf(startD);
-	     
 	      LocalDate localDate = startDate.toLocalDate();
-
 	      LocalDate newDate = localDate.plusDays(1);
-	      
 	      startDate = java.sql.Date.valueOf(newDate);
 	    
 	    }
@@ -81,7 +76,7 @@ public class VisualizzaOrdiniAdmin extends HttpServlet {
 	    
 	    
 	    
-	    GenericServlet logger;
+	    
 		if (email != null && email.equals("all"))
 	        try {
 	          ordineList = (List<OrdineBean>) oDAO.doRetrieveByData(startDate, endDate);

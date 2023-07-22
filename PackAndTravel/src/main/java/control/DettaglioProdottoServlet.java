@@ -3,6 +3,8 @@ package control;
 import java.io.IOException;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,10 +23,9 @@ import model.ProdottoDAO;
 @WebServlet("/DettaglioProdottoServlet")
 public class DettaglioProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+
+     
     public DettaglioProdottoServlet() {
         super();
         
@@ -48,9 +49,7 @@ public class DettaglioProdottoServlet extends HttpServlet {
 		try {
 			request.setAttribute("prodotto", prodotto.doRetrieveByKey(code));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema Parse/Sql!");
 		}
 		
 		RequestDispatcher dispatcher;
