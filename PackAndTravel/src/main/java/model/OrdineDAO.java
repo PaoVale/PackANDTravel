@@ -1,18 +1,17 @@
 package model;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
-//import java.util.logging.Logger;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+
+
 
 import javax.sql.DataSource;
 

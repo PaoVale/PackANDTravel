@@ -1,13 +1,12 @@
 package control;
 
 import java.io.IOException;
-import java.lang.System.Logger.Level;
+
+
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.List;
 
-import javax.servlet.GenericServlet;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -71,7 +70,7 @@ public class VisualizzaOrdiniAdmin extends HttpServlet {
 	    
 	    
 	    
-	    GenericServlet logger;
+	    
 		if (email != null && email.equals("all"))
 	        try {
 	          ordineList = (List<OrdineBean>) oDAO.doRetrieveByData(startDate, endDate);
