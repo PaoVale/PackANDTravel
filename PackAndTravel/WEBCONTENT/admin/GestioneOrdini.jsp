@@ -14,7 +14,6 @@
 <body>
 
 <%
-	//Collection<?> listaUtenti = (Collection<?>) request.getAttribute("listaUtenti");
 	List<AccountUser> listaUtenti = (List<AccountUser>) request.getAttribute("listaUtenti");
 	if(listaUtenti==null){
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/GetUsersListServlet");

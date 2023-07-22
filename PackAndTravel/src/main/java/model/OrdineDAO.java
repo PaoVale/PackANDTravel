@@ -197,8 +197,7 @@ public class OrdineDAO {
 
 	    Collection<OrdineBean> ordini = new LinkedList<>();
 
-	    String selectSQL = "SELECT * FROM ordine WHERE account_email=? AND data_effettuazione BETWEEN ? AND ?";
-	    //String selectSQL="SELECT * FROM ordine WHERE account_email=? AND data_effettuazione >= ? AND data_effettuazione <= ?";
+	    String selectSQL = "SELECT * FROM ordine WHERE account_email=? AND (data_effettuazione BETWEEN ? AND ?)";
 	    
 	    try {
 	      connection = ds.getConnection();

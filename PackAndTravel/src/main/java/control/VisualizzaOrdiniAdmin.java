@@ -5,6 +5,7 @@ import java.lang.System.Logger.Level;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.GenericServlet;
@@ -49,22 +50,31 @@ public class VisualizzaOrdiniAdmin extends HttpServlet {
 	    
 	    if (startD != null && !startD.equals("")) {
 	      startDate = java.sql.Date.valueOf(startD);
-	    System.out.println("start date in if: "+ startDate);
+	     
+	      LocalDate localDate = startDate.toLocalDate();
+
+	      LocalDate newDate = localDate.plusDays(1);
+	      
+	      startDate = java.sql.Date.valueOf(newDate);
+	    
 	    }
 	    else {
 	      startDate = java.sql.Date.valueOf("2023-04-15");
-	    	System.out.println("start date in else: "+ startDate);
+	    	
 	    }
 	    if(endD != null && !endD.equals("")) {
-	    	
 	    
 	      endDate = java.sql.Date.valueOf(endD);
-	      System.out.println("end date in if: "+ endDate);
+	      LocalDate localDate = endDate.toLocalDate();
+	      LocalDate newDate = localDate.plusDays(1);
+	      endDate = java.sql.Date.valueOf(newDate);
+	      
+	      
 	    } else {
 	    	
 	      endDate = new java.sql.Date(System.currentTimeMillis());
-	      System.out.println("end date in else: "+ endDate);
-	    }
+	      }
+	    
 	    OrdineDAO oDAO = new OrdineDAO(ds);
 	    List <OrdineBean> ordineList = null;
 	    
