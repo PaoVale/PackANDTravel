@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -100,7 +101,6 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/Index.jsp");
 		  dispatcher.forward(request, response);
 		 
-		//response.sendRedirect("common/Index.jsp");
 
 
 	}

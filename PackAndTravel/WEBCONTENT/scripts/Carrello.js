@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function () {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          prezzo = parseFloat(document.getElementById('prezzoProdotto'+prodottoId).innerHTML);
+         let prezzo = parseFloat(document.getElementById('prezzoProdotto'+prodottoId).innerHTML);
           document.getElementById('total'+prodottoId).innerHTML= (prezzo*quantita).toFixed(2);
 
-          prezzoAggiornato = dataIdNumber - prezzo;
+          let prezzoAggiornato = dataIdNumber - prezzo;
           console.log("Il valore aggiornato è:", prezzoAggiornato);
           document.getElementById('cart-total').innerHTML=((prezzoAggiornato).toFixed(2)+' &euro;');
           cartTotalElement.setAttribute("data-id", prezzoAggiornato);

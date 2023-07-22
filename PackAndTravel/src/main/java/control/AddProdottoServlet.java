@@ -50,7 +50,6 @@ public class AddProdottoServlet extends HttpServlet {
 	        
 	      } catch (SQLException e) {
 	    	  logger.log(Level.WARNING, "Query errata");
-	    	  e.printStackTrace();
 	      }
 	      
 		request.setAttribute("codice", codice);

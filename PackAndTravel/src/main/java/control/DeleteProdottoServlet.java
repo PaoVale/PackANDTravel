@@ -3,7 +3,8 @@ package control;
 import java.io.IOException;
 
 import java.sql.SQLException;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +22,8 @@ import model.ProdottoDAO;
 @WebServlet("/DeleteProdottoServlet")
 public class DeleteProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+
 	
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,8 +36,8 @@ public class DeleteProdottoServlet extends HttpServlet {
 	        prodottodao.doDelete(codice);
 	        
 	      } catch (SQLException e) {
-	    	  //logger.log(Level.WARNING, "Query errata");
-	    	  e.printStackTrace();
+	    	  logger.log(Level.WARNING, "Query errata");
+	    	 
 	      }
 	      
 		

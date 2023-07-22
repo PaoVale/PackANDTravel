@@ -3,6 +3,8 @@ package control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
@@ -26,6 +28,8 @@ import model.OrdineDAO;
 @WebServlet("/CheckoutServlet")
 public class CheckOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+
        
     
     public CheckOutServlet() {
@@ -81,7 +85,7 @@ public class CheckOutServlet extends HttpServlet {
 			
 			System.out.println(codiceGenerato);
 		} catch (SQLException e1) {
-			//logger.log(Level.WARNING, LOG_MSG);
+			logger.log(Level.WARNING, "Errore in effettuazione ordine");
 		}
 		
 		try {
@@ -95,8 +99,8 @@ public class CheckOutServlet extends HttpServlet {
 				articolodao.doSave(articolo);
 			}
 		}catch (SQLException e1) {
-				//logger.log(Level.WARNING, LOG_MSG);
-				e1.printStackTrace();
+				logger.log(Level.WARNING, "Errore in aggiunta articoli");
+				
 			}
 		
 		request.getSession().setAttribute("carrello", null);

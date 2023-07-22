@@ -287,7 +287,7 @@ function checkCheckout(obj) {
  document.addEventListener('DOMContentLoaded', function () {
       // Aggiungi l'evento 'input' all'elemento di input
       document.getElementById('expirationDate').addEventListener('input', function (e) {
-        var input = e.target.value;
+        let input = e.target.value;
         if (input.length === 2 && !input.includes('/')) {
           e.target.value = input + '/';
         }

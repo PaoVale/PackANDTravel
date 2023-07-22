@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +24,8 @@ public class CarrelloServlet extends HttpServlet {
 	
 	
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+
 	private static final String CARRELLO = "carrello";
 
 	public CarrelloServlet() {
@@ -61,7 +65,7 @@ public class CarrelloServlet extends HttpServlet {
 				try {
 					carrello.addProduct(prodottoDao.doRetrieveByKey(code));
 				} catch (SQLException e) {
-					//logger.log(Level.WARNING, "Problema accesso DB!");
+					logger.log(Level.WARNING, "Problema accesso DB!");
 				}
 				break;
 			}
@@ -69,8 +73,8 @@ public class CarrelloServlet extends HttpServlet {
 				try {
 					carrello.deleteProduct(prodottoDao.doRetrieveByKey(code));
 				} catch (Exception e) {
-					//logger.log(Level.WARNING, "Problema accesso DB!");
-					e.printStackTrace();
+					logger.log(Level.WARNING, "Problema accesso DB!");
+					
 				}
 				break;
 			}
