@@ -1,85 +1,49 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.header {
-  background-color: #26838b; /* Colore di sfondo */
-  color: #fff; /* Colore del testo */
-  text-align: center;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.logo img {
-  width: 500px; /* Dimensione del logo */
-  max-width: 100%;
-}
-
-.icons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* Posiziona le icone all'estrema destra */
-}
-
-.icons a {
-  color: #fff; /* Colore delle icone */
-  font-size: 20px;
-  margin-left: 10px;
-  text-decoration: none;
-}
-
-.icons a:hover {
-  color: black; /* Imposta il colore delle icone quando sono attive */
-}
-
-.search-bar {
-  text-align: center;
-  padding: 20px;
-  background-color: #f9f9f9; /* Colore di sfondo della barra di ricerca */
-}
-
-
-
-.navigation {
-  background-color: #349AA3; /* Colore di sfondo della navigazione */
-  text-align: center;
-  padding: 20px;
-}
-
-.navigation a {
-  color: #fff; /* Colore dei link di navigazione */
-  text-decoration: none;
-  margin-right: 20px;
-}
- .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 160px; /* Regola questa proprietà per spostare il menu più giù */
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+/* Stili per schermi più grandi di 768px */
+@media screen and (min-width: 768px) {
+  .header {
+    flex-direction: row;
   }
-
-  .dropdown-content a:hover {
-    background-color: #f1f1f1;
+  
+  .logo img {
+    width: 200px;
   }
+  
+  .icons {
+    justify-content: space-between;
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: center;
+  }
+}
 
+/* Stili per schermi più piccoli di 768px */
+@media screen and (max-width: 767px) {
+  .header {
+    flex-direction: column;
+  }
+  
+  .logo img {
+    width: 150px;
+  }
+  
+  .icons {
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .navigation {
+    display: none;
+  }
+  
   .show {
     display: block;
+    position: relative;
   }
+  
+  .dropdown-content {
+    top: 0;
+    left: 0;
+  }
+}

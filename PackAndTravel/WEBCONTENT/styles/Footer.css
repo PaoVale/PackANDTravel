@@ -1,16 +1,15 @@
+/* Stili comuni per il footer */
 .footer {
    background-color: #26838b;
    padding: 10px;
    text-align: center;
    font-size: 14px;
-   color: #fff; /* Modifica il colore del testo a bianco */
-   
+   color: #fff;
 }
 
 .footer h4 {
    margin-bottom: 10px;
-   color: #fff; /* Modifica il colore del titolo a bianco */
-   
+   color: #fff;
 }
 
 .footer p {
@@ -18,12 +17,12 @@
 }
 
 .footer a {
-   color: #fff; /* Modifica il colore dei link a bianco */
+   color: #fff;
    text-decoration: none;
 }
 
 .footer a:hover {
-   color: #ccc; /* Modifica il colore dei link al passaggio del mouse */
+   color: #ccc;
 }
 
 .footer .icon {
@@ -37,10 +36,21 @@
 .footer .social-media-icons a {
    display: inline-block;
    margin-right: 10px;
-   color: #fff; /* Modifica il colore delle icone dei social media a bianco */
+   color: #fff;
    font-size: 18px;
 }
 
 .footer .social-media-icons a:hover {
-   color: #ccc; /* Modifica il colore delle icone dei social media al passaggio del mouse */
+   color: #ccc;
+}
+
+/* Stili specifici per schermi più piccoli (responsive) */
+@media screen and (max-width: 768px) {
+   .footer {
+      font-size: 12px;
+   }
+
+   .footer .social-media-icons a {
+      font-size: 16px;
+   }
 }
