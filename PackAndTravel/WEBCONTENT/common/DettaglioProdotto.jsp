@@ -45,7 +45,7 @@
     
     
     <br><br>
-    <button class="button_style aggiungiAlCarrello" data-id="<%=prodotto.getCodice()%>"> Aggiungi al carrello </button>
+    <button class="button_style aggiungiAlCarrello" type="button" data-id="<%=prodotto.getCodice()%>"> Aggiungi al carrello </button>
   </div>
   
 </div>
