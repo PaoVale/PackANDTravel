@@ -32,11 +32,13 @@ public class ProdottoDAO {
 		  
 		  String query = "select * from prodotto";
 		  if(categoria != null)
-			  query += " where categoria_nome =\""+categoria+"\"";	
+			  query += " where categoria_nome = ?";	
 		  
 		  try {
 			  con = ds.getConnection();
 			  pst=con.prepareStatement(query);
+			  if(categoria != null)
+				  pst.setString(1, categoria);
 			  ResultSet rs=pst.executeQuery();
 			  
 			  while(rs.next()) {
@@ -219,7 +221,7 @@ return generatedId;
 		 Connection con=null;
 		  PreparedStatement pst=null;
 		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
-		  String query = "SELECT * FROM prodotto where categoria_nome =\"" + categoria+ "\"" + "ORDER BY prezzo";
+		  String query = "SELECT * FROM prodotto where categoria_nome = ? ORDER BY prezzo";
 		  if(orderValue.equals("decrescente"))
 		  query += " DESC";
 		  else if(orderValue.equals("crescente"))
@@ -229,6 +231,7 @@ return generatedId;
 		  try {
 			  con = ds.getConnection();
 			  pst=con.prepareStatement(query);
+			  pst.setString(1,categoria);
 			  ResultSet rs=pst.executeQuery();
 			  
 			  while(rs.next()) {
@@ -257,15 +260,23 @@ return generatedId;
 		 Connection con=null;
 		  PreparedStatement pst=null;
 		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
-		  String query;
+		  String query = "SELECT * FROM prodotto WHERE prezzo >= ? AND categoria_nome = ?";
 		  
-		  if(prezzoMax != 0)
-		  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " AND prezzo <="+ prezzoMax+ " and categoria_nome= \""+categoria+"\"";
-		  else	
-			  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " and categoria_nome= \""+categoria+"\"";
+		  if (prezzoMax != 0) {
+			    query = "SELECT * FROM prodotto WHERE prezzo >= ? AND prezzo <= ? AND categoria_nome = ?";
+			}
 		  try {
 			  con = ds.getConnection();
 			  pst=con.prepareStatement(query);
+			  // Imposto i parametri dei prepared statement
+			    pst.setInt(1, prezzoMin); // Imposto il parametro ? con prezzoMin
+			    
+			    if (prezzoMax != 0) {
+			        pst.setInt(2, prezzoMax); // Imposto il parametro ? con prezzoMax
+			        pst.setString(3, categoria); // Imposto il parametro ? con categoria
+			    } else {
+			        pst.setString(2, categoria); // Imposto il parametro ? con categoria
+			    }
 			  ResultSet rs=pst.executeQuery();
 			  
 			  while(rs.next()) {
@@ -296,21 +307,33 @@ return generatedId;
 		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
 		  String query=null;
 		  
-		  if(prezzoMax != 0) {
-			  if(orderValue.equals("decrescente"))
-				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " AND prezzo <="+ prezzoMax+ " and categoria_nome= \""+categoria+"\" order by prezzo desc";
-			  else if(orderValue.equals("crescente"))
-				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " AND prezzo <="+ prezzoMax+ " and categoria_nome= \""+categoria+"\" order by prezzo asc";
-		  }
-		  else if(prezzoMax==0) {
-			  if(orderValue.equals("decrescente"))
-				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+ " and categoria_nome= \""+categoria+"\" order by prezzo desc";
-			  else if(orderValue.equals("crescente"))
-				  query = "SELECT * FROM prodotto WHERE prezzo >=" +prezzoMin+" and categoria_nome= \""+categoria+"\" order by prezzo asc";
-		  }
-		  try {
-			  con = ds.getConnection();
-			  pst=con.prepareStatement(query);
+		  if (prezzoMax != 0) {
+			    if (orderValue.equals("decrescente")) {
+			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND prezzo <= ? AND categoria_nome = ? ORDER BY prezzo DESC";
+			    } else if (orderValue.equals("crescente")) {
+			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND prezzo <= ? AND categoria_nome = ? ORDER BY prezzo ASC";
+			    }
+			} else {
+			    if (orderValue.equals("decrescente")) {
+			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND categoria_nome = ? ORDER BY prezzo DESC";
+			    } else if (orderValue.equals("crescente")) {
+			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND categoria_nome = ? ORDER BY prezzo ASC";
+			    }
+			}
+
+			try {
+			    con = ds.getConnection();
+			    pst = con.prepareStatement(query);
+
+			    // Imposto i parametri dei prepared statement
+			    int parameterIndex = 1;
+			    pst.setDouble(parameterIndex++, prezzoMin); // Imposto il parametro ? con prezzoMin
+
+			    if (prezzoMax != 0) {
+			        pst.setDouble(parameterIndex++, prezzoMax); // Imposto il parametro ? con prezzoMax
+			    }
+
+			    pst.setString(parameterIndex, categoria);
 			  ResultSet rs=pst.executeQuery();
 			  
 			  while(rs.next()) {
