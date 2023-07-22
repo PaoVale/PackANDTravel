@@ -7,11 +7,28 @@
 .left-div, .right-div {
   flex: 1;
   height: auto;
-  background-color: lightgray;
+  background-color: rgb(255, 255, 255);
   margin: 30px;
   padding-left: 20px;
   padding-bottom: 20px;
 }
+
+.right-div p{
+	font-size: 20px;
+}
+
+.left-div img{
+	width:500px;
+	height:auto;
+}
+
+
+/*.left-div {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
 
 a#icon{
 	color: #fff; /* Colore delle icone */

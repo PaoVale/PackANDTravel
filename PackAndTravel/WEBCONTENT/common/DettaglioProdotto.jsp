@@ -32,16 +32,16 @@
 	<div class="container">
 	
   <div class="left-div">
-    <img src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice() %>" alt="immagine prodotto" width=500px height=auto>
+    <img src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice() %>" alt="immagine prodotto" >
   </div>
   <div class="right-div">
   
  
-  
-  	<h5><%=prodotto.getCodice()%></h5>
-    <h2><%=prodotto.getNome()%></h2>
+  	
+  	<h4><%=prodotto.getCodice()%></h4>
+    <h1><%=prodotto.getNome()%></h1>
     <p><%=HelperClass.filter(prodotto.getDescrizione())%></p>
-    <h2><%=prodotto.getPrezzo()%></h2>
+    <h1><%=prodotto.getPrezzo()%> &euro;</h1>
     
     
     <br><br>
