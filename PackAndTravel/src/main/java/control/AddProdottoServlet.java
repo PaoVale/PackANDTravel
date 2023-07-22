@@ -39,7 +39,7 @@ public class AddProdottoServlet extends HttpServlet {
 		
 		prodotto.setNome(nome);
 		prodotto.setDescrizione(descrizione);
-		prodotto.setCategoria_nome(categoria);
+		prodotto.setCategoriaNome(categoria);
 		prodotto.setPrezzo(prezzo);
 		
 		 ProdottoDAO prodottodao=null;		      

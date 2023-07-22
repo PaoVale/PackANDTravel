@@ -6,8 +6,7 @@ public class Prodotto {
 	private String descrizione;
 	private double prezzo;
 	private String nome;
-	private String categoria_nome;
-	//private String foto;
+	private String categoriaNome;
 	
 	
 	
@@ -17,13 +16,13 @@ public class Prodotto {
 		
 	}
 
-	public Prodotto(String descrizione, double prezzo, String nome, String categoria_nome, String foto) {
+	public Prodotto(String descrizione, double prezzo, String nome, String categoriaNome) {
 		
 		this.descrizione = descrizione;
 		this.prezzo = prezzo;
 		this.nome = nome;
-		this.categoria_nome = categoria_nome;
-		//this.foto = foto;
+		this.categoriaNome = categoriaNome;
+		
 	}
 
 	public String getDescrizione() {
@@ -50,12 +49,14 @@ public class Prodotto {
 		this.nome = nome;
 	}
 
-	public String getCategoria_nome() {
-		return categoria_nome;
+
+
+	public String getCategoriaNome() {
+		return categoriaNome;
 	}
 
-	public void setCategoria_nome(String categoria_nome) {
-		this.categoria_nome = categoria_nome;
+	public void setCategoriaNome(String categoriaNome) {
+		this.categoriaNome = categoriaNome;
 	}
 
 	

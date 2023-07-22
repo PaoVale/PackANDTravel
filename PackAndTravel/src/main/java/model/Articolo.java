@@ -4,9 +4,9 @@ public class Articolo {
 
 	private int codice;
 	private String nome;
-	private int quantità;
-	private int ordine_codice;
-	private int prodotto_codice;
+	private int quantita;
+	private int ordineCodice;
+	private int prodottoCodice;
 	private double prezzo;
 	
 	
@@ -17,12 +17,12 @@ public class Articolo {
 
 
 
-	public Articolo( String nome, int quantità, int ordine_codice, int prodotto_codice, double prezzo) {
+	public Articolo( String nome, int quantita, int ordineCodice, int prodottoCodice, double prezzo) {
 		
 		this.nome = nome;
-		this.quantità = quantità;
-		this.ordine_codice = ordine_codice;
-		this.prodotto_codice = prodotto_codice;
+		this.quantita = quantita;
+		this.ordineCodice = ordineCodice;
+		this.prodottoCodice = prodottoCodice;
 		this.prezzo = prezzo;
 	}
 
@@ -52,38 +52,38 @@ public class Articolo {
 
 
 
-	public int getQuantità() {
-		return quantità;
+	public int getQuantita() {
+		return quantita;
 	}
 
 
 
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
+	public void setQuantita(int quantita) {
+		this.quantita = quantita;
 	}
 
 
 
-	public int getOrdine_codice() {
-		return ordine_codice;
+	public int getOrdineCodice() {
+		return ordineCodice;
 	}
 
 
 
-	public void setOrdine_codice(int ordine_codice) {
-		this.ordine_codice = ordine_codice;
+	public void setOrdineCodice(int ordineCodice) {
+		this.ordineCodice = ordineCodice;
 	}
 
 
 
-	public int getProdotto_codice() {
-		return prodotto_codice;
+	public int getProdottoCodice() {
+		return prodottoCodice;
 	}
 
 
 
-	public void setProdotto_codice(int prodotto_codice) {
-		this.prodotto_codice = prodotto_codice;
+	public void setProdottoCodice(int prodottoCodice) {
+		this.prodottoCodice = prodottoCodice;
 	}
 
 

@@ -83,7 +83,7 @@ public class OrdineDAO {
 	public synchronized Collection<OrdineBean> doRetrieveByEmail(String email) throws SQLException{
 		Connection con=null;
 		  PreparedStatement pst=null;
-		  Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
+		  Collection<OrdineBean> ordini = new LinkedList<>();
 		  String query= "SELECT * FROM ORDINE WHERE account_email=? ORDER BY data_effettuazione DESC" ;
 		  try {
 			  con=ds.getConnection();

@@ -59,7 +59,7 @@ if (prodotti == null){
 			<td><%=prodotto.getCodice()%></td>
 			<td><%=prodotto.getNome()%></td>
 			<td><%=prodotto.getDescrizione()%></td>
-			<td> <%=prodotto.getCategoria_nome() %></td>
+			<td> <%=prodotto.getCategoriaNome()%></td>
 			<td><%=prodotto.getPrezzo() %></td>
 			<td><img class="img" src="<%=request.getContextPath()%>/getPicture?codice=<%=prodotto.getCodice()%>" alt="immagine prodotto"></td> 
 		</tr>

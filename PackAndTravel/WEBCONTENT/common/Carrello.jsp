@@ -23,9 +23,9 @@
 	if(error == null)
 		error = "";
 	if(carrello == null){
-		System.out.println("Carrello Ã¨ null,prima");
+		System.out.println("Carrello è null,prima");
 		response.sendRedirect("/PackAndTravel/CarrelloServlet?redirect=carrello");
-		System.out.println("Carrello Ã¨ null,dopo");
+		System.out.println("Carrello è null,dopo");
 		return;
 	}
 	
@@ -64,7 +64,7 @@
             </div>
             </td>
 			
-            <td ><%=pb.getProdotto().getCategoria_nome() %></td>
+            <td ><%=pb.getProdotto().getCategoriaNome()%></td>
 
             <td id="prezzoProdotto<%=pb.getProdotto().getCodice()%>"><%=pb.getProdotto().getPrezzo()%> &euro;</td> 
          

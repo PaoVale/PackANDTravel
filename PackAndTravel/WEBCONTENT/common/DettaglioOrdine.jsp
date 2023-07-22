@@ -47,7 +47,7 @@
 					<td><%=articolo.getNome() %> </td>
 					
 					<td><%=articolo.getPrezzo() %></td>
-                	<td><%=articolo.getQuantità() %></td>
+                	<td><%=articolo.getQuantita()%></td>
 				</tr>
 			<%} }%>
 			</tbody>

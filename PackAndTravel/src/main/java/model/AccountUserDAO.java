@@ -161,7 +161,7 @@ public class AccountUserDAO {
 	public synchronized Collection<AccountUser> doRetriveAll() throws SQLException {
 	      Connection con=null;
 	      PreparedStatement pst=null;
-	      Collection<AccountUser> accountlist = new LinkedList<AccountUser>();
+	      Collection<AccountUser> accountlist = new LinkedList<>();
 	      
 	      String query = "select * from accountuser";
 	      

@@ -30,10 +30,10 @@ public class ArticoloDAO {
 
 	      pst = con.prepareStatement(query);
 	      pst.setString(1, articolo.getNome());
-	      pst.setInt(2, articolo.getQuantità());
+	      pst.setInt(2, articolo.getQuantita());
 	      pst.setDouble(3,articolo.getPrezzo() );
-	      pst.setInt(4, articolo.getOrdine_codice());
-	      pst.setInt(5, articolo.getProdotto_codice() );
+	      pst.setInt(4, articolo.getOrdineCodice());
+	      pst.setInt(5, articolo.getProdottoCodice() );
 	     
 
 	      pst.executeUpdate();
@@ -55,7 +55,7 @@ public class ArticoloDAO {
 	public synchronized Collection<Articolo> doRetriveAllByKey(int codice) throws SQLException {
 	      Connection con=null;
 	      PreparedStatement pst=null;
-	      Collection<Articolo> articoli = new LinkedList<Articolo>();
+	      Collection<Articolo> articoli = new LinkedList<>();
 	      
 	      String query = "select * from articolo where ordine_codice=?";
 	     	      
@@ -69,10 +69,10 @@ public class ArticoloDAO {
 	          Articolo articolo=new Articolo();
 	          articolo.setCodice(rs.getInt("codice"));
 	          articolo.setNome(rs.getString("nome"));
-	          articolo.setQuantità(rs.getInt("quantità"));
+	          articolo.setQuantita(rs.getInt("quantità"));
 	          articolo.setPrezzo(rs.getDouble("prezzo"));
-	          articolo.setOrdine_codice(rs.getInt("ordine_codice"));
-	          articolo.setProdotto_codice(rs.getInt("prodotto_codice"));
+	          articolo.setOrdineCodice(rs.getInt("ordine_codice"));
+	          articolo.setProdottoCodice(rs.getInt("prodotto_codice"));
 	          articoli.add(articolo);
 	          
 	        }

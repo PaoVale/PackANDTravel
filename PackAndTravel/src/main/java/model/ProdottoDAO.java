@@ -28,7 +28,7 @@ public class ProdottoDAO {
 	  public synchronized Collection<Prodotto> doRetriveAll(String categoria) throws SQLException {
 		  Connection con=null;
 		  PreparedStatement pst=null;
-		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+		  Collection<Prodotto> prodotti = new LinkedList<>();
 		  
 		  String query = "select * from prodotto";
 		  if(categoria != null)
@@ -47,7 +47,7 @@ public class ProdottoDAO {
 				  prodotto.setDescrizione(rs.getString("descrizione"));
 				  prodotto.setPrezzo(rs.getDouble("prezzo"));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {
@@ -75,7 +75,7 @@ public class ProdottoDAO {
 			pst.setString(1, prodotto.getDescrizione());
 			pst.setDouble(2,prodotto.getPrezzo() );
 			pst.setString(3,prodotto.getNome());
-			pst.setString(4, prodotto.getCategoria_nome());
+			pst.setString(4, prodotto.getCategoriaNome());
 			//pst.setString(5, prodotto.getFoto());
 
 			int rowsAffected = pst.executeUpdate();
@@ -200,7 +200,7 @@ return generatedId;
 				  prodotto.setDescrizione(rs.getString("descrizione"));
 				  prodotto.setPrezzo(rs.getDouble("prezzo"));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
 				  //foto
 			  }
 		  }finally {
@@ -220,7 +220,7 @@ return generatedId;
 	public synchronized Collection<Prodotto>  doRetrieveByOrdine(String categoria, String orderValue) throws SQLException {
 		 Connection con=null;
 		  PreparedStatement pst=null;
-		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+		  Collection<Prodotto> prodotti = new LinkedList<>();
 		  String query = "SELECT * FROM prodotto where categoria_nome = ? ORDER BY prezzo";
 		  if(orderValue.equals("decrescente"))
 		  query += " DESC";
@@ -240,7 +240,7 @@ return generatedId;
 				  prodotto.setDescrizione(rs.getString("descrizione"));
 				  prodotto.setPrezzo(rs.getDouble("prezzo"));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {
@@ -259,7 +259,7 @@ return generatedId;
 	public synchronized Collection<Prodotto> doRetrieveByPrezzo(String categoria, int prezzoMin, int prezzoMax) throws SQLException {
 		 Connection con=null;
 		  PreparedStatement pst=null;
-		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+		  Collection<Prodotto> prodotti = new LinkedList<>();
 		  String query = "SELECT * FROM prodotto WHERE prezzo >= ? AND categoria_nome = ?";
 		  
 		  if (prezzoMax != 0) {
@@ -285,7 +285,7 @@ return generatedId;
 				  prodotto.setDescrizione(rs.getString("descrizione"));
 				  prodotto.setPrezzo(rs.getDouble("prezzo"));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {
@@ -304,7 +304,7 @@ return generatedId;
 	public synchronized Collection<Prodotto> doRetrieveByPrezzoAndOrdine(String categoria, int prezzoMin, int prezzoMax, String orderValue) throws SQLException {
 		 Connection con=null;
 		  PreparedStatement pst=null;
-		  Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+		  Collection<Prodotto> prodotti = new LinkedList<>();
 		  String query=null;
 		  
 		  if (prezzoMax != 0) {
@@ -342,7 +342,7 @@ return generatedId;
 				  prodotto.setDescrizione(rs.getString("descrizione"));
 				  prodotto.setPrezzo(rs.getDouble("prezzo"));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoria_nome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {

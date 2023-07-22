@@ -92,10 +92,10 @@ public class CheckOutServlet extends HttpServlet {
 			for(CartItem item : elementi) {
 				Articolo articolo = new Articolo();
 				articolo.setNome(item.getProdotto().getNome());
-				articolo.setQuantità(item.getQuantita());
+				articolo.setQuantita(item.getQuantita());
 				articolo.setPrezzo(item.getProdotto().getPrezzo());
-				articolo.setOrdine_codice(codiceGenerato);
-				articolo.setProdotto_codice(item.getProdotto().getCodice());
+				articolo.setOrdineCodice(codiceGenerato);
+				articolo.setProdottoCodice(item.getProdotto().getCodice());
 				articolodao.doSave(articolo);
 			}
 		}catch (SQLException e1) {
