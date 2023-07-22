@@ -33,7 +33,7 @@
         
          <% 
          	if(auth != null){ %>
-         	<a href="<%=request.getContextPath()%>/common/Wishlist.jsp" title="Wishlist" ><i class="fas fa-heart" ></i></a> 
+         	
          	<% if(auth.isAdmin()){ %>
          <a href="#" onclick="toggleDropdown()" title="Area riservata"><i class="fas fa-cog"></i></a>
          <div id="dropdownMenu" class="dropdown-content">

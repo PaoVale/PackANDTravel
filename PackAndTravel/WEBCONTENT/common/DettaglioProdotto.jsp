@@ -42,7 +42,7 @@
     <h2><%=prodotto.getNome()%></h2>
     <p><%=HelperClass.filter(prodotto.getDescrizione())%></p>
     <h2><%=prodotto.getPrezzo()%></h2>
-    <a id="icon" ><i class="fas fa-heart" ></i></a>
+    
     
     <br><br>
     <button class="button_style aggiungiAlCarrello" data-id="<%=prodotto.getCodice()%>"> Aggiungi al carrello </button>
