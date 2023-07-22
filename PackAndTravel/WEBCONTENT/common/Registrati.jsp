@@ -29,7 +29,6 @@
     <div class="container">
         <h1>Registrazione</h1>
         <form id="regForm" action="/PackAndTravel/RegistratiServlet" method="post" onsubmit="event.preventDefault();checkSignup(this)">
-        <!-- <input type="hidden" name="action" value="insert"> -->
            
             <div class="form-group">
                 <label for="email">*Email:</label>

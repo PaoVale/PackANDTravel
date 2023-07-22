@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Codice JavaScript per gestire il clic sul pulsante "Aggiungi al carrello"
   function aggiungiAlCarrello(event) {
-    var cartTotalElement = document.getElementById("cart-total");
-    var dataIdValue = cartTotalElement.getAttribute("data-id");
-    var dataIdNumber = parseFloat(dataIdValue);
+    let cartTotalElement = document.getElementById("cart-total");
+    let dataIdValue = cartTotalElement.getAttribute("data-id");
+    let dataIdNumber = parseFloat(dataIdValue);
     console.log("Il valore di data-id è:", dataIdNumber);
 
-    var pulsante = event.target;
-    var quantityElement = pulsante.parentNode.querySelector(".quantity-value");
-    var quantita = parseInt(quantityElement.innerText);
+    let pulsante = event.target;
+    let quantityElement = pulsante.parentNode.querySelector(".quantity-value");
+    let quantita = parseInt(quantityElement.innerText);
 
-    var prodottoId = pulsante.dataset.id;
+    let prodottoId = pulsante.dataset.id;
 
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log("Prodotto aggiunto al carrello con successo.");
           
           // Abilita il pulsante "-" quando la quantità è maggiore di 1
-          var pulsanteMinus = pulsante.parentNode.querySelector(".decrease-quantity");
+          let pulsanteMinus = pulsante.parentNode.querySelector(".decrease-quantity");
           if (quantita > 1) {
             pulsanteMinus.removeAttribute("disabled");
           }
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
-    var dati = "idProdotto=" + encodeURIComponent(prodottoId);
+    let dati = "idProdotto=" + encodeURIComponent(prodottoId);
     dati += "&action=add";
 
     xhr.open("POST", "/PackAndTravel/CarrelloServlet", true);
@@ -48,18 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Codice JavaScript per gestire il clic sul pulsante "Elimina dal carrello"
   function DecrementaDalCarrello(event) {
-    var cartTotalElement = document.getElementById("cart-total");
-    var dataIdValue = cartTotalElement.getAttribute("data-id");
-    var dataIdNumber = parseFloat(dataIdValue);
+    let cartTotalElement = document.getElementById("cart-total");
+    let dataIdValue = cartTotalElement.getAttribute("data-id");
+    let dataIdNumber = parseFloat(dataIdValue);
     console.log("Il valore di data-id è:", dataIdNumber);
 
-    var pulsante = event.target;
-    var quantityElement = pulsante.parentNode.querySelector(".quantity-value");
-    var quantita = parseInt(quantityElement.innerText);
+    let pulsante = event.target;
+    let quantityElement = pulsante.parentNode.querySelector(".quantity-value");
+    let quantita = parseInt(quantityElement.innerText);
 
-    var prodottoId = pulsante.dataset.id;
+    let prodottoId = pulsante.dataset.id;
 
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log("Prodotto decrementato dal carrello con successo.");
           
           // Disabilita il pulsante "-" quando la quantità è 1
-          var pulsanteMinus = pulsante.parentNode.querySelector(".decrease-quantity");
+          let pulsanteMinus = pulsante.parentNode.querySelector(".decrease-quantity");
           if (quantita === 1) {
             pulsanteMinus.setAttribute("disabled", "disabled");
           }
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
-    var dati = "idProdotto=" + encodeURIComponent(prodottoId);
+    let dati = "idProdotto=" + encodeURIComponent(prodottoId);
     dati += "&action=delete";
 
     xhr.open("POST", "/PackAndTravel/CarrelloServlet", true);
@@ -94,11 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Seleziona tutti gli elementi con la classe "increase-quantity" e aggiungi un gestore di eventi a ciascuno
-  var pulsantiIncrease = document.getElementsByClassName("increase-quantity");
-  for (var i = 0; i < pulsantiIncrease.length; i++) {
+  let pulsantiIncrease = document.getElementsByClassName("increase-quantity");
+  for (let i = 0; i < pulsantiIncrease.length; i++) {
     pulsantiIncrease[i].addEventListener("click", function(event) {
-      var quantityElement = event.target.parentNode.querySelector(".quantity-value");
-      var currentQuantity = parseInt(quantityElement.innerText);
+      let quantityElement = event.target.parentNode.querySelector(".quantity-value");
+      let currentQuantity = parseInt(quantityElement.innerText);
       quantityElement.innerText = currentQuantity + 1;
 
       aggiungiAlCarrello(event); // Chiamata alla funzione per aggiungere al carrello
@@ -106,11 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Seleziona tutti gli elementi con la classe "decrease-quantity" e aggiungi un gestore di eventi a ciascuno
- var pulsantiDecrease = document.getElementsByClassName("decrease-quantity");
-for (var i = 0; i < pulsantiDecrease.length; i++) {
+ let pulsantiDecrease = document.getElementsByClassName("decrease-quantity");
+for (let i = 0; i < pulsantiDecrease.length; i++) {
   pulsantiDecrease[i].addEventListener("click", function(event) {
-    var quantityElement = event.target.parentNode.querySelector(".quantity-value");
-    var currentQuantity = parseInt(quantityElement.innerText);
+    let quantityElement = event.target.parentNode.querySelector(".quantity-value");
+    let currentQuantity = parseInt(quantityElement.innerText);
 
     if (currentQuantity > 1) {
       quantityElement.innerText = currentQuantity - 1;

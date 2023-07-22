@@ -99,23 +99,6 @@ public class CheckOutServlet extends HttpServlet {
 				e1.printStackTrace();
 			}
 		
-
-		/*
-		 * DettaglioOrdineDAO dettaglioOrdineDAO = new DettaglioOrdineDAO();
-		 * 
-		 * try { for (CartItem elem : elementi) { DettaglioOrdineBean dettaglioOrdine =
-		 * new DettaglioOrdineBean();
-		 * dettaglioOrdine.setCodiceProdotto(elem.getProductBean().getCode());
-		 * dettaglioOrdine.setQuantita(elem.getQuantita());
-		 * dettaglioOrdine.setPrezzo(elem.getProductBean().getPrice());
-		 * dettaglioOrdine.setNumeroOrd(numeroOrd);
-		 * 
-		 * dettaglioOrdineDAO.doSave(dettaglioOrdine); } } catch (SQLException e) {
-		 * e.printStackTrace(); }
-		 */
-		
-		
-		
 		request.getSession().setAttribute("carrello", null);
 		
 		request.getRequestDispatcher("common/VisualizzaOrdiniUtente.jsp").forward(request, response);
