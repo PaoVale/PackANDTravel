@@ -38,6 +38,7 @@ if (prodotti == null){
     Visualizza prodotti <span id="toggleButton1" class="cursor-pointer" onclick="toggleContent('toggleButton1', 'productTable')">+</span>
   </h2>
 	<table id="productTable" border="1" class="hidden" > 
+	 <caption></caption>
 	
   <tr>
     <th>Codice </th>

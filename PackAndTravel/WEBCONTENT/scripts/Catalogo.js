@@ -11,17 +11,17 @@ function closeSidebar() {
 document.addEventListener("DOMContentLoaded", function() {
   // Codice JavaScript per gestire il clic sul pulsante "Aggiungi al carrello"
   function aggiungiAlCarrello(event) {
-    var pulsante = event.target; // Ottieni il pulsante cliccato
+    let pulsante = event.target; // Ottieni il pulsante cliccato
     // Disabilita il pulsante dopo il clic per evitare clic multipli
     pulsante.disabled = true;
     // Cambia il testo del pulsante in "Aggiunto al carrello"
     pulsante.innerText = "Aggiunto al carrello";
 
     // Ottieni l'ID del prodotto dal pulsante (attributo data-id)
-    var prodottoId = pulsante.dataset.id;
+    let prodottoId = pulsante.dataset.id;
 
     // Crea un oggetto XMLHttpRequest per la richiesta AJAX
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
     // Imposta il gestore degli eventi per la risposta della richiesta
     xhr.onreadystatechange = function() {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     // Prepara i dati da inviare alla servlet (ad esempio, l'ID del prodotto e l'action "add")
-   var dati = "idProdotto=" + encodeURIComponent(prodottoId);
+   let dati = "idProdotto=" + encodeURIComponent(prodottoId);
 dati += "&action=add"; // Aggiungi il parametro "action" con valore "add"
 
 
@@ -49,8 +49,8 @@ dati += "&action=add"; // Aggiungi il parametro "action" con valore "add"
   }
 
   // Seleziona tutti gli elementi con la classe "aggiungiAlCarrello" e aggiungi un gestore di eventi a ciascuno
-  var pulsantiAggiungi = document.getElementsByClassName("aggiungiAlCarrello");
-  for (var i = 0; i < pulsantiAggiungi.length; i++) {
+  let pulsantiAggiungi = document.getElementsByClassName("aggiungiAlCarrello");
+  for (let i = 0; i < pulsantiAggiungi.length; i++) {
     pulsantiAggiungi[i].addEventListener("click", aggiungiAlCarrello);
   }
 });

@@ -57,6 +57,7 @@
   %>
   
   <table id="productTable" border="1" > 
+  <caption></caption>
   
   <tr>
     <th>Codice</th>

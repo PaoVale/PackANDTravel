@@ -165,11 +165,11 @@ function checkModifica(obj){
 function checkModificaProdotto(form) {
   // Ottenere i valori dei campi del modulo
   
-  var nome = form.nome.value;
-  var descrizione = form.descrizione.value;
-  var categoria = form.categoria.value;
-  var prezzo = form.prezzo.value;
-  var immagine = form.immagine.value;
+  let nome = form.nome.value;
+  let descrizione = form.descrizione.value;
+  let categoria = form.categoria.value;
+  let prezzo = form.prezzo.value;
+  let immagine = form.immagine.value;
 
   // Verificare se tutti i campi sono vuoti
   if (

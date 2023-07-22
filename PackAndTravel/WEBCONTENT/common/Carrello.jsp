@@ -40,6 +40,7 @@
 
     <main class="container">
         <table>
+         <caption></caption>
             <thead>
                 <tr>
                     <th>Prodotto</th>
