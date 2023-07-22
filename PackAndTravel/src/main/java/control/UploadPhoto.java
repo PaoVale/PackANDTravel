@@ -37,7 +37,7 @@ public class UploadPhoto extends HttpServlet {
      */
     public UploadPhoto() {
         super();
-        // TODO Auto-generated constructor stub
+      
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,7 +51,7 @@ public class UploadPhoto extends HttpServlet {
 			tool.updatePhoto(codice, filePart.getInputStream());
 		} catch (SQLException sqlException) {
 			logger.log(Level.WARNING, "Problema SQL!");
-			sqlException.printStackTrace();
+			
 		}
 		
 

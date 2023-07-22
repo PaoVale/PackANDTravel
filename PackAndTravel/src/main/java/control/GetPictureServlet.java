@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -18,6 +20,8 @@ import model.PhotoControl;
 @WebServlet("/getPicture")
 public class GetPictureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+
 
 	public GetPictureServlet() {
 		super();
@@ -36,8 +40,7 @@ public class GetPictureServlet extends HttpServlet {
 			try {
 				bt = tool.load(id);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problrma caricamento foto");
 			}
 
 			ServletOutputStream out = response.getOutputStream();
