@@ -51,9 +51,6 @@ public class LoginServlet extends HttpServlet {
 			logger.log(Level.WARNING, "Problema Parse/Sql!");
 		}
 
-		if(user.getEmail()==null) {
-			System.out.println("email è null"+ user.getEmail());
-		}
 		//controllo tra password inserita nel form e quella nel db
 		boolean controlloPasswd=false;
 		if(user.getEmail()!=null && user.getEmail().equals(email) ) {
@@ -71,14 +68,11 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("isLogged", "false");
 			request.setAttribute("error", error);
 
-			System.out.println("password inserita errata");
-
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/common/Login.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
 
-		System.out.println("sono nella servlet");
 		//significa che ho trovato l'utente
 		HttpSession session = request.getSession();
 		session.setAttribute("isLogged", "true"); 
@@ -87,7 +81,6 @@ public class LoginServlet extends HttpServlet {
 		String admin;
 		if(user.isAdmin()) {
 			admin = "true";
-			System.out.println("Admin ha fatto l'accesso");
 		}
 		else
 			admin = "false";

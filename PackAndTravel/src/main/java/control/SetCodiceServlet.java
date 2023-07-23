@@ -20,7 +20,6 @@ public class SetCodiceServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String codice = request.getParameter("code");
-		System.out.println("codice in set codice"+codice);
 		request.getSession().setAttribute("codice", codice);
 		
 	    response.sendRedirect(request.getContextPath() + "/common/DettaglioOrdine.jsp");

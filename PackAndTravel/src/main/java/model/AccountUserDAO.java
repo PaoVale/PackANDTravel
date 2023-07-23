@@ -32,7 +32,6 @@ public class AccountUserDAO {
 			query = "select * from accountuser where email = ? ";
 			pst = con.prepareStatement(query);
 			pst.setString(1, email);
-			//pst.setString(2, password);
 			rs = pst.executeQuery();
 
 			if(rs.next()) {

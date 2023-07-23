@@ -36,7 +36,6 @@ public class VisualizzaProdottiServlet extends HttpServlet {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ProdottoDAO prodotto = new ProdottoDAO(ds);
 		String categoria= (String) request.getAttribute("categoria");
-		System.out.println("categoria visualizza: " + categoria);
 		try {
 			request.setAttribute("prodotti", prodotto.doRetriveAll(categoria));
 		} catch (SQLException e) {

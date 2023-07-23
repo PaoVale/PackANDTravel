@@ -31,7 +31,7 @@ public class DettaglioOrdineServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Sono nella servlet dettaglio ordine servlet");
+		
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 	    ArticoloDAO articolo = new ArticoloDAO(ds);
 	    String codiceString=(String) request.getSession().getAttribute("codice");
@@ -40,7 +40,6 @@ public class DettaglioOrdineServlet extends HttpServlet {
 	    try {
 	    	request.setAttribute("articoli", articolo.doRetriveAllByKey(codice)); //codice ordine
 	    	
-	    	System.out.println("Sono nel try della servlet dettaglio ordine servlet");
 	    } catch (SQLException e) {
 	        
 	        

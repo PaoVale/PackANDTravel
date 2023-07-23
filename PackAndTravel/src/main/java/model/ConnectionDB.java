@@ -1,5 +1,8 @@
 package model;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -11,6 +14,8 @@ import javax.sql.DataSource;
 
 @WebListener
 public class ConnectionDB implements ServletContextListener{
+	
+	private static Logger logger = Logger.getAnonymousLogger();
 
 	public void contextInitialized(ServletContextEvent event) {
 
@@ -23,17 +28,17 @@ public class ConnectionDB implements ServletContextListener{
 
 			ds = (DataSource) envCtx.lookup("jdbc/packandtravel");
 		} catch(NamingException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.log(Level.WARNING, "Errore SQL", e);
 		}
 
 		context.setAttribute("DataSource", ds);
-		System.out.println("Creating DataSource... " + ds.toString());
+		logger.log(Level.WARNING, "Creating DataSource...");
 	}
 
 	public void contextDestroyed(ServletContextEvent event) {
 		ServletContext context = event.getServletContext();
 
 		DataSource ds = (DataSource) context.getAttribute("DataSource");
-		System.out.println("DataSource deletion.... " + ds.toString());
+		logger.log(Level.WARNING, "Deleting DataSource...");
 	}
 }

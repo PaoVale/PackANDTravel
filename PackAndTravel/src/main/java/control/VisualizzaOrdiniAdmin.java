@@ -7,6 +7,9 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +25,7 @@ import model.OrdineDAO;
 @WebServlet("/VisualizzaOrdiniAdmin")
 public class VisualizzaOrdiniAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getAnonymousLogger();
        
     
     public VisualizzaOrdiniAdmin() {
@@ -81,15 +85,13 @@ public class VisualizzaOrdiniAdmin extends HttpServlet {
 	        try {
 	          ordineList = (List<OrdineBean>) oDAO.doRetrieveByData(startDate, endDate);
 	        } catch (SQLException e) {
-	          //logger.log(Level.WARNING, "Problema accesso DB!");
-	        	e.printStackTrace();
+	        	logger.log(Level.WARNING, "Errore SQL", e);
 	        }
 	    else{
 	      try {
 	        ordineList = (List<OrdineBean>) oDAO.doRetrieveByUserData(email, startDate, endDate);
 	      } catch (SQLException e) {
-	        //logger.log(Level.WARNING, "Problema accesso DB!");
-	    	  e.printStackTrace();
+	    	  logger.log(Level.WARNING, "Errore SQL", e);
 	      }
 	    }
 	      

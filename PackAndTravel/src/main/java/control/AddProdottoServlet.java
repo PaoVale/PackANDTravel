@@ -53,7 +53,7 @@ public class AddProdottoServlet extends HttpServlet {
 	      }
 	      
 		request.setAttribute("codice", codice);
-		System.out.println(nome+" " + descrizione+" "+ categoria+" "+prezzo);
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UploadPhoto");
 		dispatcher.forward(request, response); 
 		

@@ -83,7 +83,7 @@ public class CheckOutServlet extends HttpServlet {
 			ordine.setPrezzo(totaleString);
 			codiceGenerato=ordinedao.doSave(ordine);
 			
-			System.out.println(codiceGenerato);
+			
 		} catch (SQLException e1) {
 			logger.log(Level.WARNING, "Errore in effettuazione ordine");
 		}

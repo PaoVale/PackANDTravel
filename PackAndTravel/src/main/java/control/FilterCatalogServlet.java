@@ -34,7 +34,6 @@ public class FilterCatalogServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String categoria= (String) request.getParameter("categoria");
-		System.out.println("categoria filter: " + categoria);
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ProdottoDAO prodotto = new ProdottoDAO(ds);
 		
@@ -98,11 +97,6 @@ public class FilterCatalogServlet extends HttpServlet {
         	
         }
 
-       
-       
-        // Esempio di output per verificare i valori ricevuti
-        System.out.println("Prezzo selezionato: " + priceValue);
-        System.out.println("Ordine selezionato: " + orderValue);
         
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/common/Catalogo.jsp?categoria="+categoria);
 		dispatcher.forward(request, response);

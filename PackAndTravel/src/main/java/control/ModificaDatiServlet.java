@@ -59,7 +59,6 @@ public class ModificaDatiServlet extends HttpServlet {
 		  
 		  if(request.getParameter("indirizzo")!="") {
 			  indirizzo=request.getParameter("indirizzo");
-			  System.out.println("Indirizzo mandato: "+indirizzo);
 			  try {
 				user.doUpdateAddress(email, indirizzo);
 			} catch (SQLException e) {
@@ -72,7 +71,6 @@ public class ModificaDatiServlet extends HttpServlet {
 		
 		  if(request.getParameter("cellulare")!="") {
 			  cellulare=request.getParameter("cellulare");
-			  System.out.println("Cellulare mandato: "+cellulare);
 			  try {
 				user.doUpdateNumber(email, cellulare);
 			} catch (SQLException e) {

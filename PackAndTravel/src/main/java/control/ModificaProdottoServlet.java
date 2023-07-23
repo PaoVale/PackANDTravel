@@ -41,14 +41,12 @@ public class ModificaProdottoServlet extends HttpServlet {
 		String nome=null;
 		String descrizione= null;
 		String categoria=null;
-		Double prezzo=0.0;
+		Double prezzo;
 		
-		System.out.println("nome: "+request.getParameter("nome")+ " descrizione: "+request.getParameter("descrizione")+ " categoria:"+request.getParameter("categoria")+" prezzo: "+request.getParameter("prezzo"));
+		
 		if (request.getParameter("nome")!="" && request.getParameter("nome")!=null && !request.getParameter("nome").isEmpty())
 		{
-			System.out.println("sono nella modifica del nome");
 			nome = request.getParameter("nome");
-			System.out.println("ho asegnato il nome");
 			
 			try {
 				prodotto.doUpdate("nome", nome, codice);
@@ -59,9 +57,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 		
 		if (request.getParameter("descrizione")!="" && request.getParameter("descrizione")!=null && !request.getParameter("descrizione").isEmpty())
 		{
-			System.out.println("sono nella modifica della descrizione");
 			descrizione = request.getParameter("descrizione");
-			System.out.println("ho assegnato la descrizione");
 			
 			try {
 				prodotto.doUpdate("descrizione", descrizione, codice);
@@ -103,8 +99,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 	      
 	      RequestDispatcher dispatcher =
 	      getServletContext().getRequestDispatcher("/UploadPhoto");
-	      dispatcher.forward(request, response);
-	      System.out.println("Sono dopo di dispatcher"); }
+	      dispatcher.forward(request, response);}
 	      else {
 	     
 		

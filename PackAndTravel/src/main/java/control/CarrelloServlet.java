@@ -40,7 +40,7 @@ public class CarrelloServlet extends HttpServlet {
 	 
 
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			System.out.println("Sono nella servlet carrello");
+			
 			
 		Cart carrello = (Cart) request.getSession().getAttribute(CARRELLO);
 		if (carrello == null) {

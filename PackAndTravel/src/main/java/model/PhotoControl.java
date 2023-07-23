@@ -46,8 +46,7 @@ public class PhotoControl {
 			}
 
 		} catch (SQLException sqlException) {
-			System.out.println(sqlException);
-		} 
+			logger.log(Level.WARNING, "Errore SQL", sqlException);		} 
 		finally {
 			try {
 				if (stmt != null)

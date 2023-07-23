@@ -19,7 +19,7 @@ public class OrdineDAO {
 	
 	
 	private DataSource ds=null;
-	//private static Logger logger = Logger.getAnonymousLogger();
+	
 	
 	 public OrdineDAO(DataSource ds) {
 		    super();
@@ -62,7 +62,7 @@ public class OrdineDAO {
 		          if (generatedKeys.next()) {
 		              generatedId = generatedKeys.getInt(1);
 		              // Utilizza l'ID generato come desideri
-		              System.out.println("ID generato: " + generatedId);
+		             
 		          }
 		          
 		}} finally {
@@ -84,7 +84,7 @@ public class OrdineDAO {
 		Connection con=null;
 		  PreparedStatement pst=null;
 		  Collection<OrdineBean> ordini = new LinkedList<>();
-		  String query= "SELECT * FROM ORDINE WHERE account_email=? ORDER BY data_effettuazione DESC" ;
+		  String query= CONST_SELECT +"ORDINE WHERE account_email=? ORDER BY data_effettuazione DESC" ;
 		  try {
 			  con=ds.getConnection();
 			  pst=con.prepareStatement(query);
@@ -168,7 +168,7 @@ public class OrdineDAO {
 
 	      while (rs.next()) {
 	        OrdineBean bean = new OrdineBean();
-	        bean.setCodice(rs.getInt("codice"));
+	        bean.setCodice(rs.getInt(NUM_ORDINE));
 	        bean.setEmail(rs.getString("account_email"));
 	        bean.setDataOrdine(rs.getDate("data_effettuazione"));
 	        bean.setPrezzo(rs.getDouble("prezzo_tot"));
@@ -196,7 +196,7 @@ public class OrdineDAO {
 
 	    Collection<OrdineBean> ordini = new LinkedList<>();
 
-	    String selectSQL = "SELECT * FROM ordine WHERE account_email=? AND (data_effettuazione BETWEEN ? AND ?)";
+	    String selectSQL = CONST_SELECT  +"ordine WHERE account_email=? AND (data_effettuazione BETWEEN ? AND ?)";
 	    
 	    try {
 	      connection = ds.getConnection();
