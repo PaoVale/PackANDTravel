@@ -39,6 +39,6 @@ public class ConnectionDB implements ServletContextListener{
 		ServletContext context = event.getServletContext();
 
 		DataSource ds = (DataSource) context.getAttribute("DataSource");
-		logger.log(Level.WARNING, "Deleting DataSource...");
+		logger.log(Level.WARNING, "Deleting DataSource...",ds);
 	}
 }

@@ -21,7 +21,13 @@ public class ProdottoDAO {
 	    super();
 	    this.ds=ds;
 	  }
-	
+	  private static final String CRESCENTE = "crescente";
+	  private static final String DECRESCENTE = "decrescente";
+	  private static final String CATEGORIA = "categoria_nome";
+	  private static final String PREZZO = "prezzo";
+	  private static final String CODICE = "codice";
+	  private static final String DESCRIZIONE = "descrizione";
+	  
 	  public synchronized Collection<Prodotto> doRetriveAll(String categoria) throws SQLException {
 		  Connection con=null;
 		  PreparedStatement pst=null;
@@ -40,11 +46,11 @@ public class ProdottoDAO {
 			  
 			  while(rs.next()) {
 				  Prodotto prodotto=new Prodotto();
-				  prodotto.setCodice(rs.getInt("codice"));
-				  prodotto.setDescrizione(rs.getString("descrizione"));
-				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setCodice(rs.getInt(CODICE));
+				  prodotto.setDescrizione(rs.getString(DESCRIZIONE));
+				  prodotto.setPrezzo(rs.getDouble(PREZZO));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString(CATEGORIA));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {
@@ -191,11 +197,11 @@ return generatedId;
 			  ResultSet rs=pst.executeQuery();
 			  
 			  while(rs.next()) {
-				  prodotto.setCodice(rs.getInt("codice"));
-				  prodotto.setDescrizione(rs.getString("descrizione"));
-				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setCodice(rs.getInt(CODICE));
+				  prodotto.setDescrizione(rs.getString(DESCRIZIONE));
+				  prodotto.setPrezzo(rs.getDouble(PREZZO));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString(CATEGORIA));
 				  //foto
 			  }
 		  }finally {
@@ -217,9 +223,9 @@ return generatedId;
 		  PreparedStatement pst=null;
 		  Collection<Prodotto> prodotti = new LinkedList<>();
 		  String query = "SELECT * FROM prodotto where categoria_nome = ? ORDER BY prezzo";
-		  if(orderValue.equals("decrescente"))
+		  if(orderValue.equals(DECRESCENTE))
 		  query += " DESC";
-		  else if(orderValue.equals("crescente"))
+		  else if(orderValue.equals(CRESCENTE))
 		  query += " ASC";
 		  		
 		  
@@ -231,11 +237,11 @@ return generatedId;
 			  
 			  while(rs.next()) {
 				  Prodotto prodotto=new Prodotto();
-				  prodotto.setCodice(rs.getInt("codice"));
-				  prodotto.setDescrizione(rs.getString("descrizione"));
-				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setCodice(rs.getInt(CODICE));
+				  prodotto.setDescrizione(rs.getString(DESCRIZIONE));
+				  prodotto.setPrezzo(rs.getDouble(PREZZO));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString(CATEGORIA));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {
@@ -276,11 +282,11 @@ return generatedId;
 			  
 			  while(rs.next()) {
 				  Prodotto prodotto=new Prodotto();
-				  prodotto.setCodice(rs.getInt("codice"));
-				  prodotto.setDescrizione(rs.getString("descrizione"));
-				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setCodice(rs.getInt(CODICE));
+				  prodotto.setDescrizione(rs.getString(DESCRIZIONE));
+				  prodotto.setPrezzo(rs.getDouble(PREZZO));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString(CATEGORIA));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {
@@ -303,15 +309,15 @@ return generatedId;
 		  String query=null;
 		  
 		  if (prezzoMax != 0) {
-			    if (orderValue.equals("decrescente")) {
+			    if (orderValue.equals(DECRESCENTE)) {
 			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND prezzo <= ? AND categoria_nome = ? ORDER BY prezzo DESC";
-			    } else if (orderValue.equals("crescente")) {
+			    } else if (orderValue.equals(CRESCENTE)) {
 			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND prezzo <= ? AND categoria_nome = ? ORDER BY prezzo ASC";
 			    }
 			} else {
-			    if (orderValue.equals("decrescente")) {
+			    if (orderValue.equals(DECRESCENTE)) {
 			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND categoria_nome = ? ORDER BY prezzo DESC";
-			    } else if (orderValue.equals("crescente")) {
+			    } else if (orderValue.equals(CRESCENTE)) {
 			        query = "SELECT * FROM prodotto WHERE prezzo >= ? AND categoria_nome = ? ORDER BY prezzo ASC";
 			    }
 			}
@@ -333,11 +339,11 @@ return generatedId;
 			  
 			  while(rs.next()) {
 				  Prodotto prodotto=new Prodotto();
-				  prodotto.setCodice(rs.getInt("codice"));
-				  prodotto.setDescrizione(rs.getString("descrizione"));
-				  prodotto.setPrezzo(rs.getDouble("prezzo"));
+				  prodotto.setCodice(rs.getInt(CODICE));
+				  prodotto.setDescrizione(rs.getString(DESCRIZIONE));
+				  prodotto.setPrezzo(rs.getDouble(PREZZO));
 				  prodotto.setNome(rs.getString("nome"));
-				  prodotto.setCategoriaNome(rs.getString("categoria_nome"));
+				  prodotto.setCategoriaNome(rs.getString(CATEGORIA));
 				  prodotti.add(prodotto);
 			  }
 		  }finally {

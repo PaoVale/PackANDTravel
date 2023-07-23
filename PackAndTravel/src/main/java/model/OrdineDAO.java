@@ -32,7 +32,7 @@ public class OrdineDAO {
 	private static final String NUM_ORDINE = "codice";
 	private static final String EMAIL = "account_email";
 	private static final String DATA = "data_effettuazione";
-	private static final String PREZZO = "prezzo";
+	private static final String PREZZO = "prezzo_tot";
 	
 	private static final String CONST_SELECT = "SELECT * FROM ";
 	
@@ -92,10 +92,10 @@ public class OrdineDAO {
 			  ResultSet rs=pst.executeQuery();
 			  while(rs.next()) {
 				  OrdineBean ordine=new OrdineBean();
-				  ordine.setCodice(rs.getInt("codice"));
-				  ordine.setDataOrdine(rs.getDate("data_effettuazione"));
-				  ordine.setEmail(rs.getString("account_email"));
-				  ordine.setPrezzo(rs.getDouble("prezzo_tot"));
+				  ordine.setCodice(rs.getInt(NUM_ORDINE));
+				  ordine.setDataOrdine(rs.getDate(DATA));
+				  ordine.setEmail(rs.getString(EMAIL));
+				  ordine.setPrezzo(rs.getDouble(PREZZO));
 				  ordini.add(ordine);
 			  }
 		  }finally {
@@ -169,9 +169,9 @@ public class OrdineDAO {
 	      while (rs.next()) {
 	        OrdineBean bean = new OrdineBean();
 	        bean.setCodice(rs.getInt(NUM_ORDINE));
-	        bean.setEmail(rs.getString("account_email"));
-	        bean.setDataOrdine(rs.getDate("data_effettuazione"));
-	        bean.setPrezzo(rs.getDouble("prezzo_tot"));
+	        bean.setEmail(rs.getString(EMAIL));
+	        bean.setDataOrdine(rs.getDate(DATA));
+	        bean.setPrezzo(rs.getDouble(PREZZO));
 	        ordini.add(bean);
 	      }
 
@@ -212,10 +212,10 @@ public class OrdineDAO {
 
 	      while (rs.next()) {
 	        OrdineBean bean = new OrdineBean();
-	        bean.setCodice(rs.getInt("codice"));
-	        bean.setEmail(rs.getString("account_email"));
-	        bean.setDataOrdine(rs.getDate("data_effettuazione"));
-	        bean.setPrezzo(rs.getDouble("prezzo_tot"));
+	        bean.setCodice(rs.getInt(NUM_ORDINE));
+	        bean.setEmail(rs.getString(EMAIL));
+	        bean.setDataOrdine(rs.getDate(DATA));
+	        bean.setPrezzo(rs.getDouble(PREZZO));
 	        
 	        ordini.add(bean);
 	      }
