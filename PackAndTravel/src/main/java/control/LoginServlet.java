@@ -23,7 +23,7 @@ import java.util.logging.*;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+	private static Logger logger = Logger.getAnonymousLogger();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -38,7 +38,6 @@ public class LoginServlet extends HttpServlet {
 
 		String password= request.getParameter("password");
 
-		System.out.println("questa è l email"+email);
 
 
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");

@@ -7,12 +7,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
 
 
 public class PhotoControl {
+	private static Logger logger = Logger.getAnonymousLogger();
 	private  DataSource ds=null;
 	
 	
@@ -50,9 +53,8 @@ public class PhotoControl {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				sqlException.printStackTrace();
-				//logger.log(Level.WARNING, LOG_MSG1);
-			} finally {
+				logger.log(Level.WARNING, "Errore SQL", sqlException);			
+				} finally {
 				if (con != null)
 					con.close();
 			}
@@ -74,16 +76,14 @@ public class PhotoControl {
 				stmt.setInt(2, idA);	
 				stmt.executeUpdate();
 			} catch (IOException e) {
-				e.printStackTrace();
-				//logger.log(Level.WARNING, "Problema IO!");
+				logger.log(Level.WARNING, "Problema IO!",e);
 			}
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException sqlException) {
-				sqlException.printStackTrace();
-				//logger.log(Level.WARNING, LOG_MSG1);
+				logger.log(Level.WARNING, "errore",sqlException);
 			} finally {
 				if (con != null)
 					con.close();

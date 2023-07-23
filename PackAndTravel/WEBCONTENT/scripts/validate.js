@@ -172,19 +172,8 @@ function checkModificaProdotto(form) {
   let immagine = form.immagine.value;
 
   // Verificare se tutti i campi sono vuoti
-  if (
-    
-    nome === "" &&
-    descrizione === "" &&
-    categoria === "" &&
-    prezzo === "" &&
-    immagine === ""
-  ) {
-    return false; // Impedire l'invio del modulo
-  }
+ return !(nome === "" && descrizione === "" && categoria === "" && prezzo === "" && immagine === "");
 
-  // Se la validazione è passata, consentire l'invio del modulo
-  return true;
 }
 
 function validateNumCarta() {

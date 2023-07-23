@@ -3,22 +3,19 @@ package model;
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
-//import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
 public class ProdottoDAO {
 	
 	private DataSource ds=null;
-	
-	  
-	  //private static final Logger logger = Logger.getLogger(ProdottoDAO.class.getName());
 
 	  public ProdottoDAO(DataSource ds) {
 	    super();
@@ -76,7 +73,6 @@ public class ProdottoDAO {
 			pst.setDouble(2,prodotto.getPrezzo() );
 			pst.setString(3,prodotto.getNome());
 			pst.setString(4, prodotto.getCategoriaNome());
-			//pst.setString(5, prodotto.getFoto());
 
 			int rowsAffected = pst.executeUpdate();
 			
@@ -85,7 +81,6 @@ public class ProdottoDAO {
 			    if (generatedKeys.next()) {
 			        generatedId = generatedKeys.getInt(1);
 			        // Utilizza l'ID generato come desideri
-			        System.out.println("ID generato: " + generatedId);
 			    }
 			}
 
@@ -226,7 +221,7 @@ return generatedId;
 		  query += " DESC";
 		  else if(orderValue.equals("crescente"))
 		  query += " ASC";
-		  System.out.println(query);		
+		  		
 		  
 		  try {
 			  con = ds.getConnection();

@@ -26,7 +26,7 @@ import model.ProdottoDAO;
 maxFileSize = 1024 * 1024 * 10, // 10MB
 maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class AddProdottoServlet extends HttpServlet {
-	private static final Logger logger = Logger.getLogger(RegistratiServlet.class.getName());
+	private static Logger logger = Logger.getAnonymousLogger();
 	private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
