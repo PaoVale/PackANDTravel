@@ -64,15 +64,5 @@
    <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=borsone">Borsoni</a>
 </nav>
 
-<script type="text/javascript">
-	function toggle(){
-		if(document.getElementById("navStyle").style.display=="none"){
-			document.getElementById("navStyle").style.display="block";
-		}else{
-			document.getElementById("navStyle").style.display="none";
-		}
-	}
-</script>
-
 </body>
 </html>

@@ -58,7 +58,9 @@ body {
   color: #fff; /* Colore dei link di navigazione */
   text-decoration: none;
   margin-right: 20px;
+    font-family: ui-sans-serif;
 }
+
  .dropdown-content {
   display: none;
   position: absolute;

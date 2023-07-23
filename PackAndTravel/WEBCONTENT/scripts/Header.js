@@ -15,3 +15,11 @@ function toggleDropdown() {
       }
     }
   }
+  
+  function toggle(){
+		if(document.getElementById("navStyle").style.display=="none"){
+			document.getElementById("navStyle").style.display="block";
+		}else{
+			document.getElementById("navStyle").style.display="none";
+		}
+	}
