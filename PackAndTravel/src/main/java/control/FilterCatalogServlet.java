@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +21,8 @@ import model.ProdottoDAO;
 @WebServlet("/FilterCatalogServlet")
 public class FilterCatalogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getAnonymousLogger();
+	private static final String ERROR = "Problema Sql!";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,7 +51,7 @@ public class FilterCatalogServlet extends HttpServlet {
 				request.setAttribute(PRODOTTI, prodotto.doRetrieveByOrdine(categoria,orderValue));
 			} catch (SQLException e) {
 			
-				e.printStackTrace();
+				logger.log(Level.WARNING, ERROR,e);
 			}
         	
         }
@@ -57,21 +61,21 @@ public class FilterCatalogServlet extends HttpServlet {
    				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzo(categoria,0,50));
    			} catch (SQLException e) {
    			
-   				e.printStackTrace();
+   				logger.log(Level.WARNING, ERROR ,e);
    			}
     	   else if(priceValue.equals("50-100"))
     		   try {
    				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzo(categoria,50,100));
    			} catch (SQLException e) {
    			
-   				e.printStackTrace();
+   				logger.log(Level.WARNING, ERROR,e);
    			}
     	   else
     		   try {
       				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzo(categoria,100,0));
       			} catch (SQLException e) {
       			
-      				e.printStackTrace();
+      				logger.log(Level.WARNING, ERROR,e);
       			}   
         }
         else if(priceValue!=null && orderValue!=null) {
@@ -80,21 +84,21 @@ public class FilterCatalogServlet extends HttpServlet {
     				request.setAttribute(PRODOTTI,prodotto.doRetrieveByPrezzoAndOrdine(categoria,0,50,orderValue));
     			} catch (SQLException e) {
     			
-    				e.printStackTrace();
+    				logger.log(Level.WARNING, ERROR,e);
     			}
      	   else if(priceValue.equals("50-100"))
      		   try {
     				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzoAndOrdine(categoria,50,100,orderValue));
     			} catch (SQLException e) {
     			
-    				e.printStackTrace();
+    				logger.log(Level.WARNING, ERROR,e);
     			}
      	   else
      		   try {
        				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzoAndOrdine(categoria,100,0,orderValue));
        			} catch (SQLException e) {
        			
-       				e.printStackTrace();
+       				logger.log(Level.WARNING, ERROR,e);
        			}   
         	
         }

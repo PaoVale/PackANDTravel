@@ -3,6 +3,8 @@ package control;
 import java.io.IOException;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +28,7 @@ maxRequestSize = 1024 * 1024 * 50)
 @WebServlet("/ModificaProdottoServlet")
 public class ModificaProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+	private static Logger logger = Logger.getAnonymousLogger();
     public ModificaProdottoServlet() {
         super();
         
@@ -34,6 +36,8 @@ public class ModificaProdottoServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		final String PREZZO = "prezzo";
 		final String DESCRIZIONE = "descrizione";
 		
@@ -54,7 +58,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdate("nome", nome, codice);
 			}catch (SQLException e){
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema Sql!",e);
 			}
 		}
 		
@@ -65,7 +69,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdate(DESCRIZIONE, descrizione, codice);
 			}catch (SQLException e){
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema Sql!",e);
 			}
 		}
 		
@@ -77,7 +81,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdate("categoria_nome", categoria, codice);
 			}catch (SQLException e){
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema Sql!",e);
 			}
 		}
 		
@@ -88,7 +92,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdatePrezzo(prezzo, codice);
 			}catch (SQLException e){
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema Sql!",e);
 			}
 		}
 		

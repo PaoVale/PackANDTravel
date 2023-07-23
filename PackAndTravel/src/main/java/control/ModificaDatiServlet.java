@@ -63,7 +63,7 @@ public class ModificaDatiServlet extends HttpServlet {
 				user.doUpdateAddress(email, indirizzo);
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.log(Level.WARNING, "Problema Sql!",e);
 			}
 			  auth.setAddress(indirizzo);
 		  }

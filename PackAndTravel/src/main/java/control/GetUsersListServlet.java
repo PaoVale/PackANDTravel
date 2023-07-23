@@ -1,8 +1,10 @@
 package control;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +22,7 @@ import model.AccountUserDAO;
 @WebServlet("/GetUsersListServlet")
 public class GetUsersListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static Logger logger = Logger.getAnonymousLogger();
     
     public GetUsersListServlet() {
         super();
@@ -41,7 +43,7 @@ public class GetUsersListServlet extends HttpServlet {
 		try {
 			request.setAttribute("listaUtenti", tool.doRetriveAll() );
 		}catch (SQLException e){
-			e.printStackTrace();
+			logger.log(Level.WARNING, "Problema Sql!",e);
 		}
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/GestioneOrdini.jsp");

@@ -223,10 +223,12 @@ return generatedId;
 		  PreparedStatement pst=null;
 		  Collection<Prodotto> prodotti = new LinkedList<>();
 		  String query = "SELECT * FROM prodotto where categoria_nome = ? ORDER BY prezzo";
-		  if(orderValue.equals(DECRESCENTE))
+		  if(orderValue.equals(DECRESCENTE)) {
 		  query += " DESC";
-		  else if(orderValue.equals(CRESCENTE))
-		  query += " ASC";
+		  }
+		  else if(orderValue.equals(CRESCENTE)) {
+			  query += " ASC";
+		  }
 		  		
 		  
 		  try {

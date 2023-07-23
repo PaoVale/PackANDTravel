@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ import model.ArticoloDAO;
 @WebServlet("/DettaglioOrdineServlet")
 public class DettaglioOrdineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getAnonymousLogger();
        
     
     public DettaglioOrdineServlet() {
@@ -42,8 +45,7 @@ public class DettaglioOrdineServlet extends HttpServlet {
 	    	
 	    } catch (SQLException e) {
 	        
-	        
-	        e.printStackTrace();
+	       logger.log(Level.WARNING, "Problema Sql!",e);
 	      }
 			
 			  RequestDispatcher dispatcher =
