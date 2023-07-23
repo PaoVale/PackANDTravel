@@ -136,3 +136,17 @@ p#error{
 }
 
 }
+
+
+@media screen and (min-width: 768px) and (max-width: 993px) {
+  
+   .col-md-4 {
+		display: flex;   
+   }
+
+	.nome{
+		font-size: 1px;
+	}
+  
+}
+
