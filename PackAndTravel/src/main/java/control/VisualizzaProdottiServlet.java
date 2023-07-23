@@ -59,6 +59,9 @@ public class VisualizzaProdottiServlet extends HttpServlet {
 			dispatcher = getServletContext().getRequestDispatcher("/common/Index.jsp");
 			dispatcher.forward(request, response); 
 			break;
+		 default:
+		        // Il valore di idRequest non corrisponde a nessuno dei casi sopra definiti
+		        break;
 		}
 		
 		

@@ -34,6 +34,9 @@ public class ModificaProdottoServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		final String PREZZO = "prezzo";
+		final String DESCRIZIONE = "descrizione";
+		
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ProdottoDAO prodotto=new ProdottoDAO(ds);
 		int codice=0;
@@ -55,12 +58,12 @@ public class ModificaProdottoServlet extends HttpServlet {
 			}
 		}
 		
-		if (request.getParameter("descrizione")!="" && request.getParameter("descrizione")!=null && !request.getParameter("descrizione").isEmpty())
+		if (request.getParameter(DESCRIZIONE)!="" && request.getParameter(DESCRIZIONE)!=null && !request.getParameter(DESCRIZIONE).isEmpty())
 		{
-			descrizione = request.getParameter("descrizione");
+			descrizione = request.getParameter(DESCRIZIONE);
 			
 			try {
-				prodotto.doUpdate("descrizione", descrizione, codice);
+				prodotto.doUpdate(DESCRIZIONE, descrizione, codice);
 			}catch (SQLException e){
 				e.printStackTrace();
 			}
@@ -78,9 +81,9 @@ public class ModificaProdottoServlet extends HttpServlet {
 			}
 		}
 		
-		if (request.getParameter("prezzo")!="" && request.getParameter("prezzo") != null && !request.getParameter("prezzo").isEmpty())
+		if (request.getParameter(PREZZO)!="" && request.getParameter(PREZZO) != null && !request.getParameter(PREZZO).isEmpty())
 		{
-			prezzo = Double.parseDouble( request.getParameter("prezzo"));
+			prezzo = Double.parseDouble( request.getParameter(PREZZO));
 			
 			try {
 				prodotto.doUpdatePrezzo(prezzo, codice);

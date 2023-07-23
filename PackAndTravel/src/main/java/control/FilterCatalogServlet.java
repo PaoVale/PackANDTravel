@@ -33,6 +33,8 @@ public class FilterCatalogServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		final String PRODOTTI = "prodotti";
+		
 		String categoria= (String) request.getParameter("categoria");
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ProdottoDAO prodotto = new ProdottoDAO(ds);
@@ -42,7 +44,7 @@ public class FilterCatalogServlet extends HttpServlet {
         
         if(orderValue!=null && priceValue==null) {
         	try {
-				request.setAttribute("prodotti", prodotto.doRetrieveByOrdine(categoria,orderValue));
+				request.setAttribute(PRODOTTI, prodotto.doRetrieveByOrdine(categoria,orderValue));
 			} catch (SQLException e) {
 			
 				e.printStackTrace();
@@ -52,21 +54,21 @@ public class FilterCatalogServlet extends HttpServlet {
         else if(priceValue!=null && orderValue==null) {
     	   if(priceValue.equals("0-50"))
     		   try {
-   				request.setAttribute("prodotti", prodotto.doRetrieveByPrezzo(categoria,0,50));
+   				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzo(categoria,0,50));
    			} catch (SQLException e) {
    			
    				e.printStackTrace();
    			}
     	   else if(priceValue.equals("50-100"))
     		   try {
-   				request.setAttribute("prodotti", prodotto.doRetrieveByPrezzo(categoria,50,100));
+   				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzo(categoria,50,100));
    			} catch (SQLException e) {
    			
    				e.printStackTrace();
    			}
     	   else
     		   try {
-      				request.setAttribute("prodotti", prodotto.doRetrieveByPrezzo(categoria,100,0));
+      				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzo(categoria,100,0));
       			} catch (SQLException e) {
       			
       				e.printStackTrace();
@@ -75,21 +77,21 @@ public class FilterCatalogServlet extends HttpServlet {
         else if(priceValue!=null && orderValue!=null) {
         	if(priceValue.equals("0-50"))
      		   try {
-    				request.setAttribute("prodotti",prodotto.doRetrieveByPrezzoAndOrdine(categoria,0,50,orderValue));
+    				request.setAttribute(PRODOTTI,prodotto.doRetrieveByPrezzoAndOrdine(categoria,0,50,orderValue));
     			} catch (SQLException e) {
     			
     				e.printStackTrace();
     			}
      	   else if(priceValue.equals("50-100"))
      		   try {
-    				request.setAttribute("prodotti", prodotto.doRetrieveByPrezzoAndOrdine(categoria,50,100,orderValue));
+    				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzoAndOrdine(categoria,50,100,orderValue));
     			} catch (SQLException e) {
     			
     				e.printStackTrace();
     			}
      	   else
      		   try {
-       				request.setAttribute("prodotti", prodotto.doRetrieveByPrezzoAndOrdine(categoria,100,0,orderValue));
+       				request.setAttribute(PRODOTTI, prodotto.doRetrieveByPrezzoAndOrdine(categoria,100,0,orderValue));
        			} catch (SQLException e) {
        			
        				e.printStackTrace();

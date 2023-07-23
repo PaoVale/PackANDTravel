@@ -22,8 +22,7 @@
    <div class="logo">
    
       <a href="<%=request.getContextPath() %>/common/Index.jsp"><img src="<%=request.getContextPath() %>/images/logo-removebg-preview.png" alt="Logo"> </a>
-      <div class="icons">
-            <!-- TODO aggiungi tooltips alle icone -->     
+      <div class="icons">  
          <% if(auth != null){ %>
          
          	

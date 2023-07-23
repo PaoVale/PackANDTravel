@@ -32,13 +32,13 @@ public class ConnectionDB implements ServletContextListener{
 		}
 
 		context.setAttribute("DataSource", ds);
-		logger.log(Level.WARNING, "Creating DataSource...");
+		logger.log(Level.WARNING, "Creating DataSource: {0}", ds);
 	}
 
 	public void contextDestroyed(ServletContextEvent event) {
 		ServletContext context = event.getServletContext();
 
 		DataSource ds = (DataSource) context.getAttribute("DataSource");
-		logger.log(Level.WARNING, "Deleting DataSource...",ds);
+		logger.log(Level.WARNING, "Deleting DataSource: {0}", ds);
 	}
 }

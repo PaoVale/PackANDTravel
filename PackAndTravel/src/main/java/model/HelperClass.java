@@ -69,6 +69,9 @@ public class HelperClass {
 	  }
   public class MyClass {
 	    private static final Random rand = new Random();
+	    private MyClass() {
+	        // Costruttore privato
+	    }
 
 	    public static List<Prodotto> estraiElementiCasuali(List<Prodotto> lista, int n) {
 	        List<Prodotto> risultato = new ArrayList<>();
@@ -79,9 +82,14 @@ public class HelperClass {
 	        }
 
 	        for (int i = 0; i < n; i++) {
-	            int index = rand.nextInt(lista.size());
-	            risultato.add(lista.get(index));
-	            lista.remove(index);
+	        	  if (!lista.isEmpty()) {
+	                  int index = rand.nextInt(lista.size());
+	                  risultato.add(lista.get(index));
+	                  lista.remove(index);
+	              } else {
+	                  // La lista è vuota, non ci sono più elementi da estrarre
+	                  break;
+	              }
 	        }
 
 	        return risultato;
