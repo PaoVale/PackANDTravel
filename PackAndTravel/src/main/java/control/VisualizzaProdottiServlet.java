@@ -23,7 +23,7 @@ import model.ProdottoDAO;
 @WebServlet("/VisualizzaProdottiServlet")
 public class VisualizzaProdottiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+	private static Logger logger = Logger.getAnonymousLogger();
 
     
     public VisualizzaProdottiServlet() {
