@@ -197,6 +197,22 @@ form#deleteForm input[type="number"] {
 }
 
 
+/* Larghezza al 100% per gli input text, number e file */
+form#editForm input[type="text"],
+form#editForm input[type="number"],
+form#editForm input[type="file"],
 
-	
+textarea {
+  width: 100%;
+  display: inline;
+  margin-bottom: 0.3rem;
+}
+
+form#editForm input[type="radio"],
+  form#insertForm label {
+    display: inline;
+    margin-bottom: 0.3rem;
+}
+
+
 }}

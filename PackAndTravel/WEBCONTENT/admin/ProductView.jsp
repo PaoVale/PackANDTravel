@@ -106,7 +106,7 @@ if (prodotti == null){
 
 	<h2>Modifica un prodotto <span id="toggleButton4" class="cursor-pointer" onclick="toggleContent('toggleButton4', 'editForm')">+</span></h2>
   <form action="/PackAndTravel/ModificaProdottoServlet" id="editForm" method="post" class="hidden" enctype="multipart/form-data" onsubmit="return checkModificaProdotto(this)">
-		<label for="codice">Inserisci codice:</label> 
+		<label for="codice">Inserisci codice:</label> <br>
 		<input name="codiceModifica" type="number" min="0" required><br> <br> 
 		<label for="nome">Modifica nome:</label> <br> 
 		<input name="nome" type="text" maxlength="50" ><br> <br> 
