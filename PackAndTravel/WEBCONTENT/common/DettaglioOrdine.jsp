@@ -55,6 +55,6 @@
 		</table>
 	
 	 </section>	
-   <%@ include file="Footer.jsp" %>s
+   <%@ include file="Footer.jsp" %>
 </body>
 </html>
