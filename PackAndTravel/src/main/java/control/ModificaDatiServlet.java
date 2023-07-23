@@ -24,7 +24,7 @@ import model.HelperClass;
 public class ModificaDatiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getAnonymousLogger();
-
+	private static final String ERROR = "Problema Sql!";
        
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,7 +53,7 @@ public class ModificaDatiServlet extends HttpServlet {
 		 try {
 			user.doUpdatePassword(email,passwordNuova);
 		} catch (SQLException e) {
-			logger.log(Level.WARNING, "Problema Sql!");
+			logger.log(Level.WARNING, ERROR,e);
 		}
 	 	   }
 		  
@@ -63,7 +63,7 @@ public class ModificaDatiServlet extends HttpServlet {
 				user.doUpdateAddress(email, indirizzo);
 			} catch (SQLException e) {
 				
-				logger.log(Level.WARNING, "Problema Sql!",e);
+				logger.log(Level.WARNING, ERROR,e);
 			}
 			  auth.setAddress(indirizzo);
 		  }
@@ -74,7 +74,7 @@ public class ModificaDatiServlet extends HttpServlet {
 			  try {
 				user.doUpdateNumber(email, cellulare);
 			} catch (SQLException e) {
-				logger.log(Level.WARNING, "Problema Sql!");
+				logger.log(Level.WARNING, ERROR,e);
 			}
 			  auth.setNumber(cellulare);
 		  }

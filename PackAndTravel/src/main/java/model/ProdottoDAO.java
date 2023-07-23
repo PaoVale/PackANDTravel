@@ -131,8 +131,8 @@ return generatedId;
 	  public synchronized void doUpdate(String nomeColonna, String contenutoColonna,int codice) throws SQLException {
 			Connection con = null;
 			PreparedStatement pst = null;
-
-			String query = "update prodotto set "+ nomeColonna +" = ? where codice=? ";
+			String NOMECOLONNA = nomeColonna;
+			String query = "update prodotto set "+ NOMECOLONNA +" = ? where codice=? ";
 			try {
 				con = ds.getConnection();
 

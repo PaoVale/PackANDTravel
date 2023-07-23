@@ -2,10 +2,13 @@ package model;
 
 import java.nio.charset.StandardCharsets;
 
+
 import java.util.HashMap;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.security.SecureRandom;
+
 
 public class HelperClass {
   
@@ -44,31 +47,35 @@ public class HelperClass {
 	        characterMap.put('é',"&eacute;");
 
 	    char c;
-	    for(int i=0; i<input.length(); i++) {
-	      c = input.charAt(i);
-	        
-	      // Filtra il carattere desiderato
-	            String replacement = characterMap.get(c);
-	            if (replacement != null) {
-	                filtered.append(replacement);
-	            } else if(c == 'Ã'){ //questo perchè non riesco a riconoscere normalmente 'è' e 'à'
-	            i++;
-	            c = input.charAt(i);
-	            if(c=='¨') {
-	              filtered.append("&egrave");
-	            }else
-	              filtered.append("&agrave");
-	        }else{
-	          
-	                filtered.append(c);
-	            }
-	    } //fine for
-	    
-	    return filtered.toString();
+	    int i = 0;
+	    while (i < input.length()) {
+	        c = input.charAt(i);
 
-	  }
+	        // Filtra il carattere desiderato
+	        String replacement = characterMap.get(c);
+	        if (replacement != null) {
+	            filtered.append(replacement);
+	        } else if (c == 'Ã') { // questo perchè non riesco a riconoscere normalmente 'è' e 'à'
+	            i++; // Incrementa il contatore per passare al carattere successivo
+	            if (i < input.length()) {
+	                c = input.charAt(i);
+	                if (c == '¨') {
+	                    filtered.append("&egrave");
+	                } else {
+	                    filtered.append("&agrave");
+	                }
+	            }
+	        } else {
+	            filtered.append(c);
+	        }
+
+	        i++; // Incrementa il contatore per passare al prossimo carattere del ciclo principale
+	    } // fine while
+
+	    return filtered.toString();
+  }
   public class MyClass {
-	    private static final Random rand = new Random();
+	    private static final SecureRandom rand = new SecureRandom();
 	    private MyClass() {
 	        // Costruttore privato
 	    }

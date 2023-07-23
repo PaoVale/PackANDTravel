@@ -29,6 +29,7 @@ maxRequestSize = 1024 * 1024 * 50)
 public class ModificaProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getAnonymousLogger();
+	private static final String ERROR = "Problema Sql!";
     public ModificaProdottoServlet() {
         super();
         
@@ -58,7 +59,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdate("nome", nome, codice);
 			}catch (SQLException e){
-				logger.log(Level.WARNING, "Problema Sql!",e);
+				logger.log(Level.WARNING, ERROR,e);
 			}
 		}
 		
@@ -69,7 +70,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdate(DESCRIZIONE, descrizione, codice);
 			}catch (SQLException e){
-				logger.log(Level.WARNING, "Problema Sql!",e);
+				logger.log(Level.WARNING, ERROR,e);
 			}
 		}
 		
@@ -81,7 +82,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdate("categoria_nome", categoria, codice);
 			}catch (SQLException e){
-				logger.log(Level.WARNING, "Problema Sql!",e);
+				logger.log(Level.WARNING, ERROR,e);
 			}
 		}
 		
@@ -92,7 +93,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			try {
 				prodotto.doUpdatePrezzo(prezzo, codice);
 			}catch (SQLException e){
-				logger.log(Level.WARNING, "Problema Sql!",e);
+				logger.log(Level.WARNING, ERROR,e);
 			}
 		}
 		
