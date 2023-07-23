@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" errorPage="errorPage.jsp" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" errorPage="errorPage.jsp" %>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -66,5 +66,6 @@
            <p>*I campi sono obbligatori</p>
         </form>
     </div>
+    <%@ include file="Footer.jsp" %>
 </body>
 </html>

@@ -66,3 +66,28 @@ a.button_style:hover {
   text-decoration: none; /* Rimuove il sottolineato dei link */
 }
 
+
+/* Aggiungi stili per schermi fino a 1020px di larghezza */
+@media (max-width: 1020px) {
+  .container {
+    display: flex;
+    flex-direction: column; /* I div saranno posizionati uno sotto l'altro */
+  }
+
+	.left-div img {
+    width: 100%;
+    
+}
+	.left-div{
+		
+		margin-bottom: 0px;
+	}
+	
+	.right-div{
+		margin-top: 0px;
+		
+	}
+
+
+}
+

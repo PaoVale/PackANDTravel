@@ -1,3 +1,4 @@
+/* Stili esistenti rimangono inalterati... */
 body {
   background-color: #26838b;
   color: #000000;
@@ -56,4 +57,47 @@ section#homeIcons{
 
 section#homeIcons i{
 	color:white;
+}
+
+
+/* Aggiungi stili per schermi fino a 767px di larghezza */
+
+  .container {
+    max-width: 100%; /* Imposta la larghezza massima del contenitore al 100% */
+    margin: 50px 20px; /* Riduci il margine laterale del contenitore per centrarlo e rendere il layout più compatto */
+    padding: 20px; /* Riduci il padding per una visualizzazione più compatta */
+  }
+
+  /* Esempi di stili per rendere il layout più adattabile */
+  /* Modifica le dimensioni dei font per dispositivi più piccoli */
+  h1 {
+    font-size: 24px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 16px;
+  }
+form#regForm {
+    margin-right: 30px;
+}
+  /* Continua con altre regole CSS per adattare il layout */
+  /* in base alle esigenze specifiche del tuo design */
+@media (min-width: 768px) {
+	.container {
+    max-width: 40%;
+    margin: auto;
+    padding: 20px;
+}
 }
