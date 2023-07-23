@@ -4,12 +4,15 @@ package model;
 import java.sql.Connection;
 
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -131,8 +134,8 @@ return generatedId;
 	  public synchronized void doUpdate(String nomeColonna, String contenutoColonna,int codice) throws SQLException {
 			Connection con = null;
 			PreparedStatement pst = null;
-			String NOMECOLONNA = nomeColonna;
-			String query = "update prodotto set "+ NOMECOLONNA +" = ? where codice=? ";
+			String colonnaValidata = validateAndSanitizeColumnName(nomeColonna); 
+			String query = "update prodotto set "+ colonnaValidata +" = ? where codice=? ";
 			try {
 				con = ds.getConnection();
 
@@ -154,6 +157,18 @@ return generatedId;
 
 		  }
 
+	  private String validateAndSanitizeColumnName(String nomeColonna) {
+		    // Lista di nomi di colonne accettabili
+		    List<String> colonneAccettabili = Arrays.asList(DESCRIZIONE, "nome", CATEGORIA);
+
+		    // Confronto il nomeColonna con la lista di colonne accettabili
+		    if (!colonneAccettabili.contains(nomeColonna)) {
+		        throw new IllegalArgumentException("Nome di colonna non valido: " + nomeColonna);
+		    }
+
+		    // Restituisco il nomeColonna senza alcuna sanificazione, poiché è stato validato
+		    return nomeColonna;
+		}
 	public synchronized void doUpdatePrezzo(Double prezzo, int codice) throws SQLException {
 		
 		Connection con = null;
