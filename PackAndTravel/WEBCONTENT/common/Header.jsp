@@ -53,14 +53,26 @@
          
       </div>
    </div>
+   
 </header>
+<a href="javascript:void(0)" class="btn-menu" onClick="toggle()">&#9776;</a>
+<nav class="navigation" id="navStyle">
 
-<nav class="navigation">
    <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=valigia">Valigie</a>
    <a href="<%=request.getContextPath() %>//common/Catalogo.jsp?categoria=zaino">Zaini</a>
    <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=accessorio">Accessori</a>
    <a href="<%=request.getContextPath() %>/common/Catalogo.jsp?categoria=borsone">Borsoni</a>
 </nav>
+
+<script type="text/javascript">
+	function toggle(){
+		if(document.getElementById("navStyle").style.display=="none"){
+			document.getElementById("navStyle").style.display="block";
+		}else{
+			document.getElementById("navStyle").style.display="none";
+		}
+	}
+</script>
 
 </body>
 </html>
