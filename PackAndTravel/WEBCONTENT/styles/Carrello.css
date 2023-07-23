@@ -61,7 +61,7 @@ td:first-child {
     
     white-space: nowrap; /* Impedisce il wrapping del testo */
     overflow: hidden; /* Nasconde il testo oltre la larghezza massima */
-    text-overflow: ellipsis; /* Mostra "..." se il testo è troncato */
+    text-overflow: ellipsis; /* Mostra "..." se il testo ï¿½ troncato */
   }
   
 i.fas.fa-trash-alt.trash-icon {

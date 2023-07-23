@@ -53,7 +53,7 @@
 		        while (it.hasNext()) {
 		          OrdineBean ordine = (OrdineBean) it.next();%>
 				<tr>
-					<th scope="row"><%=ordine.getCodice()%></th>
+					<td id="prodCod"><%=ordine.getCodice()%></td>
 					<td><%=ordine.getDataOrdine()%></td>
 					<td><%=ordine.getPrezzo()%> &euro;</td>
                 	<td>
