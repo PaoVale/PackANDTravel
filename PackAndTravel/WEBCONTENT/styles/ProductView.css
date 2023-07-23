@@ -51,8 +51,9 @@ label {
 form input[type=text], form input[type=number], form input[type=password],
 	form input[type=date], form input[type=range], form input[type=email],
 	form input[type=url], form input[type=time], form input[list] {
-	width: 500px;
+	width: 80%;
 	font-size: 1em;
+	border-width: 1.5px;
 }
 
 textarea {
@@ -85,20 +86,117 @@ textarea {
 	width:100px;height:auto;
 }
 
-@media (min-width: 357px) and (max-width: 767px) {
-  #container {
-    width: 100%; /* Il div occuperà l'intera larghezza dello schermo */
-    max-width: 600px; /* Limita la larghezza massima del div a 600px */
-    padding: 10px; /* Riduci il padding per adattarsi a schermi più piccoli */
-  }
-
+@media (max-width: 767px) {
   table {
-    font-size: 0.8em; /* Riduci la dimensione del testo nella tabella per adattarsi a schermi più piccoli */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
   }
 
   th, td {
-    padding: 3px; /* Riduci il padding delle celle per adattarsi a schermi più piccoli */
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: center;
   }
-}
-	
 
+  thead {
+    display: none;
+  }
+
+  tfoot td {
+    font-weight: bold;
+  }
+
+  /* Mostra i dati della tabella come righe affiancate */
+  tr {
+    display: block;
+    border: 1px solid #ddd;
+    margin-bottom: 0.625rem; /* Spaziatura tra le righe */
+  }
+
+  /* Assicurati che le celle mantengano il loro spazio */
+  td {
+    display: block;
+    text-align: center;
+  }
+
+  /* Nascondi le intestazioni delle colonne per mantenere il layout pulito */
+  th {
+    display: none;
+  }
+
+  /* Aggiungi un'etichetta per identificare i dati nelle colonne */
+  td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+
+  td:first-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  
+  #container{
+	  width: 90%;
+  }
+  
+  
+  @media (max-width: 767px) {
+  form#insertForm {
+    width: 100%;
+    margin-top: 1rem;
+    
+  }
+
+  form#insertForm label {
+    display: flex;
+    align-items: center;
+  }
+
+  form#insertForm input[type="text"],
+  form#insertForm textarea,
+  form#insertForm input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+    border-width: 2px;
+  }
+
+  form#insertForm input[type="file"] {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  form#insertForm input[type="submit"],
+  form#insertForm input[type="reset"] {
+    width: 49%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  
+
+form#insertForm input[type="radio"],
+  form#insertForm label {
+    display: inline;
+    margin-bottom: 0.3rem;
+
+
+}
+
+form#deleteForm input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+    border-width: 2px;
+}
+
+
+
+	
+}}
