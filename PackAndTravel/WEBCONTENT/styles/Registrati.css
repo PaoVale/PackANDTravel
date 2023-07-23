@@ -72,7 +72,7 @@ form#regForm {
 }
   /* Continua con altre regole CSS per adattare il layout */
   /* in base alle esigenze specifiche del tuo design */
-@media (min-width: 817px) {
+@media screen and (min-width: 817px) {
 	.container {
     max-width: 40%;
     margin: auto;

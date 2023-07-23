@@ -35,10 +35,9 @@
 	
 	%> 
     
-        <h1 id="titolo">Il tuo Carrello</h1>
-    
-
-    <main class="container">
+   <div id="carrelloDiv">
+   <h1 id="titolo">Il tuo Carrello</h1>
+   <main class="container">
         <table>
          <caption></caption>
             <thead>
@@ -103,6 +102,8 @@
         <a href="<%=request.getContextPath()%>/common/Checkout.jsp" class="checkout-button">Procedi al Checkout</a>
         <p id="error" > <%=error%></p>
     </main>
-</body>
+    </div>
 <%@ include file="Footer.jsp"%>
+</body>
+
 </html>

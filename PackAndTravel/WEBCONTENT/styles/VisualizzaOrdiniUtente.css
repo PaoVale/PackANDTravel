@@ -16,6 +16,7 @@ section.visualizzaOrdiniUser {
   background-color: #fff;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 199px;
 }
 
 h2 {
@@ -49,6 +50,10 @@ table.table tbody tr:nth-child(odd) {
   text-align: center;
 }
 
+tbody{
+	text-align: center;
+}
+
 table.table caption {
   caption-side: top;
   font-weight: bold;
@@ -67,7 +72,7 @@ a:hover {
 }
 
 
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
   table {
     width: 100%;
     border-collapse: collapse;
@@ -121,5 +126,12 @@ a:hover {
     text-align: center;
 }
 
+}
+
+
+@media screen and (max-width:2320px){
+	section.visualizzaOrdiniUser{
+		min-height: 800px;
+	}
 }
 

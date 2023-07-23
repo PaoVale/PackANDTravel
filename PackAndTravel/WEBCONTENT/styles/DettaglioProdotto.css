@@ -68,7 +68,7 @@ a.button_style:hover {
 
 
 /* Aggiungi stili per schermi fino a 1020px di larghezza */
-@media (max-width: 1020px) {
+@media screen and (max-width: 1020px) {
   .container {
     display: flex;
     flex-direction: column; /* I div saranno posizionati uno sotto l'altro */

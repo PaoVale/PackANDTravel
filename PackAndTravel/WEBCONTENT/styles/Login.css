@@ -65,7 +65,7 @@ section#homeIcons i{
 	color:white;
 }
 
-@media (max-width: 477px) {
+@media screen and (max-width: 477px) {
 	.login-section{
 	width: 70%;
 	}

@@ -50,6 +50,9 @@ main {
     margin: 20px; /* Aggiungiamo uno spazio di 20px dai bordi della pagina */
 }
 
+div#carrelloDiv {
+    min-height: 391px;
+}
 
 
 .img-prodotto {
@@ -74,7 +77,7 @@ p#error{
 }
 
 /* Stile per schermi con larghezza massima di 767px */
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   table {
     width: 100%;
     border-collapse: collapse;
@@ -126,5 +129,11 @@ p#error{
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
+}
+}
+
+@media screen and (max-width:2320px){
+	div#carrelloDiv {
+    min-height: 800px;
 }
 }
