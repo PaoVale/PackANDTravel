@@ -67,22 +67,25 @@ public class HelperClass {
 	    return filtered.toString();
 
 	  }
-  public static List<Prodotto> estraiElementiCasuali(List<Prodotto> lista, int n) {
-      List<Prodotto> risultato = new ArrayList<>();
-      Random rand = new Random();
+  public class MyClass {
+	    private static final Random rand = new Random();
 
-      // Se la lista non contiene abbastanza elementi, imposta n uguale alla dimensione della lista
-      if (n > lista.size()) {
-          n = lista.size();
-      }
+	    public static List<Prodotto> estraiElementiCasuali(List<Prodotto> lista, int n) {
+	        List<Prodotto> risultato = new ArrayList<>();
 
-      for (int i = 0; i < n; i++) {
-          int index = rand.nextInt(lista.size());
-          risultato.add(lista.get(index));
-          lista.remove(index);
-      }
+	        // Se la lista non contiene abbastanza elementi, imposta n uguale alla dimensione della lista
+	        if (n > lista.size()) {
+	            n = lista.size();
+	        }
 
-      return risultato;
-  }
+	        for (int i = 0; i < n; i++) {
+	            int index = rand.nextInt(lista.size());
+	            risultato.add(lista.get(index));
+	            lista.remove(index);
+	        }
 
+	        return risultato;
+	    }
+
+}
 }

@@ -15,7 +15,7 @@ if (prodotti == null){
    List<Prodotto> prodottiList = new ArrayList<>(prodotti);
 
      // Step 2: Estrai 9 elementi casuali dalla lista
-     List<Prodotto> elementiCasuali = HelperClass.estraiElementiCasuali(prodottiList, 9);
+     List<Prodotto> elementiCasuali = HelperClass.MyClass.estraiElementiCasuali(prodottiList, 9);
 
      // Step 3: Crea una nuova lista e salva gli elementi casuali
      List<Prodotto> elementiCasualiSalvati = new ArrayList<>(elementiCasuali);
