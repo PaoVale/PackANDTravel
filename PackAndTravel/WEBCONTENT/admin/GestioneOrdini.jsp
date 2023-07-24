@@ -13,8 +13,10 @@
   src="<%=request.getContextPath() %>/scripts/validate.js"></script>
 </head>
 <body>
-
+<%@ include file="../common/Header.jsp" %>
 <%
+	
+	if(auth.isAdmin()){
 	List<AccountUser> listaUtenti = (List<AccountUser>) request.getAttribute("listaUtenti");
 	if(listaUtenti==null){
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/GetUsersListServlet");
@@ -22,7 +24,7 @@
 	}
 %>
 
-<%@ include file="../common/Header.jsp" %>
+
 
 <div id= "container">
    <h2>
@@ -86,6 +88,8 @@
   </table>
 </div>
 <%@ include file="../common/Footer.jsp" %>
-
+<%}else{ %>
+	<p>Accesso Negato</p>
+<%} %>
 </body>
 </html>

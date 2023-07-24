@@ -32,7 +32,7 @@ if (prodotti == null){
 <body>
 <body>
 <%@ include file="../common/Header.jsp" %>
-
+<%if (auth.isAdmin()){ %>
 	<div id= "container">
 	 <h2>
     Visualizza prodotti <span id="toggleButton1" class="cursor-pointer" onclick="toggleContent('toggleButton1', 'productTable')">+</span>
@@ -132,5 +132,7 @@ if (prodotti == null){
 
 </div>
 <%@ include file="../common/Footer.jsp" %>
+
 </body>
+<%} %>
 </html>
